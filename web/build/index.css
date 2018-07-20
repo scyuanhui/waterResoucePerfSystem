@@ -13,6 +13,7 @@
   font-style:normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  cursor:pointer;
 }
 
 .icon-zhengque:before { content: "\E600"; }
@@ -231,12 +232,19 @@ body{
     cursor:pointer;
 }
 .systemDescription{
-    border:1px solid #ccc;
+    width:480px;
     position:absolute;
-    right:0;
-    bottom:0;
+    padding:5px 20px;
+    right:50px;
+    bottom:50px;
+    color:#fff;
 }
 .systemDescription h4,.systemDescription p{
     padding:5px 0;
     text-align:right;
+}
+.systemDescription>div{
+    text-align:right;
+    height:80px;
+    line-height:80px;
 }
