@@ -1,0 +1,134 @@
+.loginContainer{
+    height:100%;
+}
+.topRow{
+    height:32.2%;
+    background:url("../img/loginBg_01.jpg") no-repeat;
+    background-size:100% 100%;
+}
+.buttonRow{
+    position:relative;
+    height:67.8%;
+    background:url("../img/loginBg_02.jpg") no-repeat;
+    background-size:100% 100%;
+}
+.loginArea{
+    width:38.3%;
+    position:absolute;
+    z-index:2;
+    right:0;
+    top:0;
+    color:#fff;
+}
+.loginArea ul{
+    overflow:hidden;
+}
+.loginArea ul li{
+    width:50%;
+    float:left;
+    border-bottom:2px solid #a0e8fa;
+}
+.loginArea ul li:hover{
+    border-bottom:4px solid #f7f24c;
+}
+.loginArea ul li>div{
+    text-indent:20%;
+    height:40px;
+    font-size:1.4em;
+}
+.loginArea ul li>div>span{
+    position:relative;
+    z-index:2;
+    display:block;
+    height:30px;
+    top:10px;
+}
+.loginArea ul li:hover span{
+    animation: hoverAnimate 0.3s;
+}
+@keyframes hoverAnimate{
+    0% {top:0px;}
+    100% {top:10px;}
+}
+@-moz-keyframes hoverAnimate{
+    0% {top:0px;}
+    100% {top:10px;}
+}
+@-webkit-keyframes hoverAnimate{
+    0% {top:0px;}
+    100% {top:10px;}
+}
+@-o-keyframes hoverAnimate{
+    0% {top:0px;}
+    100% {top:10px;}
+}
+.loginArea input::-webkit-input-placeholder{
+    color:#fff;
+}
+.loginArea input::-moz-placeholder{   /* Mozilla Firefox 19+ */
+    color:#fff;
+}
+.loginArea input:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+    color:#fff;
+}
+.loginArea input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
+    color:#fff;
+}
+.loginArea input{
+    border:none;
+    width:100%;
+    height:50px;
+    line-height:50px;
+    outline:none;
+    color:#fff;
+    font-size:1em;
+    background:transparent;
+    text-indent:20%;
+}
+.btnArea{
+    overflow:hidden;
+    height:80px;
+    margin-top:30px;
+}
+.btnArea span,.btnArea button{
+    float:left;
+}
+.btnArea span{
+    border:1px solid #a0e8fa;
+    width:10%;
+    margin-top:39px;
+}
+.btnArea button{
+    outline:none;
+    text-decoration:none;
+    border:2px solid #a0e8fa;
+    height:40px;
+    background:transparent;
+    color:#fff;
+    margin-top:20px;
+    padding:0 30px;
+    border-radius:20px;
+}
+.btnArea button:hover{
+    color:#41d7fc;
+    background:#fff;
+    border:2px solid #fff;
+    cursor:pointer;
+}
+.systemDescription{
+    width:480px;
+    position:absolute;
+    padding:5px 20px;
+    right:50px;
+    bottom:50px;
+    color:#fff;
+}
+.systemDescription h4,.systemDescription p{
+    padding:5px 0;
+    text-align:right;
+}
+.systemDescription>div{
+    text-align:right;
+    height:80px;
+    line-height:80px;
+}

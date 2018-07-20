@@ -1,11 +1,11 @@
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
-//css
-import './../static/css/public.css';
 //login
 import LoginView from './login/login';
-
-
+//css
+import './static/css/iconfont.css';
+import './static/css/public.css';
+import './static/css/login.css';
 
 ReactDOM.render(
     <LoginView />,
