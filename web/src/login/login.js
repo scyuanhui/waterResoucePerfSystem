@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import {Session} from './../lib/common';
 
 export default class LoginView extends Component {
     constructor(props) {
@@ -19,7 +20,13 @@ export default class LoginView extends Component {
             visbleState: 'hidden'
         });
     }
-
+    loginEvent(){
+        const username = this.refs.username.value.replace(/(^[\s\n\t]+|[\s\n\t]+$)/g,"");
+        const userinfo = {'username':username.length > 0 ? username : 'admin','token':'KFIUCHWKXU128963DAS9D2E95D8DSD5F4Q4DS'};
+        const session = new Session();
+        session.setItem('USERINFO',userinfo);
+        window.location.href = window.location.origin;
+    }
     componentDidMount() {
     }
 
@@ -32,16 +39,16 @@ export default class LoginView extends Component {
                         <ul>
                             <li>
                                 <div><span>账号</span></div>
-                                <input type="text" id="username" placeholder="请输入管理员账号"/>
+                                <input type="text" ref="username" placeholder="请输入管理员账号"/>
                             </li>
                             <li>
                                 <div><span>密码</span></div>
-                                <input type="password" id="password" placeholder="请输入登录密码"/>
+                                <input type="password" ref="password" placeholder="请输入登录密码"/>
                             </li>
                         </ul>
                         <div className="btnArea">
                             <span></span>
-                            <button type="button">●&nbsp;&nbsp;点击登录</button>
+                            <button type="button" onClick={this.loginEvent.bind(this)}>●&nbsp;&nbsp;点击登录</button>
                         </div>
                     </div>
                     <div className="systemDescription">
