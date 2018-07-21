@@ -23,9 +23,11 @@ export default class LoginView extends Component {
     loginEvent(){
         const username = this.refs.username.value.replace(/(^[\s\n\t]+|[\s\n\t]+$)/g,"");
         const userinfo = {'username':username.length > 0 ? username : 'admin','token':'KFIUCHWKXU128963DAS9D2E95D8DSD5F4Q4DS'};
-        const session = new Session();
-        session.setItem('USERINFO',userinfo);
-        window.location.href = window.location.origin;
+        if(username.length > 0){
+            const session = new Session();
+            session.setItem('USERINFO',userinfo);
+            window.location.href = window.location.origin;
+        }
     }
     componentDidMount() {
     }
