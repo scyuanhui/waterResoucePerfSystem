@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Session} from './../lib/common';
+import {Session} from './../common/common';
 
 export default class LoginView extends Component {
     constructor(props) {

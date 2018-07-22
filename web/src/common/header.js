@@ -3,7 +3,7 @@
  */
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
-import {Session} from './../lib/common';
+import {Session} from './common';
 //css
 import './../static/css/header.css';
 

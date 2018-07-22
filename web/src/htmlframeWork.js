@@ -3,11 +3,11 @@
  */
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
-import {Session} from './lib/common';
+import {Session} from './common/common';
 //login
 import LoginView from './login/login';
 //header
-import Header from './header/header';
+import Header from './common/header';
 
 
 export default class App extends Component{
