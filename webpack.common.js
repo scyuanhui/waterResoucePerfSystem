@@ -42,7 +42,6 @@ module.exports = {
                     MiniCssExtractPlugin.loader,
                     "css-loader"
                 ],
-                include: path.resolve(__dirname, './web'),
                 exclude: /node_modules/
             },
             {
@@ -53,7 +52,7 @@ module.exports = {
             },
             {
                 test: /\.(png|jpg|gif)$/,
-                use: [{loader: 'url-loader', options: {limit: 8192}}],
+                use: [{loader: 'url-loader', options: {limit: 8192,modules: true, localIdentName: '[name]__[local]--[hash:base64:8]'}}],
                 include: path.resolve(__dirname, './web'),
                 exclude: /node_modules/
             },
