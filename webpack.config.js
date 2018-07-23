@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');//清除已经build过的文件
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpackConfig = {
     mode: 'production',
     entry: {
@@ -10,8 +11,7 @@ const webpackConfig = {
     },
     output: {
         filename: '[name].js',
-        path: path.resolve(__dirname, './web/build/'),
-        publicPath: '/build/'
+        path: path.resolve(__dirname, './web/build/')
     },
     module: {
         rules: [
@@ -85,8 +85,13 @@ const webpackConfig = {
             }
         }),
         new MiniCssExtractPlugin({
-            filename: "[name].css",
-            chunkFilename: "index.css"
+            filename: "css/[name].css",
+            chunkFilename: "css/index.css"
+        }),
+        new HtmlWebpackPlugin({
+            title:'水利资金绩效考核系统',
+            filename:'index.html',
+            template:'./web/index.html'
         }),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production')
