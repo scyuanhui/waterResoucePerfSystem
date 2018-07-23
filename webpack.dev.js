@@ -9,7 +9,7 @@ module.exports = merge(common, {
     mode: 'development',
     devtool: 'inline-source-map',
     devServer: {
-        contentBase: path.join(__dirname, "./web"), //定位静态资源到web目录
+        contentBase: path.join(__dirname, "./web/build"), //定位静态资源到web目录
         open: false, //是否自动打开浏览器
         host: 'localhost',//默认localhost
         port: 8000,

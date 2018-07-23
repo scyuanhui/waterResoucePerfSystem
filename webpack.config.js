@@ -49,9 +49,21 @@ const webpackConfig = {
             },
             {
                 test: /\.(png|jpg|gif)$/,
-                use: [{loader: 'url-loader', options: {limit: 8192}}],
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 8192,
+                            name:'images/[hash:8].[name].[ext]'
+                        }
+                    }
+                ],
                 include: path.resolve(__dirname, './web'),
                 exclude: /node_modules/
+            },
+            {
+                test: /\.(htm|html)$/i,//处理html中的图片
+                use: ['html-withimg-loader']
             },
             {
                 test: /\.(eot|svg|ttf|woff)/,

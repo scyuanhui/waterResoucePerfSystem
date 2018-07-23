@@ -6,6 +6,8 @@ import ReactDOM from 'react-dom';
 import {Session} from './common';
 //css
 import './../static/css/header.css';
+//img
+import userHead from './../static/img/userhead.jpg';
 
 export default class Header extends Component{
     constructor(props){
@@ -29,7 +31,7 @@ export default class Header extends Component{
                             <b className="iconfont icon-icon" onClick={this.logout.bind(this)}></b>
                         </span>
                         <span className="userhead">
-                            <img src="./src/static/img/userhead.jpg" />
+                            <img src={userHead} />
                         </span>
                         <span>
                             四川省水利厅-<b title={'用户'+this.props.user}>{this.props.user}</b>

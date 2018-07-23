@@ -53,41 +53,18 @@
     height:calc(100% - 200px);
     min-height:360px;
 }
-.loginContent>div{
-    float:left;
-}
 .loginContent>.loginForm{
+    float:left;
     padding-left:140px;
     width:500px;
 }
 .loginContent>.loginSysDes{
+    float:right;
     width:calc(100% - 500px);
 }
-/*@media (max-width: 1366px){*/
-    /*.loginContent>.loginSysDes{*/
-        /*width:866px;*/
-    /*}*/
-/*}*/
-/*@media (min-width: 1440px) {*/
-    /*.loginContent>.loginSysDes{*/
-        /*margin-left:38px;*/
-        /*width:866px;*/
-    /*}*/
-/*}*/
-/*@media (min-width: 1600px) {*/
-    /*.loginContent>.loginSysDes{*/
-        /*margin-left:100px;*/
-        /*width:866px;*/
-    /*}*/
-/*}*/
-/*@media (min-width: 1900px) and (max-width: 1920px) {*/
-    /*.loginContent>.loginSysDes{*/
-        /*margin-left:260px;*/
-        /*width:866px;*/
-    /*}*/
-/*}*/
-
-.loginContent>.loginForm>.loginTitle,.loginContent>.loginForm>input,.loginContent>.loginForm>button{
+.loginContent>.loginForm>.loginTitle,
+.loginContent>.loginForm>input,
+.loginContent>.loginForm>button{
     display:block;
     margin-top:20px;
 }
@@ -124,21 +101,24 @@
     float:left;
 }
 .loginSysDes>ul>li.staticBg{
-    width:calc((100% - 566px)/2);
+    width:calc(100% - 566px);
     height:150px;
-    text-align:center;
+    line-height:150px;
 }
 .loginSysDes>ul>li.staticBg>img{
-    width:120px;
+    width:80px;
+    height:80px;
+    margin-top:35px;
+    margin-left:calc((100% - 160px)/3);
 }
-.loginSysDes>ul>li.staticSs>img{
-    height:97px;
-    margin-top:25px;
-}
-.loginSysDes>ul>li.staticGif>img{
-    height:120px;
-    margin-top:15px;
-}
+/*.loginSysDes>ul>li.staticSs>img{*/
+    /*!*height:97px;*!*/
+    /*margin-top:45px;*/
+/*}*/
+/*.loginSysDes>ul>li.staticGif>img{*/
+    /*!*height:120px;*!*/
+    /*margin-top:35px;*/
+/*}*/
 /*.loginSysDes>ul>li.staticSs{*/
     /*background:url("./../img/ss.png") no-repeat center center;*/
     /*background-size:120px 120px;*/
