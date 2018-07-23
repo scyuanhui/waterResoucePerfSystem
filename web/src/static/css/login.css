@@ -1,6 +1,12 @@
 .loginContainer{
     height:100%;
 }
+/*登录loading*/
+.loginLoading{
+    width:100%;
+    height:100%;
+    background:url("./../img/loading.gif") no-repeat center center;
+}
 /*登录头部*/
 .loginHead{
     height:200px;
@@ -44,7 +50,7 @@
 /*登录内容区*/
 .loginContent{
     overflow:hidden;
-    height:calc(100% - 320px);
+    height:calc(100% - 200px);
     min-height:360px;
 }
 .loginContent>div{
@@ -54,29 +60,32 @@
     padding-left:140px;
     width:500px;
 }
-@media (max-width: 1366px){
-    .loginContent>.loginSysDes{
-        width:866px;
-    }
+.loginContent>.loginSysDes{
+    width:calc(100% - 500px);
 }
-@media (min-width: 1440px) {
-    .loginContent>.loginSysDes{
-        margin-left:38px;
-        width:866px;
-    }
-}
-@media (min-width: 1600px) {
-    .loginContent>.loginSysDes{
-        margin-left:100px;
-        width:866px;
-    }
-}
-@media (min-width: 1900px) and (max-width: 1920px) {
-    .loginContent>.loginSysDes{
-        margin-left:260px;
-        width:866px;
-    }
-}
+/*@media (max-width: 1366px){*/
+    /*.loginContent>.loginSysDes{*/
+        /*width:866px;*/
+    /*}*/
+/*}*/
+/*@media (min-width: 1440px) {*/
+    /*.loginContent>.loginSysDes{*/
+        /*margin-left:38px;*/
+        /*width:866px;*/
+    /*}*/
+/*}*/
+/*@media (min-width: 1600px) {*/
+    /*.loginContent>.loginSysDes{*/
+        /*margin-left:100px;*/
+        /*width:866px;*/
+    /*}*/
+/*}*/
+/*@media (min-width: 1900px) and (max-width: 1920px) {*/
+    /*.loginContent>.loginSysDes{*/
+        /*margin-left:260px;*/
+        /*width:866px;*/
+    /*}*/
+/*}*/
 
 .loginContent>.loginForm>.loginTitle,.loginContent>.loginForm>input,.loginContent>.loginForm>button{
     display:block;
@@ -104,7 +113,7 @@
     height:174px;
     line-height:174px;
     font-size:2.4em;
-    text-indent:20px;
+    text-indent:8%;
 }
 .loginSysDes>ul{
     width:100%;
@@ -115,15 +124,29 @@
     float:left;
 }
 .loginSysDes>ul>li.staticBg{
-    width:150px;
+    width:calc((100% - 566px)/2);
     height:150px;
+    text-align:center;
 }
-.loginSysDes>ul>li.staticSs{
-    background:url("./../img/ss.png") no-repeat center center;
+.loginSysDes>ul>li.staticBg>img{
+    width:120px;
 }
-.loginSysDes>ul>li.staticGif{
-    background:url("./../img/loading.gif") no-repeat center center;
+.loginSysDes>ul>li.staticSs>img{
+    height:97px;
+    margin-top:25px;
 }
+.loginSysDes>ul>li.staticGif>img{
+    height:120px;
+    margin-top:15px;
+}
+/*.loginSysDes>ul>li.staticSs{*/
+    /*background:url("./../img/ss.png") no-repeat center center;*/
+    /*background-size:120px 120px;*/
+/*}*/
+/*.loginSysDes>ul>li.staticGif{*/
+    /*background:url("./../img/loading.gif") no-repeat center center;*/
+    /*background-size:120px 120px;*/
+/*}*/
 .loginSysDes>ul>li.dynamic{
     width:566px;
     height:42px;
@@ -135,15 +158,8 @@
     background:#fff;
     overflow:hidden;
     height:inherit;
-    transition: width 8s linear;
-    -moz-transition: width 8s linear; /* Firefox 4 */
-    -webkit-transition: width 8s linear; /* Safari 和 Chrome */
-    -o-transition: width 8s linear; /* Opera */
-}
-/*loginFooter*/
-.loginFooter{
-    height:120px;
-    line-height:120px;
-    text-indent:96px;
-    font-size:1.2em;
+    transition: width 2s linear;
+    -moz-transition: width 2s linear; /* Firefox 4 */
+    -webkit-transition: width 2s linear; /* Safari 和 Chrome */
+    -o-transition: width 2s linear; /* Opera */
 }

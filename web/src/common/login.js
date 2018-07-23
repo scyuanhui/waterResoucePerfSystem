@@ -1,6 +1,19 @@
 import React,{Component} from 'react';
 import {Session} from './common';
 
+class LoginLoading extends Component{
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
+    render(){
+        console.log(this.props.delay);
+        return (
+            <div className="loginLoading"></div>
+        );
+    }
+}
+
 class LoginHead extends Component{
     constructor(props) {
         super(props);
@@ -57,8 +70,12 @@ class LoginSystemDescription extends Component{
             <div className="loginSysDes">
                 <div className="systemName">水利厅绩效考核系统</div>
                 <ul>
-                    <li className="staticBg staticSs"></li>
-                    <li className="staticBg staticGif"></li>
+                    <li className="staticBg staticSs">
+                        <img src="./src/static/img/ss.png" />
+                    </li>
+                    <li className="staticBg staticGif">
+                        <img src="./src/static/img/loading.gif" />
+                    </li>
                     <li className="dynamic">
                         <div className="dynamicImgActive" style={{width:this.props.width}}>
                             <img src={this.props.imgSrc} style={{width:this.props.dynamicActiveImgWidth}} />
@@ -79,17 +96,25 @@ export default class LoginView extends Component {
             lineActiveImgWidth:document.documentElement.clientWidth+'px',//窗口可见宽度
             dynamicDivWidth:'0px',
             dynamicActiveImg:'./src/static/img/line2-active.png',
-            dynamicActiveImgWidth:'566px'
+            dynamicActiveImgWidth:'566px',
+            loadingDelay:null
         };
     }
+    LoginLoadingCall(a){
+
+    }
     componentDidMount() {
-        //头部动效
+        //动效
         setTimeout((() => {
             this.setState({
-                lineActiveDivWidth:this.state.lineActiveImgWidth,
                 dynamicDivWidth:this.state.dynamicActiveImgWidth
             });
-        }),500);
+        }),1);
+        setTimeout((() => {
+            this.setState({
+                lineActiveDivWidth:this.state.lineActiveImgWidth
+            });
+        }),1001);
     }
 
     render() {
@@ -97,12 +122,10 @@ export default class LoginView extends Component {
             <div className="loginContainer">
                 <LoginHead width={this.state.lineActiveDivWidth} imgSrc={this.state.lineActiveImg} imgWidth={this.state.lineActiveImgWidth} />
                 <div className="loginContent">
-                    <LoginForm />
+                    <LoginForm loginDelay={this.LoginLoadingCall.bind(this)} />
                     <LoginSystemDescription width={this.state.dynamicDivWidth} imgSrc={this.state.dynamicActiveImg} imgWidth={this.state.dynamicActiveImgWidth}  />
                 </div>
-                <div className="loginFooter">
-                    <b>省级系统</b>
-                </div>
+                {/*<LoginLoading delay={this.state.loadingDelay} />*/}
             </div>
         );
     }
