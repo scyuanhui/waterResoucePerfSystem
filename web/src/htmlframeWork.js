@@ -5,7 +5,7 @@ import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 import {Session} from './common/common';
 //login
-import LoginView from './login/login';
+import LoginView from './common/login';
 //header
 import Header from './common/header';
 

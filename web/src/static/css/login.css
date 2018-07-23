@@ -1,134 +1,149 @@
 .loginContainer{
     height:100%;
 }
-.topRow{
-    height:32.2%;
-    background:url("../img/loginBg_01.jpg") no-repeat;
-    background-size:100% 100%;
+/*登录头部*/
+.loginHead{
+    height:200px;
 }
-.buttonRow{
-    position:relative;
-    height:67.8%;
-    background:url("../img/loginBg_02.jpg") no-repeat;
-    background-size:100% 100%;
+.rowOne{
+    padding-top:60px;
 }
-.loginArea{
-    width:38.3%;
-    position:absolute;
-    z-index:2;
-    right:0;
-    top:0;
-    color:#fff;
-}
-.loginArea ul{
+.rowOne p{
     overflow:hidden;
+    height:60px;
+    line-height:60px;
+    padding:0 96px;
 }
-.loginArea ul li{
-    width:50%;
+.rowOne p>span:first-child{
     float:left;
-    border-bottom:2px solid #a0e8fa;
+    font-size:2em;
+    color:#2B344C;
 }
-.loginArea ul li:hover{
-    border-bottom:4px solid #f7f24c;
+.rowOne p>span:last-child{
+    float:right;
+    color:#C8CED3;
 }
-.loginArea ul li>div{
-    text-indent:20%;
-    height:40px;
-    font-size:1.4em;
-}
-.loginArea ul li>div>span{
-    position:relative;
-    z-index:2;
-    display:block;
-    height:30px;
-    top:10px;
-}
-.loginArea ul li:hover span{
-    animation: hoverAnimate 0.3s;
-}
-@keyframes hoverAnimate{
-    0% {top:0px;}
-    100% {top:10px;}
-}
-@-moz-keyframes hoverAnimate{
-    0% {top:0px;}
-    100% {top:10px;}
-}
-@-webkit-keyframes hoverAnimate{
-    0% {top:0px;}
-    100% {top:10px;}
-}
-@-o-keyframes hoverAnimate{
-    0% {top:0px;}
-    100% {top:10px;}
-}
-.loginArea input::-webkit-input-placeholder{
-    color:#fff;
-}
-.loginArea input::-moz-placeholder{   /* Mozilla Firefox 19+ */
-    color:#fff;
-}
-.loginArea input:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
-    color:#fff;
-}
-.loginArea input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
-    color:#fff;
-}
-.loginArea input{
-    border:none;
+.rowTwo{
     width:100%;
+    height:75px;
+    background:url("./../img/line1.png") no-repeat;
+    background-size:100% 100%;
+}
+.rowTwo>.lineImgActive{
+    background:#fff;
+    overflow:hidden;
+    height:inherit;
+    transition: width 8s linear;
+    -moz-transition: width 8s linear; /* Firefox 4 */
+    -webkit-transition: width 8s linear; /* Safari 和 Chrome */
+    -o-transition: width 8s linear; /* Opera */
+}
+.rowTwo>.lineImgActive>img{
+    height:inherit;
+}
+/*登录内容区*/
+.loginContent{
+    overflow:hidden;
+    height:calc(100% - 320px);
+    min-height:360px;
+}
+.loginContent>div{
+    float:left;
+}
+.loginContent>.loginForm{
+    padding-left:140px;
+    width:500px;
+}
+@media (max-width: 1366px){
+    .loginContent>.loginSysDes{
+        width:866px;
+    }
+}
+@media (min-width: 1440px) {
+    .loginContent>.loginSysDes{
+        margin-left:38px;
+        width:866px;
+    }
+}
+@media (min-width: 1600px) {
+    .loginContent>.loginSysDes{
+        margin-left:100px;
+        width:866px;
+    }
+}
+@media (min-width: 1900px) and (max-width: 1920px) {
+    .loginContent>.loginSysDes{
+        margin-left:260px;
+        width:866px;
+    }
+}
+
+.loginContent>.loginForm>.loginTitle,.loginContent>.loginForm>input,.loginContent>.loginForm>button{
+    display:block;
+    margin-top:20px;
+}
+.loginContent>.loginForm>.loginTitle{
+    font-size:2.4em;
+    color:#2B344C;
+}
+.loginContent>.loginForm>input{
+    width:360px;
     height:50px;
     line-height:50px;
-    outline:none;
-    color:#fff;
-    font-size:1em;
-    background:transparent;
-    text-indent:20%;
 }
-.btnArea{
+.loginForm>p{
+    line-height:60px;
+}
+.loginForm>p>span{
+    padding-right:10px;
+}
+.loginForm>p>b{
+    font-size:1.2em;
+}
+.loginSysDes>.systemName{
+    height:174px;
+    line-height:174px;
+    font-size:2.4em;
+    text-indent:20px;
+}
+.loginSysDes>ul{
+    width:100%;
+    height:150px;
     overflow:hidden;
-    height:80px;
-    margin-top:30px;
 }
-.btnArea span,.btnArea button{
+.loginSysDes>ul>li{
     float:left;
 }
-.btnArea span{
-    border:1px solid #a0e8fa;
-    width:10%;
-    margin-top:39px;
+.loginSysDes>ul>li.staticBg{
+    width:150px;
+    height:150px;
 }
-.btnArea button{
-    outline:none;
-    text-decoration:none;
-    border:2px solid #a0e8fa;
-    height:40px;
-    background:transparent;
-    color:#fff;
-    margin-top:20px;
-    padding:0 30px;
-    border-radius:20px;
+.loginSysDes>ul>li.staticSs{
+    background:url("./../img/ss.png") no-repeat center center;
 }
-.btnArea button:hover{
-    color:#41d7fc;
+.loginSysDes>ul>li.staticGif{
+    background:url("./../img/loading.gif") no-repeat center center;
+}
+.loginSysDes>ul>li.dynamic{
+    width:566px;
+    height:42px;
+    margin-top:54px;
+    background:url("./../img/line2.png") no-repeat;
+    background-size:100% 100%;
+}
+.loginSysDes>ul>li.dynamic>.dynamicImgActive{
     background:#fff;
-    border:2px solid #fff;
-    cursor:pointer;
+    overflow:hidden;
+    height:inherit;
+    transition: width 8s linear;
+    -moz-transition: width 8s linear; /* Firefox 4 */
+    -webkit-transition: width 8s linear; /* Safari 和 Chrome */
+    -o-transition: width 8s linear; /* Opera */
 }
-.systemDescription{
-    width:480px;
-    position:absolute;
-    padding:5px 20px;
-    right:50px;
-    bottom:50px;
-    color:#fff;
-}
-.systemDescription h4,.systemDescription p{
-    padding:5px 0;
-    text-align:right;
-}
-.systemDescription>div{
-    text-align:right;
-    height:80px;
-    line-height:80px;
+/*loginFooter*/
+.loginFooter{
+    height:120px;
+    line-height:120px;
+    text-indent:96px;
+    font-size:1.2em;
 }
