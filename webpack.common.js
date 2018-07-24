@@ -51,13 +51,13 @@ module.exports = {
                 exclude: /node_modules/
             },
             {
-                test: /\.(png|jpg|gif)$/,
+                test: /\.(gif|png|jpg|woff|svg|ttf|eot)$/,
                 use: [
                     {
                         loader: 'url-loader',
                         options: {
                             limit: 128,
-                            name:'image/[name][hash:8].[ext]'
+                            name:'resource/[name][hash:8].[ext]'
                         }
                     }
                 ],
@@ -67,12 +67,6 @@ module.exports = {
             {
                 test: /\.(htm|html)$/i,//处理html中的图片
                 use: ['html-withimg-loader']
-            },
-            {
-                test: /\.(eot|svg|ttf|woff)/,
-                use: [{loader: 'file-loader',options:{name:'fonts/[hash:8].[ext]'}}],
-                include: path.resolve(__dirname, './web'),
-                exclude: /node_modules/
             }
         ]
     },
