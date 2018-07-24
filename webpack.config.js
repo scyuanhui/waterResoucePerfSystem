@@ -54,7 +54,7 @@ const webpackConfig = {
                         loader: 'url-loader',
                         options: {
                             limit: 8192,
-                            name:'images/[hash:8][name].[ext]'
+                            name:'[hash:8][name].[ext]'
                         }
                     }
                 ],
@@ -88,11 +88,11 @@ const webpackConfig = {
             filename: "[name].css",
             chunkFilename: "index.css"
         }),
-        new HtmlWebpackPlugin({
-            title:'水利资金绩效考核系统',
-            filename:'index.html',
-            template:'./web/index.html'
-        }),
+        //new HtmlWebpackPlugin({
+        //    title:'水利资金绩效考核系统',
+        //    filename:'index.html',
+        //    template:'./web/index.html'
+        //}),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production')
         })

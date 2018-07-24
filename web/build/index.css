@@ -156,7 +156,7 @@ body{
     top:0;
     width:100%;
     height:100%;
-    background:#fff url(images/ebee9aa7loading.gif) no-repeat center center;
+    background:#fff url(ebee9aa7loading.gif) no-repeat center center;
 }
 /*登录头部*/
 .loginHead{
@@ -183,7 +183,7 @@ body{
 .rowTwo{
     width:100%;
     height:75px;
-    background:url(images/bd9b5f91line1.png) no-repeat;
+    background:url(bd9b5f91line1.png) no-repeat;
     background-size:100% 100%;
 }
 .rowTwo>.lineImgActive{
@@ -269,7 +269,7 @@ body{
     background-size:80px 80px;
 }
 .loginSysDes>ul>li.staticBg>a:last-child{
-    background:url(images/ebee9aa7loading.gif) no-repeat;
+    background:url(ebee9aa7loading.gif) no-repeat;
     background-size:80px 80px;
 }
 .loginSysDes>ul>li.dynamic{
