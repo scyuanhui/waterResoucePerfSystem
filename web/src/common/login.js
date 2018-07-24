@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import {Session} from './common';
 //img
-import line1Active from './../static/img/line1-active.png';
+import lineActive from './../static/img/line1-active.png';
 import dynamicActive from './../static/img/line2-active.png';
 
 class LoginLoading extends Component {
@@ -32,7 +32,7 @@ class LoginHead extends Component {
                 </div>
                 <div className="rowTwo">
                     <div className="lineImgActive" style={{width:this.props.width}}>
-                        <img src={line1Active} style={{width:this.props.imgWidth}}/>
+                        <img src={lineActive} style={{width:this.props.imgWidth}}/>
                     </div>
                 </div>
             </div>

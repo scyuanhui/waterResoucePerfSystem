@@ -67,7 +67,7 @@ const webpackConfig = {
             },
             {
                 test: /\.(eot|svg|ttf|woff)/,
-                use: [{loader: 'file-loader',options:{name:'fonts/[hash:8][ext]'}}],
+                use: [{loader: 'file-loader',options:{name:'fonts/[hash:8].[ext]'}}],
                 include: path.resolve(__dirname, './web'),
                 exclude: /node_modules/
             }
@@ -85,8 +85,8 @@ const webpackConfig = {
             }
         }),
         new MiniCssExtractPlugin({
-            filename: "css/[name].css",
-            chunkFilename: "css/index.css"
+            filename: "[name].css",
+            chunkFilename: "index.css"
         }),
         new HtmlWebpackPlugin({
             title:'水利资金绩效考核系统',
