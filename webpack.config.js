@@ -4,8 +4,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');//清除已经build�
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+//const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+//const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const webpackConfig = {
     mode: 'production',
     entry: {
