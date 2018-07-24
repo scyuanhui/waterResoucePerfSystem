@@ -85,8 +85,8 @@ const webpackConfig = {
             }
         }),
         new MiniCssExtractPlugin({
-            filename: "css/[name].css",
-            chunkFilename: "css/index.css"
+            filename: "[name].css",
+            chunkFilename: "index.css"
         }),
         new HtmlWebpackPlugin({
             title:'水利资金绩效考核系统',

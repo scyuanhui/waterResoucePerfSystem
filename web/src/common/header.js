@@ -4,8 +4,7 @@
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 import {Session} from './common';
-//css
-import './../static/css/header.css';
+
 //img
 import userHead from './../static/img/userhead.png';
 import userOnLine from './../static/img/headOnLine.png';

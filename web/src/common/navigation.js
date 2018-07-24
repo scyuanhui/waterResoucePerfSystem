@@ -1,8 +1,6 @@
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 import config from './../router/router';
-//css
-import './../static/css/navigation.css';
 
 export default class Navigation extends Component{
     constructor(props){

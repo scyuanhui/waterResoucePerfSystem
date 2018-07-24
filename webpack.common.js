@@ -41,6 +41,7 @@ module.exports = {
                     MiniCssExtractPlugin.loader,
                     "css-loader"
                 ],
+                include: path.resolve(__dirname, './web'),
                 exclude: /node_modules/
             },
             {
@@ -87,8 +88,8 @@ module.exports = {
             }
         }),
         new MiniCssExtractPlugin({
-            filename: "css/[name].css",
-            chunkFilename: "css/index.css"
+            filename: "[name].css",
+            chunkFilename: "index.css"
         })
     ]
 };
