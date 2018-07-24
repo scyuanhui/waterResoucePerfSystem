@@ -1,4 +1,5 @@
 .headerRow{
+    /*此行高92px*/
     padding:5px 0;
     border-bottom:1px solid #F5F5F5;
 }
@@ -47,7 +48,25 @@
 .userstatus>.exit{
     cursor:pointer;
 }
-.userstatus .userhead img{
+.userstatus .userhead{
+    width:78px;
+    height:100%;
+    position:relative;
+}
+.userstatus .userhead img.userHeadIcon{
+    width:48px;
+    height:48px;
     border-radius:50%;
-    margin-top:17px;
+    position:absolute;
+    z-index:1;
+    top:17px;
+    right:15px;
+}
+.userstatus .userhead img.userStatusIcon{
+    width:13px;
+    height:13px;
+    position:absolute;
+    z-index:2;
+    top:45px;
+    right:13px;
 }

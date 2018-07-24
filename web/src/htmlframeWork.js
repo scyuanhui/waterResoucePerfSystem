@@ -8,6 +8,8 @@ import {Session} from './common/common';
 import LoginView from './common/login';
 //header
 import Header from './common/header';
+//nav
+import Navigation from './common/navigation';
 
 
 export default class App extends Component{
@@ -33,9 +35,10 @@ export default class App extends Component{
     }
     render(){
         return (
-            <div>
-                <Header user={this.state.username} />
-            </div>
+            [
+                <Header key="head" user={this.state.username} />,
+                <Navigation key="nav" />
+            ]
         );
     }
 }

@@ -2,7 +2,7 @@
 html,body{box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;height:100%}
 html{font-size: 62.5%;min-width:1366px;overflow-x:scroll}
 body{font-size:1.2em;}
-/*body>#root{height:100%}*/
+body>#root{height:100%}
 a{outline:none;text-decoration:none;cursor:pointer}
 ul{list-style:none;}
 input,select,textarea{

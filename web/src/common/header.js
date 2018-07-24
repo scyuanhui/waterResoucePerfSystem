@@ -7,7 +7,8 @@ import {Session} from './common';
 //css
 import './../static/css/header.css';
 //img
-import userHead from './../static/img/userhead.jpg';
+import userHead from './../static/img/userhead.png';
+import userOnLine from './../static/img/headOnLine.png';
 
 export default class Header extends Component{
     constructor(props){
@@ -28,10 +29,11 @@ export default class Header extends Component{
                 <div className="col-6">
                     <div className="userstatus">
                         <span title="退出系统" className="exit">
-                            <b className="iconfont icon-icon" onClick={this.logout.bind(this)}></b>
+                            退出&nbsp;&nbsp;<b className="iconfont icon-icon" onClick={this.logout.bind(this)}></b>
                         </span>
                         <span className="userhead">
-                            <img src={userHead} />
+                            <img className="userHeadIcon" src={userHead} />
+                            <img className="userStatusIcon" src={userOnLine} />
                         </span>
                         <span>
                             四川省水利厅-<b title={'用户'+this.props.user}>{this.props.user}</b>
