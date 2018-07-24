@@ -47,12 +47,12 @@ const webpackConfig = {
                 exclude: /node_modules/
             },
             {
-                test: /\.(png|jpg|gif)$/,
+                test: /\.(gif|png|jpg|woff|svg|ttf|eot)$/,
                 use: [
                     {
                         loader: 'url-loader',
                         options: {
-                            limit: 8192,
+                            limit: 128,
                             name:'image/[name][hash:8].[ext]'
                         }
                     }
