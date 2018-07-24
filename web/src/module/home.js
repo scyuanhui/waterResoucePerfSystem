@@ -1,3 +1,6 @@
+/**
+ * 首页模块文件
+**/
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 

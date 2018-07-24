@@ -3,14 +3,14 @@
  */
 
 
-import Home from './../home/home';//home
+import Home from '../module/home';//module
 
 
 module.exports = [
     {
         name:'首页',
         module:Home,
-        icon:'iconfont icon-home'
+        icon:'iconfont icon-module'
     },
     {
         name:'绩效目标申报',
