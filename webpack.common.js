@@ -57,7 +57,7 @@ module.exports = {
                         loader: 'url-loader',
                         options: {
                             limit: 8192,
-                            name:'[hash:8][name].[ext]'
+                            name:'image/[name][hash:8].[ext]'
                         }
                     }
                 ],
@@ -88,8 +88,8 @@ module.exports = {
             }
         }),
         new MiniCssExtractPlugin({
-            filename: "[name].css",
-            chunkFilename: "index.css"
+            filename: "css/[name].css",
+            chunkFilename: "css/index.css"
         })
     ]
 };

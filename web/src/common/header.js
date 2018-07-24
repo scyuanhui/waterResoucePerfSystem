@@ -4,10 +4,9 @@
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 import {Session} from './common';
-
 //img
-//import userHead from './../../static/img/userhead.png';
-//import userOnLine from './../../static/img/headOnLine.png';
+import userHead from './../static/img/userhead.png';
+import userOnLine from './../static/img/headOnLine.png';
 
 export default class Header extends Component{
     constructor(props){
@@ -31,8 +30,8 @@ export default class Header extends Component{
                             退出&nbsp;&nbsp;<b className="iconfont icon-icon" onClick={this.logout.bind(this)}></b>
                         </span>
                         <span className="userhead">
-                            <img className="userHeadIcon" src='static/img/userhead.png' />
-                            <img className="userStatusIcon" src='static/img/headOnLine.png' />
+                            <img className="userHeadIcon" src={userHead} />
+                            <img className="userStatusIcon" src={userOnLine} />
                         </span>
                         <span>
                             四川省水利厅-<b title={'用户'+this.props.user}>{this.props.user}</b>

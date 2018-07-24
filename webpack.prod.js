@@ -28,11 +28,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 //    minRatio: 0.8
 //});
 //common.plugins.push(cp);
-//common.plugins.push(new HtmlWebpackPlugin({
-//    title:'水利资金绩效考核系统',
-//    filename:'index.html',
-//    template:'./web/index.html'
-//}));
+common.plugins.push(new HtmlWebpackPlugin({
+    title:'水利资金绩效考核系统',
+    filename:'index.html',
+    template:'./web/index.html'
+}));
 module.exports = merge(common, {
     mode: 'production'
 });

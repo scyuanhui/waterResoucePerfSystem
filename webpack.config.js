@@ -54,7 +54,7 @@ const webpackConfig = {
                         loader: 'url-loader',
                         options: {
                             limit: 8192,
-                            name:'[hash:8][name].[ext]'
+                            name:'image/[name][hash:8].[ext]'
                         }
                     }
                 ],
@@ -85,14 +85,14 @@ const webpackConfig = {
             }
         }),
         new MiniCssExtractPlugin({
-            filename: "[name].css",
-            chunkFilename: "index.css"
+            filename: "css/[name].css",
+            chunkFilename: "css/index.css"
         }),
-        //new HtmlWebpackPlugin({
-        //    title:'水利资金绩效考核系统',
-        //    filename:'index.html',
-        //    template:'./web/index.html'
-        //}),
+        new HtmlWebpackPlugin({
+            title:'水利资金绩效考核系统',
+            filename:'index.html',
+            template:'./web/index.html'
+        }),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production')
         })

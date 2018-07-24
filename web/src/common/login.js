@@ -1,5 +1,8 @@
 import React,{Component} from 'react';
 import {Session} from './common';
+//img
+import line1Active from './../static/img/line1-active.png';
+import dynamicActive from './../static/img/line2-active.png';
 
 class LoginLoading extends Component {
     constructor(props) {
@@ -29,7 +32,7 @@ class LoginHead extends Component {
                 </div>
                 <div className="rowTwo">
                     <div className="lineImgActive" style={{width:this.props.width}}>
-                        <img src='static/img/line1-active.png' style={{width:this.props.imgWidth}}/>
+                        <img src={line1Active} style={{width:this.props.imgWidth}}/>
                     </div>
                 </div>
             </div>
@@ -72,7 +75,7 @@ class LoginForm extends Component {
         );
     }
 }
-class LoginSystemDescription extends Component {
+class LoginDesc extends Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -88,7 +91,7 @@ class LoginSystemDescription extends Component {
                     </li>
                     <li className="dynamic">
                         <div className="dynamicImgActive" style={{width:this.props.width}}>
-                            <img src='static/img/line2-active.png' style={{width:this.props.dynamicActiveImgWidth}}/>
+                            <img src={dynamicActive} style={{width:this.props.dynamicActiveImgWidth}}/>
                         </div>
                     </li>
                 </ul>
@@ -102,10 +105,8 @@ export default class LoginView extends Component {
         super(props);
         this.state = {
             lineActiveDivWidth: '0px',
-            //lineActiveImg: lineActiveImg,
             lineActiveImgWidth: document.documentElement.clientWidth + 'px',//窗口可见宽度
             dynamicDivWidth: '0px',
-            //dynamicActiveImg: dynamiActiveImg,
             dynamicActiveImgWidth: '395px',
             loading:false
         };
@@ -137,7 +138,7 @@ export default class LoginView extends Component {
                 <LoginHead width={this.state.lineActiveDivWidth} imgWidth={this.state.lineActiveImgWidth} />
                 <div className="loginContent">
                     <LoginForm loadingCallback={this.loginLoadingCallback.bind(this)}/>
-                    <LoginSystemDescription width={this.state.dynamicDivWidth} imgWidth={this.state.dynamicActiveImgWidth} />
+                    <LoginDesc width={this.state.dynamicDivWidth} imgWidth={this.state.dynamicActiveImgWidth} />
                 </div>
                 <LoginLoading loading={this.state.loading} />
             </div>
