@@ -3,9 +3,12 @@
 }
 /*登录loading*/
 .loginLoading{
+    position:absolute;
+    z-index:5;
+    top:0;
     width:100%;
     height:100%;
-    background:url("./../img/loading.gif") no-repeat center center;
+    background:#fff url("./../img/loading.gif") no-repeat center center;
 }
 /*登录头部*/
 .loginHead{
@@ -18,11 +21,11 @@
     overflow:hidden;
     height:60px;
     line-height:60px;
-    padding:0 96px;
+    padding:0 96px 0 48px;
 }
 .rowOne p>span:first-child{
     float:left;
-    font-size:2em;
+    font-size:1.5em;
     color:#2B344C;
 }
 .rowOne p>span:last-child{
@@ -39,10 +42,10 @@
     background:#fff;
     overflow:hidden;
     height:inherit;
-    transition: width 8s linear;
-    -moz-transition: width 8s linear; /* Firefox 4 */
-    -webkit-transition: width 8s linear; /* Safari 和 Chrome */
-    -o-transition: width 8s linear; /* Opera */
+    transition: width 6s linear;
+    -moz-transition: width 6s linear; /* Firefox 4 */
+    -webkit-transition: width 6s linear; /* Safari 和 Chrome */
+    -o-transition: width 6s linear; /* Opera */
 }
 .rowTwo>.lineImgActive>img{
     height:inherit;
@@ -66,7 +69,7 @@
 .loginContent>.loginForm>input,
 .loginContent>.loginForm>button{
     display:block;
-    margin-top:20px;
+    margin-top:37px;
 }
 .loginContent>.loginForm>.loginTitle{
     font-size:2.4em;
@@ -78,7 +81,7 @@
     line-height:50px;
 }
 .loginForm>p{
-    line-height:60px;
+    line-height:80px;
 }
 .loginForm>p>span{
     padding-right:10px;
@@ -87,10 +90,11 @@
     font-size:1.2em;
 }
 .loginSysDes>.systemName{
-    height:174px;
-    line-height:174px;
+    width:calc(100% - 555px);
+    height:230px;
+    line-height:230px;
     font-size:2.4em;
-    text-indent:8%;
+    margin-left:calc((100% - 555px)/3);
 }
 .loginSysDes>ul{
     width:100%;
@@ -101,36 +105,29 @@
     float:left;
 }
 .loginSysDes>ul>li.staticBg{
-    width:calc(100% - 566px);
+    width:calc(100% - 395px);
     height:150px;
     line-height:150px;
 }
-.loginSysDes>ul>li.staticBg>img{
+.loginSysDes>ul>li.staticBg>a{
+    display:inline-block;
     width:80px;
     height:80px;
     margin-top:35px;
     margin-left:calc((100% - 160px)/3);
 }
-/*.loginSysDes>ul>li.staticSs>img{*/
-    /*!*height:97px;*!*/
-    /*margin-top:45px;*/
-/*}*/
-/*.loginSysDes>ul>li.staticGif>img{*/
-    /*!*height:120px;*!*/
-    /*margin-top:35px;*/
-/*}*/
-/*.loginSysDes>ul>li.staticSs{*/
-    /*background:url("./../img/waterDrivce.png") no-repeat center center;*/
-    /*background-size:120px 120px;*/
-/*}*/
-/*.loginSysDes>ul>li.staticGif{*/
-    /*background:url("./../img/loading.gif") no-repeat center center;*/
-    /*background-size:120px 120px;*/
-/*}*/
+.loginSysDes>ul>li.staticBg>a:first-child{
+    background:url('./../img/waterDrivce.png') no-repeat;
+    background-size:80px 80px;
+}
+.loginSysDes>ul>li.staticBg>a:last-child{
+    background:url('./../img/loading.gif') no-repeat;
+    background-size:80px 80px;
+}
 .loginSysDes>ul>li.dynamic{
-    width:566px;
-    height:42px;
-    margin-top:54px;
+    width:395px;
+    height:54px;
+    margin-top:40px;
     background:url("./../img/line2.png") no-repeat;
     background-size:100% 100%;
 }

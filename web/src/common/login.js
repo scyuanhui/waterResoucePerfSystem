@@ -1,25 +1,23 @@
 import React,{Component} from 'react';
 import {Session} from './common';
 //img
-import waterDrivce from './../static/img/waterDrivce.png';
-import loadingGif from './../static/img/loading.gif';
 import lineActiveImg from './../static/img/line1-active.png';
 import dynamiActiveImg from './../static/img/line2-active.png';
 
 
-//class LoginLoading extends Component {
-//    constructor(props) {
-//        super(props);
-//        this.state = {};
-//    }
-//
-//    render() {
-//        console.log(this.props.delay);
-//        return (
-//            <div className="loginLoading"></div>
-//        );
-//    }
-//}
+class LoginLoading extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
+
+    render() {
+        const status = this.props.loading ? 'block' : 'none';
+        return (
+            <div className="loginLoading" style={{display:status}}></div>
+        );
+    }
+}
 
 class LoginHead extends Component {
     constructor(props) {
@@ -55,9 +53,13 @@ class LoginForm extends Component {
             'token': 'KFIUCHWKXU128963DAS9D2E95D8DSD5F4Q4DS'
         };
         if (username.length > 0) {
-            const session = new Session();
-            session.setItem('USERINFO', userinfo);
-            window.location.href = window.location.origin;
+            this.props.loadingCallback(true);
+            setTimeout(() => {
+                const session = new Session();
+                session.setItem('USERINFO', userinfo);
+                window.location.href = window.location.origin;
+                this.props.loadingCallback(false);
+            },1500);
         }
     }
 
@@ -86,8 +88,7 @@ class LoginSystemDescription extends Component {
                 <div className="systemName">水利厅绩效考核系统</div>
                 <ul>
                     <li className="staticBg">
-                        <img src={waterDrivce}/>
-                        <img src={loadingGif}/>
+                        <a></a><a></a>
                     </li>
                     <li className="dynamic">
                         <div className="dynamicImgActive" style={{width:this.props.width}}>
@@ -109,13 +110,15 @@ export default class LoginView extends Component {
             lineActiveImgWidth: document.documentElement.clientWidth + 'px',//窗口可见宽度
             dynamicDivWidth: '0px',
             dynamicActiveImg: dynamiActiveImg,
-            dynamicActiveImgWidth: '566px',
-            loadingDelay: null
+            dynamicActiveImgWidth: '395px',
+            loading:false
         };
     }
 
-    LoginLoadingCall(a) {
-        console.log(a);
+    loginLoadingCallback(bool) {
+        this.setState({
+            loading:bool
+        });
     }
 
     componentDidMount() {
@@ -137,10 +140,10 @@ export default class LoginView extends Component {
             <div className="loginContainer">
                 <LoginHead width={this.state.lineActiveDivWidth} imgSrc={this.state.lineActiveImg} imgWidth={this.state.lineActiveImgWidth} />
                 <div className="loginContent">
-                    <LoginForm loginDelay={this.LoginLoadingCall.bind(this)}/>
+                    <LoginForm loadingCallback={this.loginLoadingCallback.bind(this)}/>
                     <LoginSystemDescription width={this.state.dynamicDivWidth} imgSrc={this.state.dynamicActiveImg} imgWidth={this.state.dynamicActiveImgWidth} />
                 </div>
-                {/*<LoginLoading delay={this.state.loadingDelay} />*/}
+                <LoginLoading loading={this.state.loading} />
             </div>
         );
     }
