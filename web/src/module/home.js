@@ -4,7 +4,7 @@
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 
-export default class Home extends Component{
+class Home extends Component{
     constructor(props){
         super(props);
         this.state = {};
@@ -13,8 +13,10 @@ export default class Home extends Component{
         return (
             <div>
                 <h5>home</h5>
-                <img src="static/img/loginBg.jpg" />
+                <p>this is home page</p>
             </div>
         );
     }
 }
+
+module.exports = { module:<Home /> };

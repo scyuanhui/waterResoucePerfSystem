@@ -8,29 +8,87 @@
     float:left;
 }
 .bodyRow>.nav{
-    width:95px;/*导航栏宽度*/
+    width:100px;/*导航栏宽度*/
 }
 .bodyRow>.content{
-    width:calc(100% - 95px);/*减去导航栏宽度*/
+    width:calc(100% - 100px);/*减去导航栏宽度*/
     background:#f8f8f8;
 }
 .nav>li:first-child{
     margin-top:50px;
 }
-.nav>li.active{
-    border-right:2px solid #3B86FF;
+.nav>li:hover{
+    cursor:pointer;
 }
 .nav>li{
     margin-bottom:20px;
     text-align:center;
+    border-right:3px solid transparent;
 }
 .nav>li>span{
     display:block;
 }
+.nav>li>span>i{
+    font-size:2.2em;
+}
 .nav>li>span:first-child{
-    height:40px;
+    width:43px;
+    height:43px;
+    line-height:43px;
+    margin:0 auto;
+    border-radius:50%;
+    color:#2B344C;
 }
 .nav>li>span:last-child{
-    height:20px;
-    line-height:20px;
+    height:17px;
+    line-height:24px;
+    font-size:1.2em;
+    color:#2B344C;
+}
+.nav>li.active{
+    border-right:3px solid #3B86FF;
+    animation: borderAnimate .5s linear 0s 1;
+    -moz-animation: borderAnimate .5s linear 0s 1; /* Firefox 4 */
+    -webkit-animation: borderAnimate .5s linear 0s 1; /* Safari 和 Chrome */
+    -o-animation: borderAnimate .5s linear 0s 1; /* Opera */
+}
+.nav>li.active>span:first-child{
+    background:#3B86FF;
+    color:#fff;
+    animation: backgroundAnimate .5s linear 0s 1;
+    -moz-animation: backgroundAnimate .5s linear 0s 1; /* Firefox 4 */
+    -webkit-animation: backgroundAnimate .5s linear 0s 1; /* Safari 和 Chrome */
+    -o-animation: backgroundAnimate .5s linear 0s 1; /* Opera */
+}
+@keyframes backgroundAnimate {
+    from{background:#fff}
+    to{background:#3B86FF}
+}
+@-moz-keyframes backgroundAnimate {
+    from{background:#fff}
+    to{background:#3B86FF}
+}
+@-webkit-keyframes backgroundAnimate {
+    from{background:#fff}
+    to{background:#3B86FF}
+}
+@-o-keyframes backgroundAnimate {
+    from{background:#fff}
+    to{background:#3B86FF}
+}
+@keyframes borderAnimate {
+    from{border-right:3px solid transparent;}
+    to{border-right:3px solid #3B86FF;}
+}
+@-moz-keyframes borderAnimate {
+    from{border-right:3px solid transparent;}
+    to{border-right:3px solid #3B86FF;}
+}
+@-webkit-keyframes borderAnimate {
+    from{border-right:3px solid transparent;}
+    to{border-right:3px solid #3B86FF;}
+}
+@-o-keyframes borderAnimate {
+    from{border-right:3px solid transparent;}
+    to{border-right:3px solid #3B86FF;}
 }
