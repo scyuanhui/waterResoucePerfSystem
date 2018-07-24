@@ -28,6 +28,7 @@
     "html-withimg-loader": "^0.1.16",
     "mini-css-extract-plugin": "^0.4.1",
     "node-sass": "^4.9.2",
+    "optimize-css-assets-webpack-plugin": "^5.0.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-router-dom": "^4.3.1",
@@ -36,7 +37,7 @@
     "uglifyjs-webpack-plugin": "^1.2.5",
     "url-loader": "^1.0.1",
     "webpack": "^4.12.2",
-    "webpack-cli": "^2.1.5",
+    "webpack-cli": "^3.1.0",
     "webpack-command": "^0.3.1",
     "webpack-dev-server": "^3.1.4",
     "webpack-merge": "^4.1.3"

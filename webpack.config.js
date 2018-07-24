@@ -4,6 +4,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');//清除已经build�
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const webpackConfig = {
     mode: 'production',
     entry: {
@@ -34,10 +36,7 @@ const webpackConfig = {
             },
             {
                 test: /\.css$/,
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    "css-loader"
-                ],
+                use: [MiniCssExtractPlugin.loader,'css-loader'],
                 include: path.resolve(__dirname, './web'),
                 exclude: /node_modules/
             },
@@ -86,7 +85,7 @@ const webpackConfig = {
         }),
         new MiniCssExtractPlugin({
             filename: "[name].css",
-            chunkFilename: "index.css"
+            chunkFilename: "[id].css"
         }),
         new HtmlWebpackPlugin({
             title:'水利资金绩效考核系统',
