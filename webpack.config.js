@@ -54,7 +54,7 @@ const webpackConfig = {
                         loader: 'url-loader',
                         options: {
                             limit: 8192,
-                            name:'images/[hash:8].[name].[ext]'
+                            name:'images/[hash:8][name].[ext]'
                         }
                     }
                 ],
@@ -67,7 +67,7 @@ const webpackConfig = {
             },
             {
                 test: /\.(eot|svg|ttf|woff)/,
-                use: [{loader: 'file-loader'}],
+                use: [{loader: 'file-loader',options:{name:'fonts/[hash:8][ext]'}}],
                 include: path.resolve(__dirname, './web'),
                 exclude: /node_modules/
             }

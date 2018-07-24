@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import {Session} from './common';
 //img
-import ss from './../static/img/ss.png';
+import waterDrivce from './../static/img/waterDrivce.png';
 import loadingGif from './../static/img/loading.gif';
 import lineActiveImg from './../static/img/line1-active.png';
 import dynamiActiveImg from './../static/img/line2-active.png';
@@ -86,7 +86,7 @@ class LoginSystemDescription extends Component {
                 <div className="systemName">水利厅绩效考核系统</div>
                 <ul>
                     <li className="staticBg">
-                        <img src={ss}/>
+                        <img src={waterDrivce}/>
                         <img src={loadingGif}/>
                     </li>
                     <li className="dynamic">
