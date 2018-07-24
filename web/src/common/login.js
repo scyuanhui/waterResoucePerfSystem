@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import {Session} from './common';
+import axios from 'axios';
 //img
 import lineActive from './../static/img/line1-active.png';
 import dynamicActive from './../static/img/line2-active.png';
@@ -47,12 +48,17 @@ class LoginForm extends Component {
 
     loginEvent() {
         const username = this.refs.username.value.replace(/(^[\s\n\t]+|[\s\n\t]+$)/g, "");
+        //模拟用户，0是省级用户，1是市级用户，2是区县级用户
+        const ran = (Math.random()*2).toFixed(0);
+        const name = ran == 0 ? '省级管理员' : ran == 1 ? '市级管理员' : '县级管理员';
         const userinfo = {
-            'username': username.length > 0 ? username : 'admin',
-            'token': 'KFIUCHWKXU128963DAS9D2E95D8DSD5F4Q4DS'
+            "count":"admin",
+            "username": name,
+            "token": "5w4f8gfnbv2d812",
+            "userLvl":ran
         };
-        if (username.length > 0) {
-            this.props.loadingCallback(true);
+        if(userinfo.count == username){
+            this.props.loadingCallback(true);//loading回调
             setTimeout(() => {
                 const session = new Session();
                 session.setItem('USERINFO', userinfo);

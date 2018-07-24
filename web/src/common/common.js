@@ -1,3 +1,4 @@
+import axios from 'axios';
 //session
 export class Session{
     setItem(key,value){
@@ -10,3 +11,12 @@ export class Session{
         sessionStorage.removeItem(key);
     }
 }
+//ajax
+//export class Axios{
+//    constructor(){
+//        this.token = JSON.parse(sessionStorage.getItem('USERINFO'));
+//    }
+//    get(){
+//        axios.get();
+//    }
+//}
