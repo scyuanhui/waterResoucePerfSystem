@@ -30,20 +30,20 @@
     float:right;
     padding:0 10px;
 }
-.userstatus>span:first-child b{
-    font-size:1.4em;
+.userstatus .iconfont.icon-yonghutouxiang{
+    font-size:40px;
+}
+
+.userstatus>span:first-child>b{
     color:#000;
     padding-right:15px;
 }
-.userstatus .iconfont.icon-yonghutouxiang{
-    font-size:40px;
+.userstatus>span:first-child>b:hover{
+    color:#0b97c4;
 }
 .userstatus>span:last-child b{
     font-size:2em !important;
     color:#303030;
-}
-.userstatus>span:first-child b:hover{
-    color:#0b97c4;
 }
 .userstatus>.exit{
     cursor:pointer;

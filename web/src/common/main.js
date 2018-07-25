@@ -1,9 +1,9 @@
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 import {Session} from './common';
-import config from './../router/router';
+import Config from './../router/moduleNavRouterConfig';
 
-export default class Navigation extends Component {
+export default class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -19,20 +19,20 @@ export default class Navigation extends Component {
         if(user){
             if(user.userLvl == 0){
                 this.setState({
-                    navigationList: config.province,
-                    defautModule: config.province[0].module
+                    navigationList: Config.province,
+                    defautModule: Config.province[0].module
                 });
             }
             if(user.userLvl == 1){
                 this.setState({
-                    navigationList: config.city,
-                    defautModule: config.city[0].module
+                    navigationList: Config.city,
+                    defautModule: Config.city[0].module
                 });
             }
             if(user.userLvl == 2){
                 this.setState({
-                    navigationList: config.county,
-                    defautModule: config.county[0].module
+                    navigationList: Config.county,
+                    defautModule: Config.county[0].module
                 });
             }
         }

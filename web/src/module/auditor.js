@@ -1,10 +1,10 @@
 /**
- * 首页模块文件
-**/
+ * 审核批复模块
+ * **/
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 
-class Home extends Component{
+class Auditor extends Component{
     constructor(props){
         super(props);
         this.state = {};
@@ -12,11 +12,11 @@ class Home extends Component{
     render(){
         return (
             <div>
-                <h5>home</h5>
-                <p>this is home page</p>
+                <h5>auditor</h5>
+                <p>this is auditor page</p>
             </div>
         );
     }
 }
 
-module.exports = {module:<Home />};
+module.exports = {module:<Auditor />};
