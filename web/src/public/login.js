@@ -1,6 +1,9 @@
 import React,{Component} from 'react';
-import {Session} from './common';
+import ReactDOM from 'react-dom';
 import axios from 'axios';
+import {observer} from 'mobx-react';
+import user from './../store/userinfo';
+import {Index} from './../index';
 //img
 import lineActive from './../static/img/line1-active.png';
 import dynamicActive from './../static/img/line2-active.png';
@@ -12,9 +15,8 @@ class LoginLoading extends Component {
     }
 
     render() {
-        const status = this.props.loading ? 'block' : 'none';
         return (
-            <div className="loginLoading" style={{display:status}}></div>
+            <div className="loginLoading"></div>
         );
     }
 }
@@ -40,6 +42,7 @@ class LoginHead extends Component {
         );
     }
 }
+@observer
 class LoginForm extends Component {
     constructor(props) {
         super(props);
@@ -48,22 +51,11 @@ class LoginForm extends Component {
 
     loginEvent() {
         const username = this.refs.username.value.replace(/(^[\s\n\t]+|[\s\n\t]+$)/g, "");
-        //模拟用户，0是省级用户，1是市级用户，2是区县级用户
-        const ran = (Math.random()*2).toFixed(0);
-        const name = ran == 0 ? '省级管理员' : ran == 1 ? '市级管理员' : '县级管理员';
-        const userinfo = {
-            "count":"admin",
-            "username": name,
-            "token": "5w4f8gfnbv2d812",
-            "userLvl":ran
-        };
-        if(userinfo.count == username){
-            this.props.loadingCallback(true);//loading回调开始
+        if(username.length > 0){
+            user.login(username);
+            ReactDOM.render(<LoginLoading />,document.getElementById('root'));
             setTimeout(() => {
-                const session = new Session();
-                session.setItem('USERINFO', userinfo);
-                window.location.href = window.location.origin;
-                this.props.loadingCallback(false);//loading回调结束
+                ReactDOM.render(<Index />,document.getElementById('root'));
             },1500);
         }
     }
@@ -72,10 +64,9 @@ class LoginForm extends Component {
         return (
             <div className="loginForm">
                 <span className="loginTitle">登录</span>
-                <input type="text" placeholder="账号" ref="username"/>
+                <input type="text" placeholder="账号" ref="username" defaultValue="admin" />
                 <input type="password" placeholder="密码" ref="password"/>
-                <button type="button" className="btn btn-lg btn-promise" onClick={this.loginEvent.bind(this)}>点击登录
-                </button>
+                <button type="button" className="btn btn-lg btn-promise" onClick={this.loginEvent.bind(this)}>点击登录</button>
                 <p><span className="grey">遇到问题，请联系管理员</span><b>028-234434</b></p>
             </div>
         );
@@ -146,7 +137,6 @@ export default class LoginView extends Component {
                     <LoginForm loadingCallback={this.loginLoadingCallback.bind(this)}/>
                     <LoginDesc width={this.state.dynamicDivWidth} imgWidth={this.state.dynamicActiveImgWidth} />
                 </div>
-                <LoginLoading loading={this.state.loading} />
             </div>
         );
     }

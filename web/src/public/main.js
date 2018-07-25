@@ -1,8 +1,10 @@
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
-import {Session} from './common';
-import Config from './../router/moduleNavRouterConfig';
+import Config from './../store/moduleNavRouterConfig';
+import {observer} from 'mobx-react';
+import user from './../store/userinfo';
 
+@observer
 export default class Main extends Component {
     constructor(props) {
         super(props);
@@ -14,22 +16,20 @@ export default class Main extends Component {
     }
 
     componentWillMount() {
-        const session = new Session();
-        const user = session.getItem('USERINFO');
-        if(user){
-            if(user.userLvl == 0){
+        if(user.data.username != null){
+            if(user.data.userGrade == 'province'){
                 this.setState({
                     navigationList: Config.province,
                     defautModule: Config.province[0].module
                 });
             }
-            if(user.userLvl == 1){
+            if(user.data.userGrade == 'city'){
                 this.setState({
                     navigationList: Config.city,
                     defautModule: Config.city[0].module
                 });
             }
-            if(user.userLvl == 2){
+            if(user.data.userGrade == 'county'){
                 this.setState({
                     navigationList: Config.county,
                     defautModule: Config.county[0].module

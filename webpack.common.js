@@ -23,7 +23,8 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['env', 'react', 'stage-0']
+                        presets: ['env', 'react', 'stage-0'],
+                        plugins: ["transform-decorators-legacy","transform-decorators"]//为mobx添加修饰器配置
                     }
                 },
                 include: path.resolve(__dirname, './web'),

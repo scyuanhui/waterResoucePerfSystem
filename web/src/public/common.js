@@ -1,3 +1,5 @@
+import React,{Component} from 'react';
+import ReactDOM from 'react-dom';
 import axios from 'axios';
 //session
 export class Session{
@@ -11,8 +13,16 @@ export class Session{
         sessionStorage.removeItem(key);
     }
 }
+export function reactRender(component,id){
+    //component:组件,如： <App>
+    //id:元素ID,如：'root'
+    ReactDOM.render(
+        component,
+        document.getElementById(id)
+    );
+}
 //ajax
-class Axios{
+export class Axios{
     constructor(){
         //前提：登录时已设置好USERINFO
         this.user = JSON.parse(sessionStorage.getItem('USERINFO'));

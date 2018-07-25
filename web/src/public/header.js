@@ -3,40 +3,35 @@
  */
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
-import {Session} from './common';
+//loginView
+import LoginView from './login';
 //img
 import userHead from './../static/img/userhead.png';
 import userOnLine from './../static/img/headOnLine.png';
 
-const session = new Session();
 
 export default class Header extends Component {
     constructor(props) {
         super(props);
         this.state = {
             systemName:'绩效考核系统',
-            userName: null,
             systemLvl: null
         };
     }
 
     componentWillMount() {
-        const userinfo = session.getItem('USERINFO');
-        this.setState({
-            userName: userinfo.username
-        });
-        switch (userinfo.userLvl) {
-        case '0':
+        switch (this.props.user.data.userGrade) {
+        case 'province':
             this.setState({
                 systemLvl: '省级系统'
             });
             break;
-        case '1':
+        case 'city':
             this.setState({
                 systemLvl: '市级系统'
             });
             break;
-        case '2':
+        case 'county':
             this.setState({
                 systemLvl: '县级系统'
             });
@@ -45,8 +40,8 @@ export default class Header extends Component {
     }
 
     logout() {
-        session.removeItem('USERINFO');
-        window.location.href = window.location.origin;
+        this.props.logout();
+        ReactDOM.render(<LoginView />,document.getElementById('root'));
     }
 
     render() {
@@ -68,7 +63,7 @@ export default class Header extends Component {
                             <img className="userStatusIcon" src={userOnLine}/>
                         </span>
                         <span>
-                            四川省水利厅-<b>{this.state.userName}</b>
+                            {this.props.user.data.userUnit}-<b>{this.props.user.data.username}</b>
                         </span>
                     </div>
                 </div>
