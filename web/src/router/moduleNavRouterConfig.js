@@ -3,7 +3,7 @@
  */
 //导入各个功能模块
 import home from './../module/home';//首页
-import performance from './../module/perfEvaluate';//绩效考评
+import performance from './../module/performance';//绩效考评
 import auditor from './../module/auditor';//审核批复
 import dataCount from './../module/dataCount';//数据统计
 import backlog from './../module/backlog';//通知待办
