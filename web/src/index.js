@@ -34,11 +34,16 @@ export class Index extends Component{
     }
 }
 @observer
-class App extends Component{
-    constructor(props){
+class App extends Component {
+    constructor(props) {
         super(props);
     }
-    render(){
+
+    headerLogout() {
+        user.logout();
+    }
+
+    render() {
         //登录拦截
         return (user.data.username != null ? <Index /> : <LoginView />);
     }
