@@ -47,7 +47,7 @@ export default class Main extends Component {
                         })
                     }
                 </ul>
-                <div className="content" id="content">{this.state.defautModule != null ? this.state.defautModule : '页面正在制作中...'}</div>
+                <div className="content" id="content">{this.state.defautModule}</div>
             </div>
         );
     }
