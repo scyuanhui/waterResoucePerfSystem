@@ -1,8 +1,8 @@
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
-import Config from './../store/moduleNavRouterConfig';
 import {observer} from 'mobx-react';
 import user from './../store/userinfo';
+import Config from './../store/moduleNavRouterConfig';
 
 @observer
 export default class Main extends Component {
