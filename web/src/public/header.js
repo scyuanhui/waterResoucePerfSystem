@@ -13,30 +13,6 @@ import userOnLine from './../static/img/headOnLine.png';
 export default class Header extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            systemName:'绩效考核系统',
-            systemLvl: null
-        };
-    }
-
-    componentDidMount() {
-        switch (this.props.user.data.userGrade) {
-        case 'province':
-            this.setState({
-                systemLvl: '省级系统'
-            });
-            break;
-        case 'city':
-            this.setState({
-                systemLvl: '市级系统'
-            });
-            break;
-        case 'county':
-            this.setState({
-                systemLvl: '县级系统'
-            });
-            break;
-        }
     }
 
     logout() {
@@ -48,10 +24,10 @@ export default class Header extends Component {
         return (
             <div className="row headerRow">
                 <div className="col-2 logo">
-                    <a>{this.state.systemName}</a>
+                    <a>绩效考核系统</a>
                 </div>
                 <div className="col-4 systemLvl">
-                    {this.state.systemLvl}
+                    {this.props.user.data.sysLvl}
                 </div>
                 <div className="col-6">
                     <div className="userstatus">
