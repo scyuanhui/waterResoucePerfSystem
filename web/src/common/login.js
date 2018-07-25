@@ -58,12 +58,12 @@ class LoginForm extends Component {
             "userLvl":ran
         };
         if(userinfo.count == username){
-            this.props.loadingCallback(true);//loading回调
+            this.props.loadingCallback(true);//loading回调开始
             setTimeout(() => {
                 const session = new Session();
                 session.setItem('USERINFO', userinfo);
                 window.location.href = window.location.origin;
-                this.props.loadingCallback(false);
+                this.props.loadingCallback(false);//loading回调结束
             },1500);
         }
     }
