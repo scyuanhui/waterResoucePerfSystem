@@ -17,24 +17,10 @@ export default class Main extends Component {
 
     componentDidMount() {
         if(user.data.username != null){
-            if(user.data.userGrade == 'province'){
-                this.setState({
-                    navigationList: Config.province,
-                    defautModule: Config.province[0].module
-                });
-            }
-            if(user.data.userGrade == 'city'){
-                this.setState({
-                    navigationList: Config.city,
-                    defautModule: Config.city[0].module
-                });
-            }
-            if(user.data.userGrade == 'county'){
-                this.setState({
-                    navigationList: Config.county,
-                    defautModule: Config.county[0].module
-                });
-            }
+            this.setState({
+                navigationList: Config[user.data.userGrade],
+                defautModule: Config[user.data.userGrade][0].module
+            });
         }
     }
 
