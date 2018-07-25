@@ -13,14 +13,6 @@ export class Session{
         sessionStorage.removeItem(key);
     }
 }
-export function reactRender(component,id){
-    //component:组件,如： <App>
-    //id:元素ID,如：'root'
-    ReactDOM.render(
-        component,
-        document.getElementById(id)
-    );
-}
 //ajax
 export class Axios{
     constructor(){

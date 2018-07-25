@@ -13,7 +13,7 @@ class DataCount extends Component{
         return (
             <div>
                 <h5>dataCount</h5>
-                <p>this is dataCount page</p>
+                <p style={{lineHeight:'480px',textAlign:'center'}}>this is dataCount page</p>
             </div>
         );
     }

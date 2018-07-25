@@ -13,7 +13,7 @@ class BackLog extends Component{
         return (
             <div>
                 <h5>backLog</h5>
-                <p>this is backLog page</p>
+                <p style={{lineHeight:'480px',textAlign:'center'}}>this is backLog page</p>
             </div>
         );
     }

@@ -13,7 +13,7 @@ class Auditor extends Component{
         return (
             <div>
                 <h5>auditor</h5>
-                <p>this is auditor page</p>
+                <p style={{lineHeight:'480px',textAlign:'center'}}>this is auditor page</p>
             </div>
         );
     }

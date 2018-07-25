@@ -15,7 +15,7 @@ export default class Main extends Component {
         };
     }
 
-    componentWillMount() {
+    componentDidMount() {
         if(user.data.username != null){
             if(user.data.userGrade == 'province'){
                 this.setState({

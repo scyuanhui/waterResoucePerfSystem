@@ -56,7 +56,7 @@ class LoginForm extends Component {
             ReactDOM.render(<LoginLoading />,document.getElementById('root'));
             setTimeout(() => {
                 ReactDOM.render(<Index />,document.getElementById('root'));
-            },1500);
+            },1000);
         }
     }
 
@@ -104,15 +104,8 @@ export default class LoginView extends Component {
             lineActiveDivWidth: '0px',
             lineActiveImgWidth: document.documentElement.clientWidth + 'px',//窗口可见宽度
             dynamicDivWidth: '0px',
-            dynamicActiveImgWidth: '395px',
-            loading:false
+            dynamicActiveImgWidth: '395px'
         };
-    }
-
-    loginLoadingCallback(bool) {
-        this.setState({
-            loading:bool
-        });
     }
 
     componentDidMount() {
@@ -134,7 +127,7 @@ export default class LoginView extends Component {
             <div className="loginContainer">
                 <LoginHead width={this.state.lineActiveDivWidth} imgWidth={this.state.lineActiveImgWidth} />
                 <div className="loginContent">
-                    <LoginForm loadingCallback={this.loginLoadingCallback.bind(this)}/>
+                    <LoginForm />
                     <LoginDesc width={this.state.dynamicDivWidth} imgWidth={this.state.dynamicActiveImgWidth} />
                 </div>
             </div>

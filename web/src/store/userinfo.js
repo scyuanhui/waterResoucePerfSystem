@@ -6,11 +6,10 @@ const ran = (Math.random() * 2).toFixed(0);
 const ranGrade = grades[ran];
 const ranunit = units[ran];
 
-
 class User{
     @observable data = {
         //模拟用户，(province)省级，(city)市级，(county)区县级
-        username: null,
+        username: 'admin',
         token: '5w4f8gfnbv2d812',
         userGrade:ranGrade,
         userUnit:ranunit

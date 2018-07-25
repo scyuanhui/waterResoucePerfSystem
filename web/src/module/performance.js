@@ -13,7 +13,7 @@ class Performance extends Component{
         return (
             <div>
                 <h5>performance</h5>
-                <p>this is performance page</p>
+                <p style={{lineHeight:'480px',textAlign:'center'}}>this is performance page</p>
             </div>
         );
     }

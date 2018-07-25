@@ -13,7 +13,7 @@ class Home extends Component{
         return (
             <div>
                 <h5>home</h5>
-                <p>this is home page</p>
+                <p style={{lineHeight:'480px',textAlign:'center'}}>this is home page</p>
             </div>
         );
     }
