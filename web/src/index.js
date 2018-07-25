@@ -16,7 +16,7 @@ import './static/css/login.css';
 import './static/css/header.css';
 import './static/css/navigation.css';
 
-export class Index extends Component{
+class Index extends Component{
     constructor(props){
         super(props);
         this.state = {};
@@ -34,7 +34,7 @@ export class Index extends Component{
     }
 }
 @observer
-class App extends Component {
+export default class App extends Component {
     constructor(props) {
         super(props);
     }

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import {observer} from 'mobx-react';
 import user from './../store/userinfo';
-import {Index} from './../index';
+import App from './../index';
 //img
 import lineActive from './../static/img/line1-active.png';
 import dynamicActive from './../static/img/line2-active.png';
@@ -51,12 +51,18 @@ class LoginForm extends Component {
 
     loginEvent() {
         const username = this.refs.username.value.replace(/(^[\s\n\t]+|[\s\n\t]+$)/g, "");
-        if(username.length > 0){
+        if (username.length > 0) {
             user.login(username);
-            ReactDOM.render(<LoginLoading />,document.getElementById('root'));
+            ReactDOM.render(
+                <LoginLoading />,
+                document.getElementById('root')
+            );
             setTimeout(() => {
-                ReactDOM.render(<Index />,document.getElementById('root'));
-            },1000);
+                ReactDOM.render(
+                    <App />,
+                    document.getElementById('root')
+                );
+            }, 1000);
         }
     }
 
@@ -64,9 +70,10 @@ class LoginForm extends Component {
         return (
             <div className="loginForm">
                 <span className="loginTitle">登录</span>
-                <input type="text" placeholder="账号" ref="username" defaultValue="admin" />
+                <input type="text" placeholder="账号" ref="username" defaultValue="admin"/>
                 <input type="password" placeholder="密码" ref="password"/>
-                <button type="button" className="btn btn-lg btn-promise" onClick={this.loginEvent.bind(this)}>点击登录</button>
+                <button type="button" className="btn btn-lg btn-promise" onClick={this.loginEvent.bind(this)}>点击登录
+                </button>
                 <p><span className="grey">遇到问题，请联系管理员</span><b>028-234434</b></p>
             </div>
         );
@@ -125,10 +132,10 @@ export default class LoginView extends Component {
     render() {
         return (
             <div className="loginContainer">
-                <LoginHead width={this.state.lineActiveDivWidth} imgWidth={this.state.lineActiveImgWidth} />
+                <LoginHead width={this.state.lineActiveDivWidth} imgWidth={this.state.lineActiveImgWidth}/>
                 <div className="loginContent">
                     <LoginForm />
-                    <LoginDesc width={this.state.dynamicDivWidth} imgWidth={this.state.dynamicActiveImgWidth} />
+                    <LoginDesc width={this.state.dynamicDivWidth} imgWidth={this.state.dynamicActiveImgWidth}/>
                 </div>
             </div>
         );
