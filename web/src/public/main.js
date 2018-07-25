@@ -26,8 +26,8 @@ export default class Main extends Component {
 
     mainEvent(module, index) {
         this.setState({
-            defautModule: module,
-            defaultIndex: index
+            defaultIndex: index,
+            defautModule: module
         });
     }
     render() {
