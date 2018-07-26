@@ -10,12 +10,7 @@ import Header from './public/header';
 //nav,content
 import Main from './public/main';
 //css
-import './static/css/antd.min.css';
-import './static/css/iconfont.css';
-import './static/css/public.css';
-import './static/css/login.css';
-import './static/css/header.css';
-import './static/css/navigation.css';
+import './static/css/index.css';
 
 @observer
 export default class App extends Component {
