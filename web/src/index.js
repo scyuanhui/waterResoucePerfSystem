@@ -1,7 +1,8 @@
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
-//public
-import {Session} from './public/common';
+import {observer} from 'mobx-react';
+//store
+import user from './store/userinfo';
 //login
 import LoginView from './public/login';
 //header
@@ -16,7 +17,6 @@ import './static/css/login.css';
 import './static/css/header.css';
 import './static/css/navigation.css';
 
-const session = new Session();
 
 class Index extends Component{
     constructor(props){
@@ -36,12 +36,12 @@ export default class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user:session.getItem('USERNAME')
+            user:user.data.username
         };
     }
     render() {
         //登录拦截
-        return this.state.user ? <Index /> : <LoginView />;
+        return this.state.user != null ? <Index /> : <LoginView />;
     }
 }
 

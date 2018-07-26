@@ -1,10 +1,8 @@
 import {observable,action} from 'mobx';
-import {Session} from './../public/common';
-
-const session = new Session();
 
 class User{
     constructor(){
+        //模拟数据
         this.grades = ['province','city','county'];
         this.units = ['四川省水利厅','成都市水利局','金牛区水务处'];
         this.sysLvl = ['省级系统','市级系统','县级系统'];
@@ -15,7 +13,7 @@ class User{
     }
     @observable data = {
         //模拟用户，(province)省级，(city)市级，(county)区县级
-        username: session.getItem('USERNAME'),
+        username: null,
         token: '5w4f8gfnbv2d812',
         userGrade:this.ranGrade,
         userUnit:this.ranUnit,
@@ -23,11 +21,9 @@ class User{
     };
     @action.bound login(username){
         this.data.username = username;
-        session.setItem('USERNAME',username);
     }
     @action.bound logout(){
         this.data.username = null;
-        session.removeItem('USERNAME');
     }
 }
 const user = new User();

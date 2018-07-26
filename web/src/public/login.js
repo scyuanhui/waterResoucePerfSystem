@@ -33,7 +33,10 @@ class LoginHead extends Component {
         return (
             <div className="loginHead">
                 <div className="rowOne">
-                    <p><span>四川省水利厅</span><span>Performance Appraisal</span></p>
+                    <p>
+                        <span>四川省水利厅</span>
+                        <span>Performance Appraisal</span>
+                    </p>
                 </div>
                 <div className="rowTwo">
                     <div className="lineImgActive" style={{width:this.props.width}}>
