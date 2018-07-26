@@ -127,16 +127,15 @@ export default class LoginView extends Component {
 
     componentDidMount() {
         //动效
-        setTimeout((() => {
-            this.setState({
-                dynamicDivWidth: this.state.dynamicActiveImgWidth
-            });
-        }), 1);
-        setTimeout((() => {
-            this.setState({
-                lineActiveDivWidth: this.state.lineActiveImgWidth
-            });
-        }), 1001);
+        this.setState({
+            dynamicDivWidth: this.state.dynamicActiveImgWidth
+        },() => {
+            setTimeout((() => {
+                this.setState({
+                    lineActiveDivWidth: this.state.lineActiveImgWidth
+                });
+            }), 1000);
+        });
     }
 
     render() {

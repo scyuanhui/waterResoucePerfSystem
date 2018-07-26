@@ -17,31 +17,39 @@ import './static/css/login.css';
 import './static/css/header.css';
 import './static/css/navigation.css';
 
-
-class Index extends Component{
-    constructor(props){
-        super(props);
-        this.state = {};
-    }
-    render(){
-        return (
-            [
-                <Header key="head" />,
-                <Main key="nav" />
-            ]
-        );
-    }
-}
+@observer
 export default class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user:user.data.username
+            user:null
         };
     }
+    logout(){
+        this.setState({
+            user:null
+        },() => {
+            user.logout();
+        });
+    }
+    componentDidMount(){
+        this.setState({
+            user:user.data.username
+        });
+    }
+
     render() {
         //登录拦截
-        return this.state.user != null ? <Index /> : <LoginView />;
+        if(this.state.user != null){
+            return (
+                [
+                    <Header key="head" userinfo={user} logout={this.logout.bind(this)} />,
+                    <Main key="nav" />
+                ]
+            );
+        }else{
+            return <LoginView />;
+        }
     }
 }
 
