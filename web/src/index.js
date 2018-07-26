@@ -1,8 +1,7 @@
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
-import {observer} from 'mobx-react';
-//store
-import user from './store/userinfo';
+//public
+import {Session} from './public/common';
 //login
 import LoginView from './public/login';
 //header
@@ -17,36 +16,32 @@ import './static/css/login.css';
 import './static/css/header.css';
 import './static/css/navigation.css';
 
+const session = new Session();
+
 class Index extends Component{
     constructor(props){
         super(props);
         this.state = {};
     }
-    headerLogout(){
-        user.logout();
-    }
     render(){
         return (
             [
-                <Header key="head" user={user} logout={this.headerLogout.bind(this)} />,
+                <Header key="head" />,
                 <Main key="nav" />
             ]
         );
     }
 }
-@observer
 export default class App extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            user:session.getItem('USERNAME')
+        };
     }
-
-    headerLogout() {
-        user.logout();
-    }
-
     render() {
         //登录拦截
-        return (user.data.username != null ? <Index /> : <LoginView />);
+        return this.state.user ? <Index /> : <LoginView />;
     }
 }
 
