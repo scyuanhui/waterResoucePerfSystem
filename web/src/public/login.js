@@ -1,8 +1,9 @@
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
-import axios from 'axios';
 import {observer} from 'mobx-react';
+import {message} from 'antd';
 import {trim} from './common';
+import axios from 'axios';
 import user from './../store/userinfo';
 import App from './../index';
 //img
@@ -66,7 +67,7 @@ class LoginForm extends Component {
                 );
             }, 1000);
         }else{
-            console.log('账号或密码不能少于5位');
+            message.error('账号或密码不能少于5位',1);
         }
     }
     componentDidMount(){

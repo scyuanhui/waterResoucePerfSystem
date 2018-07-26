@@ -10,6 +10,7 @@ import Header from './public/header';
 //nav,content
 import Main from './public/main';
 //css
+import './static/css/antd.min.css';
 import './static/css/iconfont.css';
 import './static/css/public.css';
 import './static/css/login.css';
