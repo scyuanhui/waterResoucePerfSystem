@@ -10,54 +10,17 @@ import App from './../index';
 import lineActive from './../static/img/line1-active.png';
 import dynamicActive from './../static/img/line2-active.png';
 
-class LoginLoading extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
-
-    render() {
-        return (
-            <div className="loginLoading"></div>
-        );
-    }
-}
-
-class LoginHead extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
-
-    render() {
-        return (
-            <div className="loginHead">
-                <div className="rowOne">
-                    <p>
-                        <span>四川省水利厅</span>
-                        <span>Performance Appraisal</span>
-                    </p>
-                </div>
-                <div className="rowTwo">
-                    <div className="lineImgActive" style={{width:this.props.width}}>
-                        <img src={lineActive} style={{width:this.props.imgWidth}}/>
-                    </div>
-                </div>
-            </div>
-        );
-    }
-}
 @observer
 class LoginForm extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
     }
 
     loginEvent() {
         const username = trim(this.refs.username.value);
         const password = trim(this.refs.password.value);
-        if (username.length >= 5 && password.length >= 6) {
+        const result = user.loginCheck(username,password);
+        if (result.status) {
             user.login(username);
             ReactDOM.render(
                 <LoginLoading />,
@@ -70,7 +33,7 @@ class LoginForm extends Component {
                 );
             }, 1000);
         }else{
-            message.error(loginCheck(username,password),1);
+            message.warning(result.text,1);
         }
     }
     componentDidMount(){
@@ -95,10 +58,41 @@ class LoginForm extends Component {
         );
     }
 }
+
+class LoginLoading extends Component {
+    render() {
+        return (
+            <div className="loginLoading"></div>
+        );
+    }
+}
+
+class LoginHead extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div className="loginHead">
+                <div className="rowOne">
+                    <p>
+                        <span>四川省水利厅</span>
+                        <span>Performance Appraisal</span>
+                    </p>
+                </div>
+                <div className="rowTwo">
+                    <div className="lineImgActive" style={{width:this.props.width}}>
+                        <img src={lineActive} style={{width:this.props.imgWidth}}/>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+}
 class LoginDesc extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
     }
 
     render() {
@@ -111,7 +105,7 @@ class LoginDesc extends Component {
                     </li>
                     <li className="dynamic">
                         <div className="dynamicImgActive" style={{width:this.props.width}}>
-                            <img src={dynamicActive} style={{width:this.props.dynamicActiveImgWidth}}/>
+                            <img src={dynamicActive} style={{width:this.props.imgWidth}}/>
                         </div>
                     </li>
                 </ul>

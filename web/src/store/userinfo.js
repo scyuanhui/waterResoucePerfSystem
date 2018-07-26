@@ -25,6 +25,21 @@ class User{
     @action.bound logout(){
         this.data.username = null;
     }
+    @action.bound loginCheck(username,password){
+        if(username == ''){
+            return {status:false,text:'账号不能为空'};
+        }
+        if(password == ''){
+            return {status:false,text:'密码不能为空'};
+        }
+        if(username.length < 5){
+            return {status:false,text:'账号不能少于5位数'};
+        }
+        if(password.length < 5){
+            return {status:false,text:'密码不能少于6位数'};
+        }
+        return {status:true,text:'输入格式合格'};
+    }
 }
 const user = new User();
 export default user;
