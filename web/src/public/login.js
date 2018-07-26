@@ -54,7 +54,7 @@ class LoginForm extends Component {
     loginEvent() {
         const username = trim(this.refs.username.value);
         const password = trim(this.refs.password.value);
-        if (username.length >= 5 && password.length >= 5) {
+        if (username.length >= 5 && password.length >= 6) {
             user.login(username);
             ReactDOM.render(
                 <LoginLoading />,
@@ -67,7 +67,7 @@ class LoginForm extends Component {
                 );
             }, 1000);
         }else{
-            message.error('账号或密码不能少于5位',1);
+            message.error(loginCheck(username,password),1);
         }
     }
     componentDidMount(){
@@ -152,5 +152,19 @@ export default class LoginView extends Component {
                 </div>
             </div>
         );
+    }
+}
+function loginCheck(username,password){
+    if(username == ''){
+        return '账号不能为空';
+    }
+    if(password == ''){
+        return '密码不能为空';
+    }
+    if(username.length < 5){
+        return '账号不能少于5位数';
+    }
+    if(password.length < 5){
+        return '密码不能少于6位数';
     }
 }
