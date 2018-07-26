@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import {observer} from 'mobx-react';
+import {trim} from './common';
 import user from './../store/userinfo';
 import App from './../index';
 //img
@@ -50,8 +51,9 @@ class LoginForm extends Component {
     }
 
     loginEvent() {
-        const username = this.refs.username.value.replace(/(^[\s\n\t]+|[\s\n\t]+$)/g, "");
-        if (username.length > 0) {
+        const username = trim(this.refs.username.value);
+        const password = trim(this.refs.password.value);
+        if (username.length >= 5 && password.length >= 5) {
             user.login(username);
             ReactDOM.render(
                 <LoginLoading />,
@@ -63,15 +65,25 @@ class LoginForm extends Component {
                     document.getElementById('root')
                 );
             }, 1000);
+        }else{
+            console.log('账号或密码不能少于5位');
         }
     }
-
+    componentDidMount(){
+        //回车登录
+        document.onkeydown = (e) => {
+            let code = e.charCode || e.keyCode;
+            if(code == 13){
+                this.loginEvent();
+            }
+        };
+    }
     render() {
         return (
             <div className="loginForm">
                 <span className="loginTitle">登录</span>
-                <input type="text" placeholder="账号" ref="username" defaultValue="admin"/>
-                <input type="password" placeholder="密码" ref="password"/>
+                <input type="text" placeholder="账号" ref="username" defaultValue="admin" maxLength="25"/>
+                <input type="password" placeholder="密码" ref="password" maxLength="25"/>
                 <button type="button" className="btn btn-lg btn-promise" onClick={this.loginEvent.bind(this)}>点击登录
                 </button>
                 <p><span className="grey">遇到问题，请联系管理员</span><b>028-234434</b></p>

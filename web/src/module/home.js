@@ -11,7 +11,7 @@ class Home extends Component{
     }
     render(){
         return (
-            <div>
+            <div style={{height:'1920px',textAlign:'center'}}>
                 <h5>home</h5>
                 <p style={{lineHeight:'480px',textAlign:'center'}}>this is home page</p>
             </div>

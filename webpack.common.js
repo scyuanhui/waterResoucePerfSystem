@@ -13,7 +13,7 @@ module.exports = {
         index: path.resolve(__dirname, './web/src/index.js')
     },
     output: {
-        filename: '[name].js',
+        filename: '[name].bundle.js',
         path: path.resolve(__dirname, './web/build/')
     },
     module: {
@@ -83,8 +83,8 @@ module.exports = {
             }
         }),
         new MiniCssExtractPlugin({
-            filename: "[name].css",
-            chunkFilename: "index.css"
+            filename: "[name].bundle.css",
+            chunkFilename: "index.bundle.css"
         })
     ]
 };

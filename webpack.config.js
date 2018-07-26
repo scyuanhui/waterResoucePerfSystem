@@ -12,7 +12,7 @@ const webpackConfig = {
         index: path.resolve(__dirname, './web/src/index.js')
     },
     output: {
-        filename: '[name].js',
+        filename: '[name].bundle.js',
         path: path.resolve(__dirname, './web/build/')
     },
     module: {
@@ -79,8 +79,8 @@ const webpackConfig = {
             }
         }),
         new MiniCssExtractPlugin({
-            filename: "[name].css",
-            chunkFilename: "[id].css"
+            filename: "[name].bundle.css",
+            chunkFilename: "index.bundle.css"
         }),
         new HtmlWebpackPlugin({
             title:'水利资金绩效考核系统',

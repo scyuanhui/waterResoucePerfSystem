@@ -69,18 +69,19 @@ export class Axios{
         });
     }
 }
+//日期格式化
 export function formatDate(dateStr,reg) {
     if(!dateStr){
         return;
     }
-    var _data = new Date(dateStr);
-    var year = _data.getFullYear();
-    var month = this.setLen(_data.getMonth() + 1);
-    var date = setLen(_data.getDate());
-    var hour = setLen(_data.getHours());
-    var minute = setLen(_data.getMinutes());
-    var second = setLen(_data.getSeconds());
-    var _reg = reg ? reg : '-';
+    let _data = new Date(dateStr);
+    let year = _data.getFullYear();
+    let month = this.setLen(_data.getMonth() + 1);
+    let date = setLen(_data.getDate());
+    let hour = setLen(_data.getHours());
+    let minute = setLen(_data.getMinutes());
+    let second = setLen(_data.getSeconds());
+    let _reg = reg ? reg : '-';
     return {
         'YEAR':year,
         'MONTH':month,
@@ -93,4 +94,15 @@ export function formatDate(dateStr,reg) {
         str = str.toString().length < 2 ? 0 + str.toString() : str;
         return str;
     }
+}
+//字符串去空
+export function trim(str){
+    let result = '';
+    let len = str.length;
+    for(let i=0;i<len;i++){
+        if(str[i] != ' '){
+            result += str[i];
+        }
+    }
+    return result;
 }

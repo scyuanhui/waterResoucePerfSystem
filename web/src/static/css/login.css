@@ -80,6 +80,10 @@
     height:50px;
     line-height:50px;
 }
+.loginContent>.loginForm>input:hover{
+    border:1px solid #3B86FF;
+    box-shadow:0 0 5px #a5c7ff;
+}
 .loginForm>p{
     line-height:80px;
 }

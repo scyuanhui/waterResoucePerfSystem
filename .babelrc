@@ -3,7 +3,7 @@
       ["env",{"modules": false}],
       "react",
       "stage-0"
-    ],
+  ],
   "plugins": [
       [
           "transform-runtime",
@@ -13,6 +13,6 @@
             "regenerator": true,
             "moduleName": "babel-runtime"
           }
-       ]
-   ]
+      ]
+  ]
 }
