@@ -4,7 +4,7 @@
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 
-class Auditor extends Component{
+export default class Auditor extends Component{
     constructor(props){
         super(props);
         this.state = {};
@@ -18,5 +18,3 @@ class Auditor extends Component{
         );
     }
 }
-
-module.exports = {module:<Auditor />};

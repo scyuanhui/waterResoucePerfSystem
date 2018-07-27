@@ -4,7 +4,7 @@
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 
-class Home extends Component{
+export default class Home extends Component{
     constructor(props){
         super(props);
         this.state = {};
@@ -18,5 +18,3 @@ class Home extends Component{
         );
     }
 }
-
-module.exports = {module:<Home />};

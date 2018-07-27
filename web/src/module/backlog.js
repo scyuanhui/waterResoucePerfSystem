@@ -4,7 +4,7 @@
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 
-class BackLog extends Component{
+export default class BackLog extends Component{
     constructor(props){
         super(props);
         this.state = {};
@@ -18,5 +18,3 @@ class BackLog extends Component{
         );
     }
 }
-
-module.exports = {module:<BackLog />};

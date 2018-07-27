@@ -4,7 +4,7 @@
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 
-class Performance extends Component{
+export default class Performance extends Component{
     constructor(props){
         super(props);
         this.state = {};
@@ -18,4 +18,3 @@ class Performance extends Component{
         );
     }
 }
-module.exports = {module:<Performance />};

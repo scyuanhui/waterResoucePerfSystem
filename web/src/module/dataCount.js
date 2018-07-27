@@ -4,7 +4,7 @@
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 
-class DataCount extends Component{
+export default class DataCount extends Component{
     constructor(props){
         super(props);
         this.state = {};
@@ -18,5 +18,3 @@ class DataCount extends Component{
         );
     }
 }
-
-module.exports = {module:<DataCount />};
