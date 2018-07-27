@@ -36,11 +36,11 @@ export default class App extends Component {
     render() {
         //登录拦截
         const loginWindown = <LoginView />;
-        const mainWindown = [
+        const indexWindown = [
             <Head key="head" userinfo={user} exit={this.logout.bind(this)} />,
             <Main key="NavContent" />
         ];
-        return this.state.user != null ? mainWindown : loginWindown;
+        return this.state.user != null ? indexWindown : loginWindown;
     }
 }
 
