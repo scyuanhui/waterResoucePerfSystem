@@ -8,7 +8,7 @@ import LoginView from './public/login';
 //header
 import Header from './public/header';
 //nav,content
-import Main from './public/main';
+import NavContent from './public/navigation-content';
 //css
 import './static/css/index.css';
 
@@ -35,16 +35,12 @@ export default class App extends Component {
 
     render() {
         //登录拦截
-        if(this.state.user != null){
-            return (
-                [
-                    <Header key="head" userinfo={user} logout={this.logout.bind(this)} />,
-                    <Main key="nav" />
-                ]
-            );
-        }else{
-            return <LoginView />;
-        }
+        const loginWindown = <LoginView />;
+        const mainWindown = [
+            <Header key="head" userinfo={user} exit={this.logout.bind(this)} />,
+            <Main key="nav" />
+        ];
+        return this.state.user != null ? mainWindown : loginWindown;
     }
 }
 

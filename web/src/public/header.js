@@ -13,7 +13,6 @@ export default class Header extends Component {
     }
     render() {
         const user = this.props.userinfo;
-        const logout = this.props.logout;
         return (
             <div className="row headerRow">
                 <div className="col-2 logo">
@@ -25,7 +24,7 @@ export default class Header extends Component {
                 <div className="col-6">
                     <div className="userstatus">
                         <span title="退出系统" className="exit">
-                            退出&nbsp;&nbsp;<b className="iconfont icon-icon" onClick={logout}></b>
+                            退出&nbsp;&nbsp;<b className="iconfont icon-icon" onClick={this.props.exit}></b>
                         </span>
                         <span className="userhead">
                             <img className="userHeadIcon" src={userHead}/>

@@ -5,20 +5,20 @@ import user from './../store/userinfo';
 import Config from './../store/mainNavConfig';
 
 @observer
-export default class Main extends Component {
+export default class NavContent extends Component {
     constructor(props) {
         super(props);
         this.state = {
             defaultIndex: 0,
             defautModule: null,
-            navigationList: []
+            navList: []
         };
     }
 
     componentDidMount() {
         if(user.data.username != null){
             this.setState({
-                navigationList: Config[user.data.userGrade],
+                navList: Config[user.data.userGrade],
                 defautModule: Config[user.data.userGrade][0].module
             });
         }
@@ -35,7 +35,7 @@ export default class Main extends Component {
             <div className="row bodyRow">
                 <ul className="nav">
                     {
-                        this.state.navigationList.map((item, index) => {
+                        this.state.navList.map((item, index) => {
                             const isActive = index == this.state.defaultIndex ? 'active' : '';
                             return (
                                 <li key={item.name} className={isActive}
