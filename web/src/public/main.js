@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 import {observer} from 'mobx-react';
 import user from './../store/userinfo';
-import Config from './../store/ModuleConfig';
+import Config from './../store/ModuleNavConfig';
 
 @observer
 export default class Main extends Component {

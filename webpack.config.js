@@ -4,6 +4,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');//清除已经build�
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const AutoDllPlugin = require('autodll-webpack-plugin');//分离第三方库插件
 //const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 //const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const webpackConfig = {
@@ -87,6 +88,19 @@ const webpackConfig = {
             filename:'index.html',
             template:'./web/index.html',
             favicon:'./web/favicon.ico'
+        }),
+        new AutoDllPlugin({
+            inject: true,
+            debug: true,
+            filename: '[name].min.js',
+            path: 'lib',
+            entry: {
+                vendor: [
+                    'react',
+                    'react-dom',
+                    'antd'
+                ]
+            }
         }),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production')
