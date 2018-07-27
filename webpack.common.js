@@ -7,7 +7,7 @@ const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');//清除已经build过的文件
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-//const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     entry: {
         index: path.resolve(__dirname, './web/src/index.js')
@@ -81,6 +81,12 @@ module.exports = {
             options:{
                 eslint: './.eslintrc'
             }
+        }),
+        new HtmlWebpackPlugin({
+            title:'水利资金绩效考核系统',
+            filename:'index.html',
+            template:'./web/index.html',
+            favicon:'./web/favicon.ico'
         }),
         new MiniCssExtractPlugin({
             filename: "[name].bundle.css",
