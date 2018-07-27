@@ -75,7 +75,7 @@ module.exports = {
         extensions: ['.js', '.jsx', '.css', '.scss']
     },
     plugins: [
-        new CleanWebpackPlugin(['build']),//清除dist目录中已经build过的文件
+        new CleanWebpackPlugin(['./web/build']),//清除build目录中已经build过的文件
         new webpack.LoaderOptionsPlugin({
             test: /\.(js|jsx)$/,
             options:{

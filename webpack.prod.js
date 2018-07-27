@@ -30,7 +30,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 common.plugins.push(new HtmlWebpackPlugin({
     title:'水利资金绩效考核系统',
     filename:'index.html',
-    template:'./web/index.html'
+    template:'./web/index.html',
+    favicon:'./web/favicon.ico'
 }));
 module.exports = merge(common, {
     mode: 'production'

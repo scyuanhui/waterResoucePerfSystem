@@ -71,7 +71,7 @@ const webpackConfig = {
         extensions: ['.js', '.jsx', '.css', '.scss']
     },
     plugins: [
-        new CleanWebpackPlugin(['build']),//清除dist目录中已经build过的文件
+        new CleanWebpackPlugin(['./web/build']),//清除build目录中已经build过的文件
         new webpack.LoaderOptionsPlugin({
             test: /\.(js|jsx)$/,
             options:{
@@ -85,7 +85,8 @@ const webpackConfig = {
         new HtmlWebpackPlugin({
             title:'水利资金绩效考核系统',
             filename:'index.html',
-            template:'./web/index.html'
+            template:'./web/index.html',
+            favicon:'./web/favicon.ico'
         }),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production')
