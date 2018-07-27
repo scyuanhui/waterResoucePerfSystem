@@ -11,7 +11,7 @@ class Performance extends Component{
     }
     render(){
         return (
-            <div>
+            <div style={{color:'#2f93bb'}}>
                 <h5>performance</h5>
                 <p style={{lineHeight:'480px',textAlign:'center'}}>this is performance page</p>
             </div>

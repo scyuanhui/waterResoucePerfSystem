@@ -11,7 +11,7 @@ class Auditor extends Component{
     }
     render(){
         return (
-            <div>
+            <div style={{color:'orange'}}>
                 <h5>auditor</h5>
                 <p style={{lineHeight:'480px',textAlign:'center'}}>this is auditor page</p>
             </div>

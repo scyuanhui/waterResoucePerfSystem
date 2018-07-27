@@ -11,7 +11,7 @@ class DataCount extends Component{
     }
     render(){
         return (
-            <div>
+            <div style={{color:'purple'}}>
                 <h5>dataCount</h5>
                 <p style={{lineHeight:'480px',textAlign:'center'}}>this is dataCount page</p>
             </div>

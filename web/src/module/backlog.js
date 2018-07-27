@@ -11,7 +11,7 @@ class BackLog extends Component{
     }
     render(){
         return (
-            <div>
+            <div style={{color:'green'}}>
                 <h5>backLog</h5>
                 <p style={{lineHeight:'480px',textAlign:'center'}}>this is backLog page</p>
             </div>
