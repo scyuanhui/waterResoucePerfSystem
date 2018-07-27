@@ -27,7 +27,7 @@ class User{
         session.setItem('USERNAME',username);
     }
     @action.bound logout(){
-        this.data.username = null;
+        this.data = {};
         session.removeItem('USERNAME');
     }
     @action.bound loginCheck(username,password){

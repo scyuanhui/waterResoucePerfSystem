@@ -17,22 +17,15 @@ export default class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user:null
+            user:user.data.username
         };
     }
     logout(){
-        this.setState({
-            user:null
-        },() => {
-            user.logout();
-        });
-    }
-    componentDidMount(){
+        user.logout();
         this.setState({
             user:user.data.username
         });
     }
-
     render() {
         //登录拦截
         const loginWindown = <LoginView />;
