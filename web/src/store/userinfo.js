@@ -1,4 +1,7 @@
 import {observable,action} from 'mobx';
+import {Session} from './../public/common';
+
+const session = new Session();
 
 class User{
     constructor(){
@@ -13,7 +16,7 @@ class User{
     }
     @observable data = {
         //模拟用户，(province)省级，(city)市级，(county)区县级
-        username: null,
+        username: session.getItem('USERNAME') ? session.getItem('USERNAME') : null,
         token: '5w4f8gfnbv2d812',
         userGrade:this.ranGrade,
         userUnit:this.ranUnit,
@@ -21,9 +24,11 @@ class User{
     };
     @action.bound login(username){
         this.data.username = username;
+        session.setItem('USERNAME',username);
     }
     @action.bound logout(){
         this.data.username = null;
+        session.removeItem('USERNAME');
     }
     @action.bound loginCheck(username,password){
         if(username == ''){

@@ -20,16 +20,17 @@ class LoginForm extends Component {
         const username = trim(this.refs.username.value);
         const password = trim(this.refs.password.value);
         const result = user.loginCheck(username,password);
+        const mountNode = window.root;
         if (result.status) {
             user.login(username);
             ReactDOM.render(
                 <LoginLoading />,
-                document.getElementById('root')
+                mountNode
             );
             setTimeout(() => {
                 ReactDOM.render(
                     <App />,
-                    document.getElementById('root')
+                    mountNode
                 );
             }, 1000);
         }else{

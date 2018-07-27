@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom';
 import userHead from './../static/img/userhead.png';
 import userOnLine from './../static/img/headOnLine.png';
 
-export default class Header extends Component {
+export default class Head extends Component {
     constructor(props) {
         super(props);
     }

@@ -6,9 +6,9 @@ import user from './store/userinfo';
 //login
 import LoginView from './public/login';
 //header
-import Header from './public/header';
+import Head from './public/head';
 //nav,content
-import NavContent from './public/navigation-content';
+import Main from './public/main';
 //css
 import './static/css/index.css';
 
@@ -37,8 +37,8 @@ export default class App extends Component {
         //登录拦截
         const loginWindown = <LoginView />;
         const mainWindown = [
-            <Header key="head" userinfo={user} exit={this.logout.bind(this)} />,
-            <NavContent key="NavContent" />
+            <Head key="head" userinfo={user} exit={this.logout.bind(this)} />,
+            <Main key="NavContent" />
         ];
         return this.state.user != null ? mainWindown : loginWindown;
     }
@@ -46,5 +46,5 @@ export default class App extends Component {
 
 ReactDOM.render(
     <App />,
-    document.getElementById('root')
+    window.root
 );
