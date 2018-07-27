@@ -23,15 +23,9 @@ class LoginForm extends Component {
         const mountNode = window.root;
         if (result.status) {
             user.login(username);
-            ReactDOM.render(
-                <LoginLoading />,
-                mountNode
-            );
+            ReactDOM.render(<LoginLoading />,mountNode);
             setTimeout(() => {
-                ReactDOM.render(
-                    <App />,
-                    mountNode
-                );
+                ReactDOM.render(<App />,mountNode);
             }, 1000);
         }else{
             message.warning(result.text,1);
