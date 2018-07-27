@@ -1,6 +1,7 @@
 .headerRow{
     /*此行高92px*/
-    padding:5px 0;
+    padding:5px 0 4px 0;
+    box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;
     border-bottom:1px solid #F5F5F5;
 }
 .headerRow .logo a{
