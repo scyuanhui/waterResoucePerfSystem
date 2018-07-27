@@ -38,7 +38,7 @@ export default class App extends Component {
         const loginWindown = <LoginView />;
         const mainWindown = [
             <Header key="head" userinfo={user} exit={this.logout.bind(this)} />,
-            <Main key="nav" />
+            <NavContent key="NavContent" />
         ];
         return this.state.user != null ? mainWindown : loginWindown;
     }
