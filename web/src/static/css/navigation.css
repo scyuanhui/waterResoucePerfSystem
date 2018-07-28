@@ -13,6 +13,7 @@
 .bodyRow>.content{
     width:calc(100% - 100px);/*减去导航栏宽度*/
     background:#f8f8f8;
+    padding:10px;
 }
 .nav>li:first-child{
     margin-top:50px;

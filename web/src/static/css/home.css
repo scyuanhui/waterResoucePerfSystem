@@ -1,0 +1,44 @@
+.homeOneRow,.homeTwoRow,.homeThreeRow{padding:15px 0}
+.col-feedback,.smallBlock,.col-self{width:90%;margin:0 auto;padding:15px 0}
+.homeTwoRow .col-3,.homeTwoRow .col-6{padding:15px 0}
+/*第一行*/
+.homeOneRow .pageTitle{padding:0 15px}
+.homeOneRow>div{overflow:hidden;padding:0 15px}
+.homeOneRow>div>span{display:block;float:left;text-indent:30px}
+/*第二行*/
+.col-feedback,.col-self{background:#fff;}
+.col-feedback p{height:30px;line-height:30px;text-indent:30px}
+.col-feedback #feedback{height:260px}
+.col-feedback .feedbackLvl{text-align:center}
+.col-feedback .feedbackLvl>span{padding:0 8%}
+.col-smallBlock>.blockOne,.col-smallBlock>.blockTwo{background:#fff;padding:15px 0;overflow:hidden}
+.col-smallBlock>.blockTwo{margin-top:20px}
+.col-smallBlock .module-title{height:30px;line-height:30px;text-indent:30px;margin-bottom:15px}
+.blockDesc{width:45%;border:solid #ccc;border-width:1px 1px 0 1px;float:left;margin-left:3.3333%;border-radius:5px}
+.blockDesc>span{display:block;text-align:center}
+.blockDesc>span.perfNum{height:60px;line-height:60px;position:relative;background:#f6f3fb;border-radius:5px 5px 0 0;}
+.blockDesc>span.perStatus{height:30px;line-height:30px;}
+.blockDesc>span.perfBottom{height:5px;}
+.blockDesc>span.perfNum>b{font-size:1.4em}
+.blockDesc>span.perfNum>.iconfont{position:absolute;right:30px}
+.perfOk>span.perfNum>.iconfont{color:#3B86FF}
+.perfWarning>span.perfNum>.iconfont{color:#fe8900;}
+.perfError>span.perfNum>.iconfont{color:#ff0830;}
+.perfOk .perStatus{background:#e1e1fc}
+.perfOk .perfBottom{border-radius:0 0 5px 5px;border-bottom:5px solid #3B86FF}
+.perfWarning .perfBottom{border-radius:0 0 5px 5px;background:#fe8900}
+.perfError .perfBottom{border-radius:0 0 5px 5px;background:#ff0830}
+.blockOne .blockDesc:last-child .perStatus{background:#fef5e1}
+.blockTwo .blockDesc:last-child .perStatus{background:#fee5ea}
+.col-self{border-radius:5px}
+.col-self .module-title{overflow:hidden;text-indent:30px}
+.col-self .module-title>span{float:right;font-size:0.6em;padding-right:10px}
+.col-self .module-title>span>b{color:#3B86FF}
+.col-self ul{width:calc(100% - 60px);margin:0 auto}
+.col-self ul li{overflow:hidden;margin:30px 0}
+.col-self ul li i,.col-self ul li span{display:inline-block;float:left;height:40px;line-height:40px;}
+.col-self ul li i{font-size:3em;width:50px}
+.col-self ul li span.seflComNum{width:calc(100% - 100px);text-align:center;font-size:2em}
+.col-self ul li span:last-child{width:50px;text-align:right}
+/*第三行*/
+.col-bar{background:#fff;width:calc(100% - 15px);margin-left:15px;padding-top:15px;height:365px;border-radius:5px;}

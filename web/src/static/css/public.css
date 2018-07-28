@@ -14,16 +14,26 @@ input,select,textarea{
 }
 /*灰白*/
 .grey{color:#C8CED3 !important;}
-/*禁用字体颜色*/
-.disabled{color:palevioletred !important;}
-/*启用字体颜色*/
-.enabled{color:#5fb878 !important;}
+/*warning*/
+.warning{color:#fe8900 !important;}
+/*error字体颜色*/
+.error{color:#ff0830 !important;}
+/*优字体颜色*/
+.actor{color:#3B86FF !important;}
 /*待处理*/
 .unhanld{color:orange !important;}
 /*处理中*/
 .hanlding{color:#2ED2F2 !important;}
 /*已完成*/
 .finished{color:#5fb878 !important;}
+/*title*/
+.pageTitle{font-size:1.6em;color:#3B86FF}
+.module-title{font-size:1.4em;font-weight:bold}
+/*圆角*/
+.borderRadius3{border-radius:3px}
+.borderRadius5{border-radius:5px}
+/*阴影*/
+.boxShadow{box-shadow:0 0 15px #ccc;}
 /*仿bootstrap.css*/
 .container{}
 .row{overflow:hidden;clear:both;display:block}

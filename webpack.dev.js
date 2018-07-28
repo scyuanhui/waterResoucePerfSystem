@@ -3,22 +3,22 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 
-const AutoDllPlugin = require('autodll-webpack-plugin');//分离第三方库插件
+//const AutoDllPlugin = require('autodll-webpack-plugin');//分离第三方库插件
 
 common.plugins.push(new webpack.HotModuleReplacementPlugin());
-common.plugins.push(new AutoDllPlugin({
-    inject: true,
-    debug: true,
-    filename: '[name].min.js',
-    path: 'lib',
-    entry: {
-        vendor: [
-            'react',
-            'react-dom',
-            'antd'
-        ]
-    }
-}));
+//common.plugins.push(new AutoDllPlugin({
+//    inject: true,
+//    debug: true,
+//    filename: '[name].min.js',
+//    path: 'lib',
+//    entry: {
+//        vendor: [
+//            'react',
+//            'react-dom',
+//            'antd'
+//        ]
+//    }
+//}));
 
 module.exports = merge(common, {
     mode: 'development',

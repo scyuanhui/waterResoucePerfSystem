@@ -3,6 +3,9 @@
 **/
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
+import HomeOneRow from './home/homeTop';
+import HomeTwoRow from './home/homeCenter';
+import HomeThreeRow from './home/homeBottom';
 
 export default class Home extends Component{
     constructor(props){
@@ -11,9 +14,10 @@ export default class Home extends Component{
     }
     render(){
         return (
-            <div style={{height:'1920px',textAlign:'center',color:'#3B86FF'}}>
-                <h5>home</h5>
-                <p style={{lineHeight:'480px',textAlign:'center'}}>this is home page</p>
+            <div className="container homeContainer">
+                <HomeOneRow />
+                <HomeTwoRow />
+                <HomeThreeRow />
             </div>
         );
     }
