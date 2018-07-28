@@ -69,6 +69,10 @@ export class Axios{
         });
     }
 }
+function setLen(str){
+    str = str.toString().length < 2 ? 0 + str.toString() : str;
+    return str;
+}
 //日期格式化
 export function formatDate(dateStr,reg) {
     if(!dateStr){
@@ -76,7 +80,7 @@ export function formatDate(dateStr,reg) {
     }
     let _data = new Date(dateStr);
     let year = _data.getFullYear();
-    let month = this.setLen(_data.getMonth() + 1);
+    let month = setLen(_data.getMonth() + 1);
     let date = setLen(_data.getDate());
     let hour = setLen(_data.getHours());
     let minute = setLen(_data.getMinutes());
@@ -90,10 +94,6 @@ export function formatDate(dateStr,reg) {
         'HMS':hour + ":" + minute + ":" + second,
         'YMD_HMS':year + _reg + month + _reg + date + " " + hour + ":" + minute + ":" + second
     };
-    function setLen(str){
-        str = str.toString().length < 2 ? 0 + str.toString() : str;
-        return str;
-    }
 }
 //字符串去空
 export function trim(str){
