@@ -1,0 +1,27 @@
+/*省级*/
+.perfNavRow ul{overflow:hidden}
+.perfNavRow ul li{width:120px;float:left}
+.perfNavRow ul li a,.perfNavRow ul li span{display:block;}
+.perfNavRow ul li a{font-size:1.2em;color:#2B344C;padding-top:20px;}
+.perfNavRow ul li span{border-top:2px solid #3B86FF;width:20px;display:none}
+.perfNavRow ul li.active a{color:#3B86FF}
+.perfNavRow ul li.active span{display:block;}
+.cityItemStartRow{overflow:hidden;padding:30px 80px 15px 0}
+.cityItemStartRow>div{float:left}
+.cityItemStartRow>button{float:right}
+.cityItemStartRow>div>.iconfont{color:#3B86FF}
+.cityItemStartRow>div>b{font-size:1.6em;padding:0 30px 0 10px}
+.collectRow{width:96%;margin-left:2%}
+.collectRow>div{overflow:hidden}
+.collectRow>div>span{display:inline-block;float:left;width:14.28%;line-height:30px;font-size:1.2em}
+.collectRow>div:last-child span{font-size:1.4em;font-weight:600}
+.cityTableRow{
+    margin-top:30px;
+    height:0;
+    overflow:hidden;
+    transition: height .2s linear;
+    -moz-transition: height .2s linear; /* Firefox 4 */
+    -webkit-transition: height .2s linear; /* Safari 和 Chrome */
+    -o-transition: height .2s linear; /* Opera */
+}
+.cityRow>.cityItem{margin-bottom:40px;padding-bottom:30px;background:#fff;border-radius:5px}

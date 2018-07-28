@@ -3,6 +3,9 @@
  * **/
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
+//导入省级绩效考评
+import ProvincePerformance from './performance/perf-province/province';
+
 
 export default class Performance extends Component{
     constructor(props){
@@ -10,11 +13,6 @@ export default class Performance extends Component{
         this.state = {};
     }
     render(){
-        return (
-            <div style={{color:'#2f93bb'}}>
-                <h5>performance</h5>
-                <p style={{lineHeight:'480px',textAlign:'center'}}>this is performance page</p>
-            </div>
-        );
+        return <ProvincePerformance />;
     }
 }
