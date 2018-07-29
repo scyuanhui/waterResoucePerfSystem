@@ -234,11 +234,11 @@ class ScreenStraight extends Component{
                 },
                 {
                     name:'X',
-                    children:['x1','x2']
+                    children:['x1','x2','x3','x4']
                 },
                 {
                     name:'Y',
-                    children:['Y1','Y2']
+                    children:['Y1','Y2','Y3','Y4']
                 },
                 {
                     name:'Z',
