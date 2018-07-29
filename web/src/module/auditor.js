@@ -3,6 +3,8 @@
  * **/
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
+//导入省级审核批复
+import ProvinceAuditor from './auditor/province/index';
 
 export default class Auditor extends Component{
     constructor(props){
@@ -10,11 +12,6 @@ export default class Auditor extends Component{
         this.state = {};
     }
     render(){
-        return (
-            <div style={{color:'orange'}}>
-                <h5>auditor</h5>
-                <p style={{lineHeight:'480px',textAlign:'center'}}>this is auditor page</p>
-            </div>
-        );
+        return <ProvinceAuditor />;
     }
 }

@@ -1,0 +1,12 @@
+/*省级*/
+.waitAuditorRow{
+    background:#fff;
+    margin-top:20px;
+    padding:20px 0;
+}
+.waitAuditorTableTop>i{
+    color:orange;
+}
+.waitAuditorTableTop>b{
+    padding:0 15px;
+}

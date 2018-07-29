@@ -4,13 +4,14 @@
  */
 import React,{Component} from 'react';
 import {setEchartPie} from './../../public/pie';
+import {echartDefaultColor} from './../../public/common';
 
 class HomePie extends Component{
     constructor(props){
         super(props);
         this.state = {
             name:'绩效结果反馈',
-            color:['#3b86ff','#64e3a3','#ff8373','#a3a0fb'],
+            color:echartDefaultColor,
             data:[
                 {value:(Math.random()*200).toFixed(0), name:'优'},
                 {value:(Math.random()*200).toFixed(0), name:'良'},

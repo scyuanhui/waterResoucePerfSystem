@@ -28,5 +28,24 @@ export function setEchartPie(o){
     };
     e.setOption(option);
 }
-
-
+export function setBasePie(o){
+    const e = echarts.init(document.getElementById(o.id));
+    const option = {
+        color:o.color,
+        series: [
+            {
+                name:o.name,
+                type:'pie',
+                radius: ['50%', '70%'],
+                label: {
+                    normal: {
+                        show: false,
+                        position: 'center'
+                    }
+                },
+                data:o.data
+            }
+        ]
+    };
+    e.setOption(option);
+}

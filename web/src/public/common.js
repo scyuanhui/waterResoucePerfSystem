@@ -106,3 +106,4 @@ export function trim(str){
     }
     return result;
 }
+export const echartDefaultColor = ['#3b86ff','#64e3a3','#ff8373','#a3a0fb'];

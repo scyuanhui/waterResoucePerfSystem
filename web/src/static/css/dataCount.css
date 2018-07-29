@@ -1,0 +1,7 @@
+.echartRow{overflow:hidden;margin-top:20px}
+.echartRow .col-9 .dataCountBar{height:400px;padding-top:20px;background:#fff}
+.echartRow .col-3 .dataCount-feedback{height:400px;width:calc(100% - 20px);margin-left:20px;background:#fff}
+.echartRow .col-3 .dataCount-feedback .module-title{padding:20px 0;text-indent:30px}
+.echartRow .col-3 .dataCount-feedback .grey{text-indent:30px}
+.echartRow .feedbackLvl{text-align:center}
+.echartRow .feedbackLvl>span{padding:0 8%}

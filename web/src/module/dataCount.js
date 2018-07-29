@@ -3,6 +3,7 @@
  * **/
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
+import DataCountContent from './dataCount/index';
 
 export default class DataCount extends Component{
     constructor(props){
@@ -10,11 +11,6 @@ export default class DataCount extends Component{
         this.state = {};
     }
     render(){
-        return (
-            <div style={{color:'purple'}}>
-                <h5>dataCount</h5>
-                <p style={{lineHeight:'480px',textAlign:'center'}}>this is dataCount page</p>
-            </div>
-        );
+        return <DataCountContent />;
     }
 }

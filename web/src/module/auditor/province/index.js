@@ -1,13 +1,12 @@
 /**
- * Created by Lenovo on 2018/7/28.
- * 省级绩效考评
+ * Created by Lenovo on 2018/7/29.
+ * 省级审核批复
  */
 import React,{Component} from 'react';
-import CityList from './selfResult';
-import PerfRepetion from './perfRepetition';
-import EvalSchedule from './evaluateSchedule';
+import WaitAuditor from './waitAuditor';
+import SelfWaitAuditor from './selfWaitAuditor';
 
-//省级绩效考评头部
+//省级审核批复头部
 class ProvinceHead extends Component {
     constructor(props) {
         super(props);
@@ -17,12 +16,8 @@ class ProvinceHead extends Component {
         return (
             <div className="row provHead">
                 <div className="col-6">
-                    <p className="pageTitle">绩效考评</p>
+                    <p className="pageTitle">审核批复</p>
                     <p className="grey">您可以选择操作或者查看</p>
-                </div>
-                <div className="col-6 text-right">
-                    <button className="btn btn-md btn-empty">刷新列表</button>
-                    <button className="btn btn-md btn-empty">查看自评汇总结果</button>
                 </div>
             </div>
         );
@@ -36,19 +31,15 @@ class ProvinceNav extends Component {
         super(props);
         this.state = {
             selectedIndex: 0,
-            selectedModule:<CityList />,
+            selectedModule:<WaitAuditor />,
             navList:[
                 {
-                    name:'自评结果',
-                    module:<CityList />
+                    name:'指标审核',
+                    module:<WaitAuditor />
                 },
                 {
-                    name:'绩效复评',
-                    module:<PerfRepetion />
-                },
-                {
-                    name:'评价进度',
-                    module:<EvalSchedule />
+                    name:'自评审核',
+                    module:<SelfWaitAuditor />
                 }
             ]
         };
@@ -88,19 +79,17 @@ class ProvinceNav extends Component {
 }
 
 
-export default class ProvincePerformance extends Component {
+export default class ProvinceAuditor extends Component {
     constructor(props) {
         super(props);
     }
 
     render() {
         return (
-            <div className="container ProvincePerformanceContainer">
+            <div className="container ProvinceAuditorContainer">
                 <ProvinceHead />
                 <ProvinceNav />
             </div>
         );
     }
 }
-
-

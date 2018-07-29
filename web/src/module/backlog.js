@@ -3,6 +3,7 @@
  * **/
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
+import Backlog from './backlog/index';
 
 export default class BackLog extends Component{
     constructor(props){
@@ -10,11 +11,6 @@ export default class BackLog extends Component{
         this.state = {};
     }
     render(){
-        return (
-            <div style={{color:'green'}}>
-                <h5>backLog</h5>
-                <p style={{lineHeight:'480px',textAlign:'center'}}>this is backLog page</p>
-            </div>
-        );
+        return <Backlog />;
     }
 }

@@ -1,0 +1,11 @@
+.backlogRow{
+    background:#fff;
+    margin-top:20px;
+    padding:20px 0;
+}
+.backlogTableTop>i{
+    color:red;
+}
+.backlogTableTop>b{
+    padding:0 15px;
+}
