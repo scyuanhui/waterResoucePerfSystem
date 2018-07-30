@@ -9,7 +9,7 @@ export default class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            defaultIndex: 3,
+            defaultIndex: 2,
             defautModule: null,
             navList: []
         };
@@ -19,7 +19,7 @@ export default class Main extends Component {
         if(user.data.username != null){
             this.setState({
                 navList: Config[user.data.userGrade],
-                defautModule: Config[user.data.userGrade][3].module
+                defautModule: Config[user.data.userGrade][2].module
             });
         }
     }

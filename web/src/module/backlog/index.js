@@ -30,7 +30,7 @@ class BacklogTableTop extends Component{
         return (
             <div className="backlogTableTop">
                 <i className="iconfont icon-dian"></i>
-                <b className="module-title">待办列表</b>
+                <span className="module-title">待办列表</span>
                 <span className="grey">共{this.props.len}项待办事项</span>
             </div>
         );

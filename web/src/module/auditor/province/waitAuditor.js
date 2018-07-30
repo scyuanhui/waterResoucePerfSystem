@@ -1,5 +1,9 @@
 /**
  * Created by Lenovo on 2018/7/29.
+ * 指标待审核
+ */
+/**
+ * Created by Lenovo on 2018/7/29.
  */
 import React,{Component} from 'react';
 import {formatDate} from './../../../public/common';
@@ -12,7 +16,7 @@ class WaitAuditorTableTop extends Component{
         return (
             <div className="waitAuditorTableTop">
                 <i className="iconfont icon-dian"></i>
-                <b className="module-title">指标待审核</b>
+                <span className="module-title">指标待审核</span>
                 <span className="grey">共{this.props.len}条纪录</span>
             </div>
         );

@@ -1,12 +1,16 @@
 /*省级*/
+.ProvinceAuditorContainer{
+    border-radius:5px;
+}
 .waitAuditorRow{
     background:#fff;
-    margin-top:20px;
     padding:20px 0;
 }
 .waitAuditorTableTop>i{
     color:orange;
 }
-.waitAuditorTableTop>b{
-    padding:0 15px;
+/*市级*/
+.waitAuditorRow{
+    border-radius:5px;
+    margin-top:20px;
 }

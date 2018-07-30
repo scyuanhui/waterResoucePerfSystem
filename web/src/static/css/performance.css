@@ -1,9 +1,16 @@
+/*自评汇总CSS*/
+div.collectRow>ul{width:96%;margin:0 auto;padding-bottom:20px;}
+div.collectRow>ul>li{overflow:hidden}
+div.collectRow>ul>li>span{display:inline-block;float:left}
+div.collectRow>ul>li:last-child>span{font-weight:600;font-size:1.4em}
 /*省级*/
 /*绩效自评*/
 .perfNavRow ul{overflow:hidden}
-.perfNavRow ul li{width:120px;float:left}
+.perfNavRow ul li{width:100px;float:left}
 .perfNavRow ul li a,.perfNavRow ul li span{display:block;}
-.perfNavRow ul li a{font-size:1.2em;color:#2B344C;padding-top:20px;}
+.row.perfNavRow ul li{margin:20px 0}
+.perfNavRow ul li a{font-size:1.2em;color:#2B344C;}
+.perfNavRow ul li a{font-size:1.2em;color:#2B344C;}
 .perfNavRow ul li span{border-top:2px solid #3B86FF;width:20px;display:none}
 .perfNavRow ul li.active a{color:#3B86FF}
 .perfNavRow ul li.active span{display:block;}
@@ -13,10 +20,7 @@
 .cityItemStartRow>button{float:right}
 .cityItemStartRow>div>.iconfont{color:#3B86FF}
 .cityItemStartRow>div>b{font-size:1.6em;padding:0 30px 0 10px}
-.collectRow{width:96%;margin-left:2%}
-.collectRow>div{overflow:hidden}
-.collectRow>div>span{display:inline-block;float:left;width:14.28%;line-height:30px;font-size:1.2em}
-.collectRow>div:last-child span{font-size:1.4em;font-weight:600}
+div.provinceCollectRow>ul>li>span{width:14.28%}
 .cityTableRow{
     margin-top:30px;
     height:0;
@@ -77,3 +81,14 @@
 .classify ul li span b{
     font-size:1.5em;
 }
+/*市级*/
+.assessmentTable{background:#fff;padding-bottom:20px;margin-bottom:20px;border-radius:5px}
+.assessmentTable>div:first-child{padding:15px 0}
+.assessmentTable>div:first-child .iconfont{color:#3B86FF}
+.cityResultRow{background:#fff}
+.cityResultHead{width:96%;margin-left:2%;overflow:hidden;padding:20px 0}
+.cityResultHead>div:first-child{float:left}
+.cityResultHead>div:last-child{float:right}
+.cityResultHead>div:first-child .iconfont{color:#3B86FF}
+div.cityCollectSelfRow>ul>li>span{width:14.28%}
+div.cityCollectReviewRow>ul>li>span{width:16.66%}

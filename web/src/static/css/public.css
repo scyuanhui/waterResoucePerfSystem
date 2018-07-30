@@ -28,7 +28,7 @@ input,select,textarea{
 .finished{color:#5fb878 !important;}
 /*title*/
 .pageTitle{font-size:1.6em;color:#3B86FF}
-.module-title{font-size:1.4em;font-weight:bold}
+.module-title{font-size:1.4em;font-weight:bold;padding:0 6px}
 /*圆角*/
 .borderRadius3{border-radius:3px}
 .borderRadius5{border-radius:5px}
@@ -36,7 +36,7 @@ input,select,textarea{
 .boxShadow{box-shadow:0 0 15px #ccc;}
 /*仿bootstrap.css*/
 .container{}
-.row{overflow:hidden;clear:both;display:block}
+.row{overflow:hidden;clear:both;display:block;}
 .col-1,.col-2,.col-3,.col-4,.col-5,.col-6,.col-7,.col-8,.col-9,.col-10,.col-11,.col-12{display:block;float:left;}
 .col-1{width:8.3333%;}
 .col-2{width:16.6666%;}
@@ -90,17 +90,4 @@ table{width:96%;margin-left:2%}
 table td{border-bottom:1px solid #d0dfff;font-size:1.2em;text-align:center}
 table thead td{padding:15px 0;color:#000;}
 table tbody td,table td{padding:10px 0;color:#2B344C}
-/*btn*/
-.btn{outline:none;text-decoration:none;opacity:0.8;border:none;border-radius:3px;margin-right:5px;font-size:0.8em;cursor:pointer;opacity:0.8;letter-spacing:2px}
-.btn:hover{opacity:1}
-.btn-promise{background:#3B86FF;color:#fff}
-.btn-warning{background:palevioletred;color:#fff}
-.btn-success{background:limegreen;color:#fff}
-.btn-orange{background:orange;color:#fff;}
-.btn-default{background:#ccc;color:#666}
-.btn-empty{background:#fff;color:#3B86FF;border:1px solid #3B86FF;}
-.btnRadius{border-radius:10px}
-.btn-xs{padding:2px 4px}
-.btn-sm{padding:4px 8px}
-.btn-md{padding:6px 16px}
-.btn-lg{padding:15px 40px}
+

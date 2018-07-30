@@ -1,14 +1,10 @@
 /**
- * Created by Lenovo on 2018/7/29.
- * 自评待审核
- */
-/**
- * Created by Lenovo on 2018/7/29.
- */
+ *市级审核待批复
+ **/
 import React,{Component} from 'react';
 import {formatDate} from './../../../public/common';
 
-class SelfWaitAuditorTableTop extends Component{
+class WaitAuditorTableTop extends Component{
     constructor(props) {
         super(props);
     }
@@ -16,13 +12,13 @@ class SelfWaitAuditorTableTop extends Component{
         return (
             <div className="waitAuditorTableTop">
                 <i className="iconfont icon-dian"></i>
-                <span className="module-title">自评待审核</span>
+                <span className="module-title">待审核</span>
                 <span className="grey">共{this.props.len}条纪录</span>
             </div>
         );
     }
 }
-class SelfWaitAuditorTable extends Component{
+class WaitAuditorTable extends Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -36,10 +32,10 @@ class SelfWaitAuditorTable extends Component{
         });
         return (
             <div className="waitAuditorContainer">
-                <SelfWaitAuditorTableTop len={this.state.list.length} />
+                <WaitAuditorTableTop len={this.state.list.length} />
                 <table>
                     <thead>
-                    <tr>{tds}</tr>
+                        <tr>{tds}</tr>
                     </thead>
                     <tbody>
                     {
@@ -50,7 +46,7 @@ class SelfWaitAuditorTable extends Component{
                                     <td>
                                         <span className="btn btn-xs btn-empty btnRadius">{(Math.random()*100).toFixed(0)}个贫困县</span>
                                     </td>
-                                    <td>自评待审核</td>
+                                    <td>自评审核</td>
                                     <td>{formatDate(new Date(),'-').YMD_HMS}</td>
                                     <td>
                                         <button className="btn btn-md btn-empty borderradius3">查看</button>
@@ -65,16 +61,15 @@ class SelfWaitAuditorTable extends Component{
         );
     }
 }
-export default class SelfWaitAuditor extends Component{
+export default class WaitAuditor extends Component{
     constructor(props) {
         super(props);
     }
     render(){
         return (
             <div className="waitAuditorRow">
-                <SelfWaitAuditorTable />
+                <WaitAuditorTable />
             </div>
         );
     }
 }
-

@@ -2,10 +2,8 @@
     background:#fff;
     margin-top:20px;
     padding:20px 0;
+    border-radius:5px;
 }
 .backlogTableTop>i{
     color:red;
-}
-.backlogTableTop>b{
-    padding:0 15px;
 }

@@ -4,7 +4,9 @@
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 //导入省级绩效考评
-import ProvincePerformance from './performance/perf-province/province';
+import ProvincePerformance from './performance/perf-province/index';
+//导入市级绩效考评
+import CityPerformance from './performance/pref-city/index';
 
 
 export default class Performance extends Component{
@@ -13,6 +15,7 @@ export default class Performance extends Component{
         this.state = {};
     }
     render(){
-        return <ProvincePerformance />;
+        //return <ProvincePerformance />;
+        return <CityPerformance />;
     }
 }

@@ -106,4 +106,30 @@ export function trim(str){
     }
     return result;
 }
+//常用图表颜色，分别是 【优，良，中，差】
 export const echartDefaultColor = ['#3b86ff','#64e3a3','#ff8373','#a3a0fb'];
+//随机数
+export function ranNumber(int){
+    //返回int以内的随机数
+    return (Math.random()*int).toFixed(0);
+}
+//随机日期、时间
+export function ranDate(){
+    const ran = (Math.random()*1000).toFixed(0)*1000000000;
+    const ranTime = new Date().getTime() - parseInt(ran);
+    const dateNum = new Date(ranTime);
+    const year = dateNum.getFullYear();
+    const month = setLen(dateNum.getMonth() + 1);
+    const date = setLen(dateNum.getDate());
+    const hour = setLen(dateNum.getHours());
+    const minute = setLen(dateNum.getMinutes());
+    const second = setLen(dateNum.getSeconds());
+    return {
+        'YEAR':year,
+        'MONTH':month,
+        'DATE':date,
+        'YMD':year + '-' + month + '-' + date,
+        'HMS':hour + ":" + minute + ":" + second,
+        'YMD_HMS':year + '-' + month + '-' + date + " " + hour + ":" + minute + ":" + second
+    };
+}

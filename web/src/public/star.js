@@ -28,7 +28,7 @@ export default class Star extends Component{
                 };
                 return list;
             };
-            return (<a style={{padding:'0 10px'}}>{startList(this.state.defaultLen)}</a>);
+            return (<a style={{padding:'0 10px 0 0'}}>{startList(this.state.defaultLen)}</a>);
         }
     }
 }

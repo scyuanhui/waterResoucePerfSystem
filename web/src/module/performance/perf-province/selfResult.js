@@ -48,17 +48,19 @@ class CityItem extends Component{
                         详情<i className={this.state.defaultUnfold ? "iconfont icon-shang" : "iconfont icon-xia"}></i>
                     </button>
                 </div>,
-                <div key="two" className="collectRow">
-                    <div>{this.state.collects.map((item, index) => <span key={index}>{item}</span>)}</div>
-                    <div>
-                        <span>90</span>
-                        <span>5</span>
-                        <span>17</span>
-                        <span><Star size={4}/>2</span>
-                        <span><Star size={3}/>6</span>
-                        <span><Star size={2}/>8</span>
-                        <span><Star size={1}/>1</span>
-                    </div>
+                <div key="two" className="collectRow provinceCollectRow">
+                    <ul>
+                        <li>{this.state.collects.map((item, index) => <span key={index}>{item}</span>)}</li>
+                        <li>
+                            <span>{(Math.random()*100).toFixed(0)}</span>
+                            <span>{(Math.random()*100).toFixed(0)}</span>
+                            <span>{(Math.random()*100).toFixed(0)}</span>
+                            <span><Star size={4} />{(Math.random()*100).toFixed(0)}</span>
+                            <span><Star size={3} />{(Math.random()*100).toFixed(0)}</span>
+                            <span><Star size={2} />{(Math.random()*100).toFixed(0)}</span>
+                            <span><Star size={1} />{(Math.random()*100).toFixed(0)}</span>
+                        </li>
+                    </ul>
                 </div>,
                 <div key="three" className="cityTableRow" style={{height:this.state.defaultUnfold ? '280px' : '0px'}}>
                     <table border="0" cellPadding="0" cellSpacing="0">

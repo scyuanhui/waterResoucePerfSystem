@@ -1,0 +1,16 @@
+/*btn*/
+.btn{outline:none;text-decoration:none;opacity:0.8;border:none;border-radius:3px;margin-right:5px;font-size:0.8em;cursor:pointer;opacity:0.8;letter-spacing:2px}
+.btn:hover{opacity:1}
+.btn-promise{background:#3B86FF;color:#fff}
+.btn-warning{background:palevioletred;color:#fff}
+.btn-success{background:limegreen;color:#fff}
+.btn-orange{background:orange;color:#fff;}
+.btn-default{background:#ccc;color:#666}
+.btn-empty{background:#fff;color:#3B86FF;border:1px solid #3B86FF;}
+.btnRadius{border-radius:10px}
+.btnRed{color:#ff0830 !important;border:1px solid #ff0830 !important;}
+.btnGreen{color:#5fb878 !important;border:1px solid #5fb878 !important;}
+.btn-xs{padding:2px 4px}
+.btn-sm{padding:4px 8px}
+.btn-md{padding:6px 16px}
+.btn-lg{padding:15px 40px}
