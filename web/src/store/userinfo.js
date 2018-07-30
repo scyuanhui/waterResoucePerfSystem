@@ -9,7 +9,7 @@ class User{
         this.grades = ['province','city','county'];
         this.units = ['四川省水利厅','成都市水利局','金牛区水务处'];
         this.sysLvl = ['省级系统','市级系统','县级系统'];
-        this.ran = 1;//0,1,2随机值(Math.random() * 2).toFixed(0)
+        this.ran = 2;//0,1,2随机值(Math.random() * 2).toFixed(0)
         this.ranGrade = this.grades[this.ran];
         this.ranUnit = this.units[this.ran];
         this.ranSysLvl = this.sysLvl[this.ran];

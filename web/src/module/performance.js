@@ -3,10 +3,12 @@
  * **/
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
-//导入省级绩效考评
-import ProvincePerformance from './performance/perf-province/index';
-//导入市级绩效考评
-import CityPerformance from './performance/pref-city/index';
+//省级绩效考评
+import ProvincePerformance from './performance/province/index';
+//市级绩效考评
+import CityPerformance from './performance/city/index';
+//区县级绩效考评
+import CountPerfmance from './performance/county/index';
 
 
 export default class Performance extends Component{
@@ -16,6 +18,7 @@ export default class Performance extends Component{
     }
     render(){
         //return <ProvincePerformance />;
-        return <CityPerformance />;
+        //return <CityPerformance />;
+        return <CountPerfmance />;
     }
 }
