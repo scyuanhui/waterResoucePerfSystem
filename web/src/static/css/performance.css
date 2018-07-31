@@ -94,5 +94,14 @@ div.cityCollectSelfRow>ul>li>span{width:14.28%}
 div.cityCollectReviewRow>ul>li>span{width:16.66%}
 /*区县级*/
 .row.contentHeadRow{padding:15px 0}
+.row.contentHeadRow>.perDeclareAttr>.grey{padding-right:8px}
+.row.contentHeadRow>.perDeclareAttr>.perDeclareAttrList{height:30px;line-height:30px}
 .row.contentRow{border-radius:5px;background:#fff;padding-bottom:20px;margin-bottom:20px}
 .tableYear{padding:20px 10px}
+/*申报*/
+.stepRow{overflow:hidden}
+.stepRow>div{float:left}
+.stepRow>div:first-child{width:calc(100% - 300px)}
+.stepRow>div:first-child>div{margin:0 auto}
+.stepRow>div:last-child{width:300px}
+.stepRow>div:last-child>span{display:block;height:50px;line-height:50px;text-align:center}

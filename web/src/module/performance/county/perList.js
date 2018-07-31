@@ -2,14 +2,21 @@
  *绩效考评列表(默认绩效考评加载的首页面)
  **/
 import React,{Component} from 'react';
-import {BaseHead,TableYear} from './perf-com';
+import ReactDOM from 'react-dom';
+import {observer} from 'mobx-react';
+//store
+import cNode from './../../../store/PerCurrentMountModule';
+import {BaseHead,TableYear} from './per-com';
+import PerDeclar from './perDeclare';
 
 
 //本年表格
+@observer
 class CurrentYearTable extends Component{
     constructor(props) {
         super(props);
         this.state = {
+
             heads:['考评节点','完成状态','操作'],
             list:[
                 {name:'绩效指标申报1',status:0},
@@ -18,6 +25,9 @@ class CurrentYearTable extends Component{
                 {name:'绩效指标申报4',status:0}
             ]
         };
+    }
+    perDeclare(){
+        cNode.currentNode = <PerDeclar />;
     }
     render(){
         const tds = this.state.heads.map((a,b) => <td key={a}>{a}</td>);
@@ -41,7 +51,7 @@ class CurrentYearTable extends Component{
                                         <td>
                                             {
                                                 item.status == 0 ?
-                                                    <button className="btn btn-md btn-empty">申报</button> :
+                                                    <button className="btn btn-md btn-empty" onClick={this.perDeclare.bind(this)}>申报</button> :
                                                     <button className="btn btn-md btn-empty">查看</button>
                                             }
                                         </td>

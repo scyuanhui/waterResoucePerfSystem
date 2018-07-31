@@ -38,6 +38,7 @@ input,select,textarea{
 /*已完成*/
 .finished{color:#5fb878 !important;}
 /*title*/
+.titleGroup{padding:20px 0}
 .pageTitle{font-size:1.6em;color:#3B86FF}
 .module-title{font-size:1.4em;font-weight:bold;padding:0 6px}
 /*圆角*/
@@ -98,17 +99,37 @@ body{
 .text-right{text-align:right}
 /*table*/
 table{width:96%;margin-left:2%}
-table td{border-bottom:1px solid #d0dfff;font-size:1.2em;text-align:center}
-table thead td{padding:15px 0;color:#000;}
-table tbody td,table td{padding:10px 0;color:#2B344C}
+table td{border-bottom:1px solid #d0dfff;text-align:center}
+table thead td{height:44px;color:#000;}
+table tbody td,table td{height:44px;color:#2B344C}
+table>tbody>tr>td>table{width:100%;margin:0;}
+table>tbody>tr>td>table:first-child{border-left:1px solid #d0dfff}
+table table tr:last-child:last-child td{border:none}
+table td.checkboxTd{position:relative}
+table td input[type=checkbox]{width:0px;height:0px;}
+table td input[type=checkbox]:before{position:absolute;margin-top:-15px;margin-left:-10px;width:20px;height:20px;;text-align:center;border-radius:3px;content:' ';background:#fff;border:1px solid #d9d9d9;cursor:pointer}
+table td input[type=checkbox]:checked::before{content:'';background:url(resource/icon-gou58122755.png) no-repeat 2px 2px;border:1px solid #3B86FF}
+/*步骤条CSS*/
+.stepContainer{width:600px;padding-bottom:10px}
+.stepContainer .steps{position:relative;width:100%;height:60px;}
+.stepContainer .steps div,.stepContainer .steps ul{position:absolute}
+.stepContainer .steps div.line{z-index:1;border-bottom:1px solid #3B86FF;width:calc(100% - 120px);margin-left:60px;margin-top:30px}
+.stepContainer .steps ul.stepsPoints{z-index:2;width:100%;overflow:hidden;margin-top:21px}
+.stepContainer .steps ul li{width:20%;float:left;text-align:center}
+.stepContainer .steps ul.stepsPoints span{display:inline-block;width:20px;height:20px;line-height:18px;border-radius:50%;border:1px solid #3B86FF;text-align:center;background:#fff}
+.stepContainer .steps ul.stepsPoints span.iconfont{color:#3B86FF;font-size:18px !important;}
+.stepTextList span{display:inline-block;width:120px;text-align:center;}
+.stepTextList span b{padding-bottom:15px;border-bottom:1px solid transparent;display:inline-block;height:30px;}
+.stepTextList span.active b{border-bottom:1px solid #3B86FF;color:#3B86FF}
 
 
 /*btn*/
-.btn{outline:none;text-decoration:none;opacity:0.8;border:none;border-radius:3px;margin-right:5px;font-size:0.8em;cursor:pointer;opacity:0.8;letter-spacing:2px}
+.btnGroup{padding:15px 0}
+.btn{outline:none;text-decoration:none;border:none;border-radius:3px;margin-right:5px;font-size:0.8em;cursor:pointer;opacity:0.8;letter-spacing:2px}
 .btn:hover{opacity:1}
 .btn-promise{background:#3B86FF;color:#fff}
 .btn-warning{background:palevioletred;color:#fff}
-.btn-success{background:limegreen;color:#fff}
+.btn-success{background:#28C38B;color:#fff}
 .btn-orange{background:orange;color:#fff;}
 .btn-default{background:#ccc;color:#666}
 .btn-empty{background:#fff;color:#3B86FF;border:1px solid #3B86FF;}
@@ -119,6 +140,14 @@ table tbody td,table td{padding:10px 0;color:#2B344C}
 .btn-sm{padding:4px 8px}
 .btn-md{padding:6px 16px}
 .btn-lg{padding:15px 40px}
+/*绿色圆角小按钮*/
+.btnSmallGreen{padding:1px 15px;color:#28C38B;border:1px solid #28C38B;background:#fff;border-radius:10px}
+/*红色圆角小按钮*/
+.btnSmallRed{padding:1px 15px;color:#ff0830;border:1px solid #ff0830;background:#fff;border-radius:10px}
+/*蓝色圆角小按钮*/
+.btnSmallBlue{padding:1px 15px;color:#3B86FF;border:1px solid #3B86FF;background:#fff;border-radius:10px}
+/*蓝色边框长按钮*/
+.btnLongBlue{padding:8px 80px;color:#3B86FF;border:1px solid #3B86FF;background:#f4f8ff;border-radius:3px}
 .loginContainer{
     height:100%;
 }
@@ -539,6 +568,19 @@ div.provinceCollectRow>ul>li>span{width:14.28%}
 .cityResultHead>div:first-child .iconfont{color:#3B86FF}
 div.cityCollectSelfRow>ul>li>span{width:14.28%}
 div.cityCollectReviewRow>ul>li>span{width:16.66%}
+/*区县级*/
+.row.contentHeadRow{padding:15px 0}
+.row.contentHeadRow>.perDeclareAttr>.grey{padding-right:8px}
+.row.contentHeadRow>.perDeclareAttr>.perDeclareAttrList{height:30px;line-height:30px}
+.row.contentRow{border-radius:5px;background:#fff;padding-bottom:20px;margin-bottom:20px}
+.tableYear{padding:20px 10px}
+/*申报*/
+.stepRow{overflow:hidden}
+.stepRow>div{float:left}
+.stepRow>div:first-child{width:calc(100% - 300px)}
+.stepRow>div:first-child>div{margin:0 auto}
+.stepRow>div:last-child{width:300px}
+.stepRow>div:last-child>span{display:block;height:50px;line-height:50px;text-align:center}
 /*省级*/
 .ProvinceAuditorContainer{
     border-radius:5px;
