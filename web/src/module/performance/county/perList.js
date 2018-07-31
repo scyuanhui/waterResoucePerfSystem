@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 import {observer} from 'mobx-react';
 //store
 import cNode from './../../../store/PerCurrentMountModule';
-import {BaseHead,TableYear} from './per-com';
+import {BaseHead,TableYear} from './perCom';
 import PerDeclar from './perDeclare';
 
 

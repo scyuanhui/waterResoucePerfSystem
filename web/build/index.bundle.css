@@ -124,7 +124,7 @@ table td input[type=checkbox]:checked::before{content:'';background:url(resource
 
 
 /*btn*/
-.btnGroup{padding:15px 0}
+.btnGroup{padding:20px 0}
 .btn{outline:none;text-decoration:none;border:none;border-radius:3px;margin-right:5px;font-size:0.8em;cursor:pointer;opacity:0.8;letter-spacing:2px}
 .btn:hover{opacity:1}
 .btn-promise{background:#3B86FF;color:#fff}

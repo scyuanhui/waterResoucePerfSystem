@@ -1,3 +1,4 @@
-per-com.js----绩效考评功能公共JS
+perCom.js----绩效考评功能公共JS
 perList.js----绩效指标列表(绩效考评首屏)
 perDeclare.js----绩效指标申报(添加绩效指标项)
+perCommitForm.js----绩效指标表单

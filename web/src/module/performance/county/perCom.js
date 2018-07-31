@@ -79,3 +79,38 @@ export class Step extends Component{
         );
     }
 }
+//用于返回多重表格
+export class RenderTable extends Component{
+    //props:list:[]
+    constructor(props) {
+        super(props);
+    }
+    render(){
+        return (
+            <table>
+                <tbody>
+                {
+                    this.props.list.map((item,index) => {
+                        return (
+                            <tr key={index}>
+                                <td>{item+(index+1)}</td>
+                            </tr>
+                        );
+                    })
+                }
+                </tbody>
+            </table>
+        );
+    }
+}
+//用于返回一个表头
+export class RenderThead extends Component{
+    //props:list:['xxx','xxx','xxx','xxx',...]
+    constructor(props) {
+        super(props);
+    }
+    render(){
+        const tds = this.props.list.map((item,index) => <td key={index}>{item}</td>);
+        return <thead><tr>{tds}</tr></thead>;
+    }
+}

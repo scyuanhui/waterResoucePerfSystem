@@ -6,8 +6,9 @@ import {observer} from 'mobx-react';
 //store
 import cNode from './../../../store/PerCurrentMountModule';
 import {ranNumber} from './../../../public/common';
-import {Step} from './per-com';
+import {Step,RenderTable} from './perCom';
 import List from './perList';
+import PerCmtForm from './perCommitForm';
 
 
 //绩效指标申报，添加绩效指标项头部
@@ -24,7 +25,7 @@ class PerDeclareHead extends Component{
                 </div>
                 <div className="col-8 text-right perDeclareAttr">
                     <p className="grey">宜宾地区属性</p>
-                    <div className="perDeclareAttrList">-
+                    <div className="perDeclareAttrList">
                         <span className="btn btnSmallBlue">{ranNumber(100)+'个贫困县'}</span>
                         <span className="btn btnSmallBlue">{ranNumber(100)+'个贫困术'}</span>
                         <span className="btn btnSmallBlue">{'长江干流'}</span>
@@ -35,6 +36,7 @@ class PerDeclareHead extends Component{
     }
 }
 //申报内容列表
+@observer
 class DeclarTable extends Component{
     constructor(props) {
         super(props);
@@ -75,6 +77,9 @@ class DeclarTable extends Component{
             break;
         }
     }
+    openPerForm(){
+        cNode.currentNode = <PerCmtForm />;
+    }
     render() {
         const tds = this.state.heads.map((item,index) => <td key={index}>{item}</td>);
         return (
@@ -89,23 +94,9 @@ class DeclarTable extends Component{
                                 <tr key={b}>
                                     <td style={{background:'#d8e6ff'}}>{a.name}</td>
                                     <td>
-                                        {
-                                            <table>
-                                                <tbody>
-                                                {
-                                                    aList.map((c,d) => {
-                                                        return (
-                                                            <tr key={d}>
-                                                                <td>{c+(d+1)}</td>
-                                                            </tr>
-                                                        );
-                                                    })
-                                                }
-                                                </tbody>
-                                            </table>
-                                        }
+                                        <RenderTable list={aList} />
                                     </td>
-                                    <td>
+                                     <td>
                                          <table>
                                              <tbody>
                                              {
@@ -113,7 +104,7 @@ class DeclarTable extends Component{
                                                      return (
                                                          <tr key={f}>
                                                              <td className="checkboxTd">
-                                                                 <input type="checkbox" onChange={this.checkOnchange.bind(this,e)} />
+                                                                <input type="checkbox" onChange={this.checkOnchange.bind(this,e)} />
                                                              </td>
                                                          </tr>
                                                      );
@@ -121,7 +112,7 @@ class DeclarTable extends Component{
                                              }
                                              </tbody>
                                          </table>
-                                    </td>
+                                     </td>
                                 </tr>
                             );
                         })
@@ -130,7 +121,7 @@ class DeclarTable extends Component{
                 </table>
                 <div className="btnGroup text-center">
                     <button className="btn btnLongBlue" onClick={this.onBackList.bind(this)}>返回&nbsp;&nbsp;修改上一项</button>
-                    <button className="btn btnLongBlue">确认&nbsp;&nbsp;填写下一项</button>
+                    <button className="btn btnLongBlue" onClick={this.openPerForm.bind(this)}>确认&nbsp;&nbsp;填写下一项</button>
                 </div>
             </div>
         );

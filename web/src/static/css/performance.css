@@ -105,3 +105,6 @@ div.cityCollectReviewRow>ul>li>span{width:16.66%}
 .stepRow>div:first-child>div{margin:0 auto}
 .stepRow>div:last-child{width:300px}
 .stepRow>div:last-child>span{display:block;height:50px;line-height:50px;text-align:center}
+/*提交绩效表单*/
+.perCommitFormName{overflow:hidden;text-align:center;padding:20px 0}
+.perCommitFormName span.grey{float:right;margin-right:10px}
