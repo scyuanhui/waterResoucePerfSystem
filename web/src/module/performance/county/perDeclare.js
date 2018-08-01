@@ -5,7 +5,7 @@ import React,{Component} from 'react';
 import {observer} from 'mobx-react';
 //store
 import cNode from './../../../store/PerCurrentMountModule';
-import {ranNumber} from './../../../public/common';
+import {ranNumber,Checkbox} from './../../../public/common';
 import {Step,RenderTable} from './perCom';
 import List from './perList';
 import PerCmtForm from './perCommitForm';
@@ -41,6 +41,7 @@ class DeclarTable extends Component{
     constructor(props) {
         super(props);
         this.state = {
+            checked:true,
             heads:['二级指标','三级指标','操作'],
             list:[
                 {
@@ -65,17 +66,8 @@ class DeclarTable extends Component{
     onBackList(){
         cNode.currentNode = <List />;
     }
-    checkOnchange(item,event){
-        switch (event.currentTarget.checked){
-        case true:
-            console.log('true');
-            console.log(item);
-            break;
-        case false:
-            console.log('false');
-            console.log(item);
-            break;
-        }
+    onChange(flag){
+        console.log(flag);
     }
     openPerForm(){
         cNode.currentNode = <PerCmtForm />;
@@ -104,7 +96,7 @@ class DeclarTable extends Component{
                                                      return (
                                                          <tr key={f}>
                                                              <td className="checkboxTd">
-                                                                <input type="checkbox" onChange={this.checkOnchange.bind(this,e)} />
+                                                                 <Checkbox checked="checked" onChange={this.onChange.bind(this)} />
                                                              </td>
                                                          </tr>
                                                      );
