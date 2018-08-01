@@ -81,10 +81,10 @@ export default class DataCountEchart extends Component{
                         <p className="grey">四川省2017年绩效考核结果</p>
                         <div id="dataCountPie" style={{height:'300px'}}></div>
                         <div className="feedbackLvl">
-                            <span>优</span>
-                            <span>良</span>
-                            <span>中</span>
-                            <span>差</span>
+                            <span className="iconfont icon-you"><b>优</b></span>
+                            <span className="iconfont icon-liang"><b>良</b></span>
+                            <span className="iconfont icon-zhong"><b>中</b></span>
+                            <span className="iconfont icon-cha"><b>差</b></span>
                         </div>
                     </div>
                 </div>
