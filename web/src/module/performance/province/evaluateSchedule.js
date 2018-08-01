@@ -253,99 +253,6 @@ class ScreenArea extends Component{
         );
     }
 }
-//县市直达
-class ScreenStraight extends Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            list:[
-                {
-                    name:'A',
-                    children:['a1县','a2县','a3县']
-                },
-                {
-                    name:'B',
-                    children:['b1县','b2县','b3县','b4县']
-                },
-                {
-                    name:'C',
-                    children:['c1','c2']
-                },
-                {
-                    name:'D',
-                    children:['D1','D2']
-                },
-                {
-                    name:'...',
-                    children:['...','...']
-                },
-                {
-                    name:'X',
-                    children:['x1','x2','x3','x4']
-                },
-                {
-                    name:'Y',
-                    children:['Y1','Y2','Y3','Y4']
-                },
-                {
-                    name:'Z',
-                    children:['z1','z2']
-                }
-            ],
-            listIndex:null,
-            childList:null,
-            childListIndex:null
-        };
-    }
-    oneListEvent(item,index){
-        this.setState({
-            listIndex:index,
-            childList:item.children
-        });
-    }
-    twoListEvent(item,index){
-        this.setState({
-            childListIndex:index
-        });
-        console.log(item);
-        ReactDOM.render(
-            <ScreenCityItem />,
-            document.getElementById('screenCity')
-        );
-    }
-    render(){
-        return (
-            <div className="screenList">
-                <div>
-                    <p>
-                        <span>全部：</span>
-                        {
-                            this.state.list.map((item,index) => {
-                                const isActive = index == this.state.listIndex ? 'active' : '';
-                                return (
-                                    <span key={item.name} className={isActive} onClick={this.oneListEvent.bind(this,item,index)}>{item.name}</span>
-                                );
-                            })
-                        }
-                    </p>
-                </div>
-                <div>
-                    <p>
-                        <span>全部：</span>
-                        {
-                            this.state.childList != null ? this.state.childList.map((item,index) => {
-                                const isActive = index == this.state.childListIndex ? 'active' : '';
-                                return (
-                                    <span key={item} className={isActive} onClick={this.twoListEvent.bind(this,item,index)}>{item}</span>
-                                );
-                            }) : ''
-                        }
-                    </p>
-                </div>
-            </div>
-        );
-    }
-}
 
 
 export default class EvalSchedule extends Component{
@@ -376,11 +283,6 @@ export default class EvalSchedule extends Component{
                     name:'按地区筛选',
                     dataType:'area',
                     module:<ScreenArea />
-                },
-                {
-                    name:'县市直达',
-                    dataType:'straight',
-                    module:<ScreenStraight />
                 }
             ]
         };
@@ -422,12 +324,7 @@ export default class EvalSchedule extends Component{
                         this.state.screenBtns.map((item,index) => {
                             const isActive = index == this.state.screenBtnIndex ? 'active' : '';
                             return (
-                                <span
-                                    data-type={item.dataType}
-                                    key={item.dataType}
-                                    className={isActive}
-                                    onClick={this.onScreenOne.bind(this,index,item)}
-                                >
+                                <span key={item.dataType} className={isActive} onClick={this.onScreenOne.bind(this,index,item)}>
                                     {item.name}
                                     <i className={index == this.state.screenBtnIndex ? "iconfont icon-xia" : "iconfont icon-shang"}></i>
                                 </span>

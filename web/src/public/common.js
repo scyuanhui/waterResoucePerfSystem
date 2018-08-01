@@ -116,7 +116,7 @@ export function ranNumber(int){
 }
 //随机日期、时间
 export function ranDate(){
-    const ran = (Math.random()*1000).toFixed(0)*1000000000;
+    const ran = (Math.random()*1000000000000).toFixed(0);
     const ranTime = new Date().getTime() - parseInt(ran);
     const dateNum = new Date(ranTime);
     const year = dateNum.getFullYear();
