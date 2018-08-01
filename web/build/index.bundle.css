@@ -23,9 +23,18 @@ input,select,textarea{
     border-radius:3px;
     text-indent:5px;
 }
-input[type=checkbox]{width:0px;height:0px;}
-input[type=checkbox]:before{position:absolute;margin-top:-15px;margin-left:-10px;width:20px;height:20px;;text-align:center;border-radius:3px;content:' ';background:#fff;border:1px solid #d9d9d9;cursor:pointer}
-input[type=checkbox]:checked::before{content:'';background:url(resource/icon-gou58122755.png) no-repeat 2px 2px;border:1px solid #3B86FF}
+/*自定义checkbox*/
+span.checkbox{
+    border:1px solid #ccc;
+    display:inline-block;
+    width:18px;
+    height:18px;
+    border-radius:3px;
+}
+span.checkbox.active{
+    background:url(resource/icon-gou58122755.png) no-repeat;
+    border:1px solid #3B86FF;
+}
 /*灰白*/
 .grey{color:#C8CED3 !important;}
 /*warning*/
@@ -121,6 +130,8 @@ table td.checkboxTd{position:relative}
 .stepTextList span{display:inline-block;width:120px;text-align:center;}
 .stepTextList span b{padding-bottom:15px;border-bottom:1px solid transparent;display:inline-block;height:30px;}
 .stepTextList span.active b{border-bottom:1px solid #3B86FF;color:#3B86FF}
+
+
 
 
 /*btn*/
@@ -638,12 +649,13 @@ div.cityCollectReviewRow>ul>li>span{width:16.66%}
 }
 
 .echartRow{overflow:hidden;margin-top:20px}
-.echartRow .col-9 .dataCountBar{height:400px;padding-top:20px;background:#fff}
-.echartRow .col-3 .dataCount-feedback{height:400px;width:calc(100% - 20px);margin-left:20px;background:#fff}
+.echartRow .col-9 .dataCountBar{height:440px;padding-top:20px;background:#fff}
+.echartRow .col-3 .dataCount-feedback{height:440px;width:calc(100% - 20px);margin-left:20px;background:#fff}
 .echartRow .col-3 .dataCount-feedback .module-title{padding:20px 0;text-indent:30px}
 .echartRow .col-3 .dataCount-feedback .grey{text-indent:30px}
 .echartRow .feedbackLvl{text-align:center}
 .echartRow .feedbackLvl>span{padding:0 8%}
+.echartRow .feedbackLvl>span>b{color:#2B344C;font-size:0.8em}
 .backlogRow{
     background:#fff;
     margin-top:20px;

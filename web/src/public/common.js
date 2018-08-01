@@ -134,10 +134,11 @@ export function ranDate(){
         'YMD_HMS':year + '-' + month + '-' + date + " " + hour + ":" + minute + ":" + second
     };
 }
-export function isNumber(val){
-    return /^\d|\d.\d$/.test(val);
+export function isNumber(num){
+    return /^\d|\d.\d$/.test(num);
 }
 export class Checkbox extends Component{
+    //<Checkbox checked="checked" onChange={this.onChange.bind(this)} />
     constructor(props){
         super(props);
     }
