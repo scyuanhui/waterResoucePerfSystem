@@ -92,7 +92,7 @@ class DeclarTable extends Component{
                             const aList = a.list;
                             return (
                                 <tr key={b}>
-                                    <td style={{background:'#d8e6ff'}}>{a.name}</td>
+                                    <td>{a.name}</td>
                                     <td>
                                         <RenderTable list={aList} />
                                     </td>
