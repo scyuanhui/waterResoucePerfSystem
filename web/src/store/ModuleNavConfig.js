@@ -26,7 +26,7 @@ module.exports = {
         {
             name:'审核批复',
             module:<Auditor />,
-            icon:'iconfont icon-shenbao'
+            icon:'iconfont icon-shenpi'
         },
         {
             name:'数据统计',
@@ -36,7 +36,7 @@ module.exports = {
         {
             name:'通知待办',
             module:<BackLog />,
-            icon:'iconfont icon-jindu'
+            icon:'iconfont icon-daiban'
         }
     ],
     //市级菜单
@@ -54,12 +54,12 @@ module.exports = {
         {
             name:'审核批复',
             module:<Auditor />,
-            icon:'iconfont icon-shenbao'
+            icon:'iconfont icon-shenpi'
         },
         {
             name:'通知待办',
             module:<BackLog />,
-            icon:'iconfont icon-jindu'
+            icon:'iconfont icon-daiban'
         }
     ],
     //区/县级菜单

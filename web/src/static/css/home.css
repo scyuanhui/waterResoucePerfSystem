@@ -9,9 +9,18 @@
 .col-feedback,.col-self{background:#fff;}
 .col-feedback p{height:30px;line-height:30px;text-indent:30px}
 .col-feedback #feedback{height:260px}
-.col-feedback .feedbackLvl{text-align:center}
-.col-feedback .feedbackLvl>span{padding:0 8%}
-.col-smallBlock>.blockOne,.col-smallBlock>.blockTwo{background:#fff;padding:15px 0;overflow:hidden}
+.col-feedback .feedbackLvl{text-align:center;padding:0 0 10px 0}
+.col-feedback .feedbackLvl>span{padding:0 5%;}
+.col-feedback .feedbackLvl>span.icon-you{color:#3b86ff}
+.col-feedback .feedbackLvl>span.icon-liang{color:#64e3a3}
+.col-feedback .feedbackLvl>span.icon-zhong{color:#ff8373}
+.col-feedback .feedbackLvl>span.icon-cha{color:#a3a0fb}
+.icon-you,.you{color:#3b86ff}
+.icon-liang,.liang{color:#64e3a3}
+.icon-zhong,.zhong{color:#ff8373}
+.icon-cha,.cha{color:#a3a0fb}
+.col-feedback .feedbackLvl>span>b{font-size:0.8em;color:#2B344C;padding:0 2px}
+.col-smallBlock>.blockOne,.col-smallBlock>.blockTwo{background:#fff;padding:20.5px 0;overflow:hidden}
 .col-smallBlock>.blockTwo{margin-top:20px}
 .col-smallBlock .module-title{height:30px;line-height:30px;text-indent:30px;margin-bottom:15px}
 .blockDesc{width:45%;border:solid #ccc;border-width:1px 1px 0 1px;float:left;margin-left:3.3333%;border-radius:5px}
@@ -35,10 +44,10 @@
 .col-self .module-title>span{float:right;font-size:0.6em;padding-right:10px}
 .col-self .module-title>span>b{color:#3B86FF}
 .col-self ul{width:calc(100% - 60px);margin:0 auto}
-.col-self ul li{overflow:hidden;margin:30px 0}
+.col-self ul li{overflow:hidden;margin:34px 0}
 .col-self ul li i,.col-self ul li span{display:inline-block;float:left;height:40px;line-height:40px;}
 .col-self ul li i{font-size:3em;width:50px}
 .col-self ul li span.seflComNum{width:calc(100% - 100px);text-align:center;font-size:2em}
 .col-self ul li span:last-child{width:50px;text-align:right}
 /*第三行*/
-.col-bar{background:#fff;width:calc(100% - 15px);margin-left:15px;padding-top:15px;height:365px;border-radius:5px;}
+.col-bar{background:#fff;width:calc(100% - 15px);margin-left:15px;padding-top:15px;height:384px;border-radius:5px;}

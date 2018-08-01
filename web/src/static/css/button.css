@@ -24,6 +24,6 @@
 /*橙色圆角小按钮*/
 .btnSmallOrange{padding:1px 0;color:orange;border:1px solid orange;background:#fff;border-radius:10px;cursor:auto;width:96px;text-align:center}
 /*蓝色圆角小按钮*/
-.btnSmallBlue{padding:1px 0;color:#3B86FF;border:1px solid #3B86FF;background:#fff;border-radius:10px;cursor:auto;width:96px;text-align:center}
+.btnSmallBlue{padding:1px 15px;color:#3B86FF;border:1px solid #3B86FF;background:#fff;border-radius:10px;cursor:auto;width:96px;text-align:center}
 /*蓝色边框长按钮*/
 .btnLongBlue{padding:8px 80px;color:#3B86FF;border:1px solid #3B86FF;background:#f4f8ff;border-radius:3px;cursor:auto}

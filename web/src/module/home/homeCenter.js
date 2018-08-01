@@ -37,10 +37,10 @@ class HomePie extends Component{
                     <p className="grey">四川省2017年绩效考核自评结果</p>
                     <div id="feedback"></div>
                     <div className="feedbackLvl">
-                        <span>优</span>
-                        <span>良</span>
-                        <span>中</span>
-                        <span>差</span>
+                        <span className="iconfont icon-you"><b>优</b></span>
+                        <span className="iconfont icon-liang"><b>良</b></span>
+                        <span className="iconfont icon-zhong"><b>中</b></span>
+                        <span className="iconfont icon-cha"><b>差</b></span>
                     </div>
                 </div>
             </div>
@@ -110,23 +110,23 @@ class PerfSelfComment extends Component{
                     <p className="module-title">绩效自评<span className="grey">已自评<b>{total}</b></span></p>
                     <ul>
                         <li>
-                            <i className="">优</i>
-                            <span className="seflComNum">{this.state.you}</span>
+                            <i className="iconfont icon-you"></i>
+                            <span className="seflComNum you">{this.state.you}</span>
                             <span>个/区县</span>
                         </li>
                         <li>
-                            <i className="">良</i>
-                            <span className="seflComNum">{this.state.liang}</span>
+                            <i className="iconfont icon-liang"></i>
+                            <span className="seflComNum liang">{this.state.liang}</span>
                             <span>个/区县</span>
                         </li>
                         <li>
-                            <i className="">中</i>
-                            <span className="seflComNum">{this.state.zhong}</span>
+                            <i className="iconfont icon-zhong"></i>
+                            <span className="seflComNum zhong">{this.state.zhong}</span>
                             <span>个/区县</span>
                         </li>
                         <li>
-                            <i className="">差</i>
-                            <span className="seflComNum">{this.state.cha}</span>
+                            <i className="iconfont icon-cha"></i>
+                            <span className="seflComNum cha">{this.state.cha}</span>
                             <span>个/区县</span>
                         </li>
                     </ul>
