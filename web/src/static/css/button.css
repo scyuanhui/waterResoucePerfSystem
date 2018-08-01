@@ -19,6 +19,8 @@
 .btnSmallGreen{padding:1px 15px;color:#28C38B;border:1px solid #28C38B;background:#fff;border-radius:10px}
 /*红色圆角小按钮*/
 .btnSmallRed{padding:1px 15px;color:#ff0830;border:1px solid #ff0830;background:#fff;border-radius:10px}
+/*紫色圆角小按钮*/
+.btnSmallPurple{padding:1px 15px;color:#9B98F8;border:1px solid #9B98F8;background:#fff;border-radius:10px}
 /*蓝色圆角小按钮*/
 .btnSmallBlue{padding:1px 15px;color:#3B86FF;border:1px solid #3B86FF;background:#fff;border-radius:10px}
 /*蓝色边框长按钮*/

@@ -6,6 +6,7 @@ import {observer} from 'mobx-react';
 //store
 import cNode from './../../../store/PerCurrentMountModule';
 import {RenderTable,RenderThead} from './perCom';
+import List from './perList';
 import PerDeclar from './perDeclare';
 
 //绩效指标表单头部
@@ -48,6 +49,7 @@ class PerCommitFormName extends Component{
     }
 }
 //绩效指标表单
+@observer
 class PerCommitFormTable extends Component{
     constructor(props) {
         super(props);
@@ -86,6 +88,9 @@ class PerCommitFormTable extends Component{
                 }
             ]
         };
+    }
+    commitAudit(){
+        cNode.currentNode = <List />;
     }
     render() {
         return (
@@ -140,7 +145,7 @@ class PerCommitFormTable extends Component{
                     </table>
                 </div>
                 <div className="btnGroup text-center">
-                    <button className="btn btnLongBlue">提交审核</button>
+                    <button className="btn btnLongBlue" onClick={this.commitAudit.bind(this)}>提交审核</button>
                     <button className="btn btnLongBlue">修改表单</button>
                 </div>
             </div>

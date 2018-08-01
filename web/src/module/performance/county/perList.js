@@ -40,8 +40,8 @@ class CurrentYearTable extends Component{
                         <tbody>
                         {
                             this.state.list.map((item,index) => {
-                                const statusBtnClass = item.status == 0 ? 'btn btnSmallRed' : 'btn btnSmallGreen';
-                                const statusBtnText = item.status == 0 ? '等待申报' : '审核通过';
+                                const statusBtnClass = item.status == 0 ? 'btn btnSmallRed' : 'btn btnSmallPurple';
+                                const statusBtnText = item.status == 0 ? '等待申报' : '审核中...';
                                 return (
                                     <tr key={index}>
                                         <td>{item.name}</td>
