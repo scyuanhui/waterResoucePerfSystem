@@ -1,33 +1,32 @@
 /**
- *绩效指标表单
+ *绩效指标表单查看-审核通过查看反馈结果
  **/
 import React,{Component} from 'react';
 import {observer} from 'mobx-react';
 //store
 import cNode from './../../../store/PerCurrentMountModule';
-import {RenderTable,RenderThead} from './perCom';
+import {RenderThead} from './perCom';
 import List from './perList';
-import PerDeclar from './perDeclare';
 
-//绩效指标表单头部
+//绩效指标表单查看头部
 @observer
-class PerCommitFormHead extends Component{
+class PerFormFeedBackHead extends Component{
     constructor(props) {
         super(props);
     }
-    openPerDeclare(){
-        cNode.currentNode = <PerDeclar />;
+    openPerList(){
+        cNode.currentNode = <List />;
     }
     render() {
         return (
             <div className="row contentHeadRow">
                 <div className="col-4">
                     <p className="pageTitle">绩效指标表单</p>
-                    <p className="grey">你可以修改或者提交</p>
+                    <p className="grey">你可以查看已提交的指标</p>
                 </div>
                 <div className="col-8 text-right">
                     <div className="btnGroup">
-                        <button className="btn btn-sm btn-default" onClick={this.openPerDeclare.bind(this)}>返回</button>
+                        <button className="btn btn-sm btn-default" onClick={this.openPerList.bind(this)}>返回</button>
                     </div>
                 </div>
             </div>
@@ -35,7 +34,7 @@ class PerCommitFormHead extends Component{
     }
 }
 //绩效指标表单名
-class PerCommitFormName extends Component{
+class PerFormFeedBackName extends Component{
     constructor(props) {
         super(props);
     }
@@ -43,14 +42,41 @@ class PerCommitFormName extends Component{
         return (
             <div className="perTableName">
                 <span className="module-title">宜宾县绩效指标一览表</span>
-                <span className="grey">共计75项</span>
+                <div className="feedBackColorDesc">
+                    <span className="delColor"></span>
+                    <span>删除</span>
+                    <span className="addColor"></span>
+                    <span>新增</span>
+                </div>
+            </div>
+        );
+    }
+}
+//表单的一些其它详情（蓝色背景的）
+class PerFeedBackDesc extends Component{
+    constructor(props) {
+        super(props);
+    }
+    render(){
+        return (
+            <div className="perTableDesc">
+                <ul>
+                    <li>2018-01-02</li>
+                    <li>2018-01-25</li>
+                    <li>共计49项考核指标</li>
+                    <li>申报人：宋心硕</li>
+                    <li>审核人：四川省水利厅-宋心顶</li>
+                    <li>新增1项，删除2项</li>
+                    <li>申报考核指标</li>
+                    <li>已审核</li>
+                    <li className="active">反馈绩效考核指标</li>
+                </ul>
             </div>
         );
     }
 }
 //绩效指标表单
-@observer
-class PerCommitFormTable extends Component{
+class PerFormLookTable extends Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -61,11 +87,11 @@ class PerCommitFormTable extends Component{
                     list:[
                         {
                             name:'项目决策1',
-                            list:['项目决策11','项目决策12','项目决策13']
+                            list:['项目决策11','项目决策12','项目决策13','项目决策14']
                         },
                         {
                             name:'项目决策2',
-                            list:['项目决策22','项目决策23','项目决策24']
+                            list:['项目决策22','项目决策23','项目决策24','项目决策25','项目决策26']
                         },
                         {
                             name:'项目决策3',
@@ -89,13 +115,11 @@ class PerCommitFormTable extends Component{
             ]
         };
     }
-    commitAudit(){
-        cNode.currentNode = <List />;
-    }
     render() {
         return (
             <div className="row contentRow">
-                <PerCommitFormName />
+                <PerFeedBackDesc />
+                <PerFormFeedBackName />
                 <div>
                     <table style={{background:'#f4f8ff',borderRadius:'5px'}}>
                         <RenderThead list={this.state.heads} />
@@ -122,7 +146,7 @@ class PerCommitFormTable extends Component{
                                                                             lastList.map((threeItem,threeIndex) => {
                                                                                 return (
                                                                                     <tr key={threeIndex}>
-                                                                                        <td>{threeItem}</td>
+                                                                                        <td style={{background:threeIndex == 3 ? 'orange' : threeIndex == 4 ? '#28C38B' : ''}}>{threeItem}</td>
                                                                                     </tr>
                                                                                 );
                                                                             })
@@ -144,10 +168,6 @@ class PerCommitFormTable extends Component{
                         </tbody>
                     </table>
                 </div>
-                <div className="btnGroup text-center">
-                    <button className="btn btnLongBlue" onClick={this.commitAudit.bind(this)}>提交审核</button>
-                    <button className="btn btnLongBlue">修改表单</button>
-                </div>
             </div>
         );
     }
@@ -155,15 +175,15 @@ class PerCommitFormTable extends Component{
 
 
 
-export default class PerCmtForm extends Component{
+export default class PerFeedBack extends Component{
     constructor(props){
         super(props);
     }
     render(){
         return (
             [
-                <PerCommitFormHead key="PerCommitFormHead" />,
-                <PerCommitFormTable key="PerCommitFormTable" />
+                <PerFormFeedBackHead key="PerFormFeedBackHead" />,
+                <PerFormLookTable key="PerFormLookTable" />
             ]
         );
     }

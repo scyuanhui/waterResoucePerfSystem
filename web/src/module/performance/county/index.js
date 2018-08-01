@@ -17,7 +17,7 @@ export default class CountPerfmance extends Component{
     }
     render(){
         return (
-            <div className="container">
+            <div className="container perContainer">
                 {cNode.currentNode}
             </div>
         );

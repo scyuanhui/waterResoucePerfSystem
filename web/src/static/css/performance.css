@@ -106,5 +106,15 @@ div.cityCollectReviewRow>ul>li>span{width:16.66%}
 .stepRow>div:last-child{width:300px}
 .stepRow>div:last-child>span{display:block;height:50px;line-height:50px;text-align:center}
 /*提交绩效表单*/
-.perCommitFormName{overflow:hidden;text-align:center;padding:20px 0}
-.perCommitFormName span.grey{float:right;margin-right:10px}
+.perContainer .rateInput{width:75%;height:24px;line-height:24px;;background:url("./../img/rate.png") no-repeat 90% center;border:1px solid #3B86FF;text-align: center}
+.perTableName{overflow:hidden;text-align:center;padding:20px 0}
+.perTableName span.grey{float:right;margin-right:2%}
+.perTableName>.feedBackColorDesc{float:right;padding:5px 0;overflow:hidden;margin-right:2%}
+.perTableName>.feedBackColorDesc>span{display:inline-block;float:left;width:30px;height:15px;line-height:15px;}
+.perTableName>.feedBackColorDesc>span.delColor{background:orange;margin-left:20px}
+.perTableName>.feedBackColorDesc>span.addColor{background:#28C38B;margin-left:20px}
+.perTableDesc{border-radius:5px 5px 0 0;background:#3B86FF;}
+.perTableDesc>ul{overflow:hidden;width:96%;margin:0 auto}
+.perTableDesc>ul>li{width:33.3333%;float:left;height:44px;line-height:44px;border-bottom:1px solid #5F97FC;color:#BDD3FE;text-align:center}
+.perTableDesc>ul>li.active{color:#fff;font-size:1.2em;background:url("./../img/jiantou.png") no-repeat center 31px;border:none}
+

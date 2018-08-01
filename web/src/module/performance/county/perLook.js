@@ -1,33 +1,32 @@
 /**
- *绩效指标表单
+ *绩效指标表单查看
  **/
 import React,{Component} from 'react';
 import {observer} from 'mobx-react';
 //store
 import cNode from './../../../store/PerCurrentMountModule';
-import {RenderTable,RenderThead} from './perCom';
+import {RenderThead} from './perCom';
 import List from './perList';
-import PerDeclar from './perDeclare';
 
-//绩效指标表单头部
+//绩效指标表单查看头部
 @observer
-class PerCommitFormHead extends Component{
+class PerFormLookHead extends Component{
     constructor(props) {
         super(props);
     }
-    openPerDeclare(){
-        cNode.currentNode = <PerDeclar />;
+    openPerList(){
+        cNode.currentNode = <List />;
     }
     render() {
         return (
             <div className="row contentHeadRow">
                 <div className="col-4">
                     <p className="pageTitle">绩效指标表单</p>
-                    <p className="grey">你可以修改或者提交</p>
+                    <p className="grey">你可以查看已提交的指标</p>
                 </div>
                 <div className="col-8 text-right">
                     <div className="btnGroup">
-                        <button className="btn btn-sm btn-default" onClick={this.openPerDeclare.bind(this)}>返回</button>
+                        <button className="btn btn-sm btn-default" onClick={this.openPerList.bind(this)}>返回</button>
                     </div>
                 </div>
             </div>
@@ -35,7 +34,7 @@ class PerCommitFormHead extends Component{
     }
 }
 //绩效指标表单名
-class PerCommitFormName extends Component{
+class PerFormLookName extends Component{
     constructor(props) {
         super(props);
     }
@@ -48,9 +47,31 @@ class PerCommitFormName extends Component{
         );
     }
 }
+//表单的一些其它详情（蓝色背景的）
+class PerLookDesc extends Component{
+    constructor(props) {
+        super(props);
+    }
+    render(){
+        return (
+            <div className="perTableDesc">
+                <ul>
+                    <li>2018-01-02</li>
+                    <li>市级</li>
+                    <li>指标</li>
+                    <li>申报人：宋心硕</li>
+                    <li>等待上级审核</li>
+                    <li>最终指标</li>
+                    <li>申报考核指标</li>
+                    <li className="active">等待审核</li>
+                    <li>反馈绩效考核指标</li>
+                </ul>
+            </div>
+        );
+    }
+}
 //绩效指标表单
-@observer
-class PerCommitFormTable extends Component{
+class PerFormLookTable extends Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -89,13 +110,11 @@ class PerCommitFormTable extends Component{
             ]
         };
     }
-    commitAudit(){
-        cNode.currentNode = <List />;
-    }
     render() {
         return (
             <div className="row contentRow">
-                <PerCommitFormName />
+                <PerLookDesc />
+                <PerFormLookName />
                 <div>
                     <table style={{background:'#f4f8ff',borderRadius:'5px'}}>
                         <RenderThead list={this.state.heads} />
@@ -144,10 +163,6 @@ class PerCommitFormTable extends Component{
                         </tbody>
                     </table>
                 </div>
-                <div className="btnGroup text-center">
-                    <button className="btn btnLongBlue" onClick={this.commitAudit.bind(this)}>提交审核</button>
-                    <button className="btn btnLongBlue">修改表单</button>
-                </div>
             </div>
         );
     }
@@ -155,15 +170,15 @@ class PerCommitFormTable extends Component{
 
 
 
-export default class PerCmtForm extends Component{
+export default class PerFormLook extends Component{
     constructor(props){
         super(props);
     }
     render(){
         return (
             [
-                <PerCommitFormHead key="PerCommitFormHead" />,
-                <PerCommitFormTable key="PerCommitFormTable" />
+                <PerFormLookHead key="PerFormLookHead" />,
+                <PerFormLookTable key="PerFormLookTable" />
             ]
         );
     }

@@ -133,3 +133,6 @@ export function ranDate(){
         'YMD_HMS':year + '-' + month + '-' + date + " " + hour + ":" + minute + ":" + second
     };
 }
+export function isNumber(val){
+    return /^\d|\d.\d$/.test(val);
+}
