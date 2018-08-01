@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+export const root = '';
 //session
 export class Session{
     setItem(key,value){
