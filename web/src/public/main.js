@@ -16,10 +16,10 @@ export default class Main extends Component {
     }
 
     componentDidMount() {
-        if(user.data.username != null){
+        if(user.data.username){
             this.setState({
-                navList: Config[user.data.userGrade],
-                defautModule: Config[user.data.userGrade][0].module
+                navList: Config[user.data.grades],
+                defautModule: Config[user.data.grades][0].module
             });
         }
     }

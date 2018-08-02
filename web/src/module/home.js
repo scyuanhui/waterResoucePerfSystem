@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 import HomeOneRow from './home/homeTop';
 import HomeTwoRow from './home/homeCenter';
 import HomeThreeRow from './home/homeBottom';
+//import {Modal} from './../public/modal';
 
 export default class Home extends Component{
     constructor(props){
@@ -18,6 +19,15 @@ export default class Home extends Component{
                 <HomeOneRow />
                 <HomeTwoRow />
                 <HomeThreeRow />
+
+                {/*
+                 <Modal title={"home"} width={"320px"} status={true}>
+                 <div>
+                 <p>'./home/homeBottom'</p>
+                 <p>'./../public/modal'</p>
+                 </div>
+                 </Modal>
+                */}
             </div>
         );
     }

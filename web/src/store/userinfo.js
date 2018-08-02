@@ -1,34 +1,37 @@
 import {observable,action} from 'mobx';
 import {Session} from './../public/common';
 
-const session = new Session();
-
 class User{
     constructor(){
-        //模拟数据
-        this.grades = ['province','city','county'];
-        this.units = ['四川省水利厅','成都市水利局','金牛区水务处'];
-        this.sysLvl = ['省级系统','市级系统','县级系统'];
-        this.ran = 0;//0,1,2随机值(Math.random() * 2).toFixed(0)
-        this.ranGrade = this.grades[this.ran];
-        this.ranUnit = this.units[this.ran];
-        this.ranSysLvl = this.sysLvl[this.ran];
+        this.session = new Session();
     }
-    @observable data = {
-        //模拟用户，(province)省级，(city)市级，(county)区县级
-        username: session.getItem('USERNAME') ? session.getItem('USERNAME') : null,
-        token: '5w4f8gfnbv2d812',
-        userGrade:this.ranGrade,
-        userUnit:this.ranUnit,
-        sysLvl:this.ranSysLvl
-    };
-    @action.bound login(username){
-        this.data.username = username;
-        session.setItem('USERNAME',username);
+    @observable data = {};
+    @action.bound setUserSession(result){
+        switch (result.regionLevel){
+        case 1:
+        result.grades = 'country';
+        result.systemLvl = '国家级系统';
+            break;
+        case 2:
+        result.grades = 'province';
+        result.systemLvl = '省级系统';
+            break;
+        case 3:
+        result.grades = 'city';
+        result.systemLvl = '市级系统';
+            break;
+        case 4:
+        result.grades = 'county';
+        result.systemLvl = '县级系统';
+            break;
+        }
+        this.data = result;
+        //console.log(JSON.stringify(this.data));
+        this.session.setItem('USERNAME',result.username);
     }
     @action.bound logout(){
-        this.data.username = null;
-        session.removeItem('USERNAME');
+        this.data = {};
+        this.session.removeItem('USERNAME');
     }
     @action.bound loginCheck(username,password){
         if(username == ''){

@@ -4,7 +4,8 @@
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 import {observer} from 'mobx-react';
-//store
+import axios from 'axios';
+import api from './../../../store/interface';
 import cNode from './../../../store/PerCurrentMountModule';
 import {BaseHead,TableYear} from './perCom';
 import PerDeclar from './perDeclare';
@@ -19,7 +20,7 @@ class CurrentYearTable extends Component{
     constructor(props) {
         super(props);
         this.state = {
-
+            //考评节点:[nodeNo:[1|2|3|4]分别对应['绩效指标申报'|'绩效目标填写'|'绩效自评'|'绩效复查']],
             heads:['考评节点','完成状态','操作'],
             list:[
                 {name:'绩效指标申报1',status:0},//等待申报(红)
@@ -34,6 +35,18 @@ class CurrentYearTable extends Component{
                 {name:'绩效指标申报10',status:9}//复查通过(绿)
             ]
         };
+    }
+    componentDidMount(){
+        axios.post(api.getCountyPerList,{regionId:2500,year:2018}).then((res) => {
+            console.log(JSON.stringify(res));
+            const dataList = res.data;
+            console.log(JSON.stringify(dataList));
+            this.setState({
+                //list:dataList
+            });
+        }).catch((error) => {
+            console.log(error);
+        });
     }
     perDeclare(){
         cNode.currentNode = <PerDeclar />;
@@ -58,68 +71,72 @@ class CurrentYearTable extends Component{
                         <tbody>
                         {
                             this.state.list.map((item,index) => {
-                                switch (item.status){
-                                case 0:
+                                switch (item.nodeNo){
+                                case 1:
+                                item.name = '绩效指标申报';
                                 item.btnStatusClass = 'btn btnSmallRed';
                                 item.btnStatusText = '等待申报';
                                 item.btnText = '申报';
                                 item.btnEvent = this.perDeclare.bind(this);
                                     break;
-                                case 1:
+                                case 2:
+                                item.name = '绩效目标填写';
                                 item.btnStatusClass = 'btn btnSmallPurple';
-                                item.btnStatusText = '审核中';
+                                item.btnStatusText = '审核中...';
                                 item.btnText = '查看';
                                 item.btnEvent = null;
                                     break;
-                                case 2:
+                                case 3:
+                                item.name = '绩效自评';
                                 item.btnStatusClass = 'btn btnSmallGreen';
                                 item.btnStatusText = '审核通过';
                                 item.btnText = '查看';
                                 item.btnEvent = this.perFeedBack.bind(this);
                                     break;
-                                case 3:
+                                case 4:
+                                item.name = '绩效复查';
                                 item.btnStatusClass = 'btn btnSmallRed';
                                 item.btnStatusText = '等待填写';
                                 item.btnText = '填写';
                                 item.btnEvent = this.perTargetWrite.bind(this);
                                     break;
-                                case 4:
-                                item.btnStatusClass = 'btn btnSmallGreen';
-                                item.btnStatusText = '填写完成';
-                                item.btnText = '查看';
-                                item.btnEvent = null;
-                                    break;
-                                case 5:
-                                item.btnStatusClass = 'btn btnSmallRed';
-                                item.btnStatusText = '等待自评';
-                                item.btnText = '自评';
-                                item.btnEvent = null;
-                                    break;
-                                case 6:
-                                item.btnStatusClass = 'btn btnSmallPurple';
-                                item.btnStatusText = '等待审核';
-                                item.btnText = '查看';
-                                item.btnEvent = this.perWaitLook.bind(this);
-                                    break;
-                                case 7:
-                                item.btnStatusClass = 'btn btnSmallOrange';
-                                item.btnStatusText = '审核驳回';
-                                item.btnText = '查看';
-                                item.btnEvent = null;
-                                    break;
-                                case 8:
-                                item.btnStatusClass = 'btn btnSmallPurple';
-                                item.btnStatusText = '等待复查';
-                                item.btnText = null;
-                                item.btnHide = true;
-                                item.btnEvent = null;
-                                    break;
-                                case 9:
-                                item.btnStatusClass = 'btn btnSmallGreen';
-                                item.btnStatusText = '复查通过';
-                                item.btnText = '查看';
-                                item.btnEvent = null;
-                                    break;
+                                //case 4:
+                                //item.btnStatusClass = 'btn btnSmallGreen';
+                                //item.btnStatusText = '填写完成';
+                                //item.btnText = '查看';
+                                //item.btnEvent = null;
+                                //    break;
+                                //case 5:
+                                //item.btnStatusClass = 'btn btnSmallRed';
+                                //item.btnStatusText = '等待自评';
+                                //item.btnText = '自评';
+                                //item.btnEvent = null;
+                                //    break;
+                                //case 6:
+                                //item.btnStatusClass = 'btn btnSmallPurple';
+                                //item.btnStatusText = '等待审核';
+                                //item.btnText = '查看';
+                                //item.btnEvent = this.perWaitLook.bind(this);
+                                //    break;
+                                //case 7:
+                                //item.btnStatusClass = 'btn btnSmallOrange';
+                                //item.btnStatusText = '审核驳回';
+                                //item.btnText = '查看';
+                                //item.btnEvent = null;
+                                //    break;
+                                //case 8:
+                                //item.btnStatusClass = 'btn btnSmallPurple';
+                                //item.btnStatusText = '等待复查';
+                                //item.btnText = null;
+                                //item.btnHide = true;
+                                //item.btnEvent = null;
+                                //    break;
+                                //case 9:
+                                //item.btnStatusClass = 'btn btnSmallGreen';
+                                //item.btnStatusText = '复查通过';
+                                //item.btnText = '查看';
+                                //item.btnEvent = null;
+                                //    break;
                                 }
                                 return (
                                     <tr key={index}>

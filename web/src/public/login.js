@@ -1,34 +1,68 @@
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 import {observer} from 'mobx-react';
-import {message} from 'antd';
-import {trim} from './common';
 import axios from 'axios';
+import api from './../store/interface';
+import {trim} from './common';
 import user from './../store/userinfo';
 import App from './../index';
+import {Dilog} from './modal';
 //img
 import lineActive from './../static/img/line1-active.png';
 import dynamicActive from './../static/img/line2-active.png';
+
 
 @observer
 class LoginForm extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            dilogStatus:false,
+            dilogText:''
+        };
     }
-
+    closeDilog(bool){
+        //console.log(bool);
+        this.setState({
+            dilogStatus:false
+        });
+    }
     loginEvent() {
-        const username = trim(this.refs.username.value);
-        const password = trim(this.refs.password.value);
-        const result = user.loginCheck(username,password);
+        const name = trim(this.refs.username.value);
+        const pwd = trim(this.refs.password.value);
+        const result = user.loginCheck(name,pwd);
         const mountNode = window.root;
         if (result.status) {
-            user.login(username);
+            //axios.post(api.login,{username:name,password:pwd}).then((res) => {
+            //    //console.log(JSON.stringify(res));
+            //    if(res.data['success'] == true){
+            //        user.setUserSession(res.data.data);
+            //        ReactDOM.render(<LoginLoading />,mountNode);
+            //        setTimeout(() => {
+            //            ReactDOM.render(<App />,mountNode);
+            //        }, 1000);
+            //    }
+            //    if(res.data['success'] == false){
+            //        this.setState({
+            //            dilogStatus:true,
+            //            dilogText:res.data.resultMsg
+            //        });
+            //    }
+            //}).catch((error) => {
+            //    console.log(error);
+            //});
+            //mock
+            const mockLoginUser = {userId:1,username:'admin',mobile:15555555555,regionId:2500,regionName:'成都市',regionLevel:2};
+            user.setUserSession(mockLoginUser);
             ReactDOM.render(<LoginLoading />,mountNode);
             setTimeout(() => {
                 ReactDOM.render(<App />,mountNode);
             }, 1000);
         }else{
-            message.warning(result.text,1);
+            this.setState({
+                dilogStatus:true,
+                dilogText:result.text
+            });
         }
     }
     componentDidMount(){
@@ -43,6 +77,9 @@ class LoginForm extends Component {
     render() {
         return (
             <div className="loginForm">
+                <Dilog title={'提示信息'} width={'300px'} status={this.state.dilogStatus} close={this.closeDilog.bind(this)}>
+                    <p className="grey">{this.state.dilogText}</p>
+                </Dilog>
                 <span className="loginTitle">登录</span>
                 <input type="text" placeholder="账号" ref="username" defaultValue="admin" maxLength="25"/>
                 <input type="password" placeholder="密码" ref="password" maxLength="25"/>
