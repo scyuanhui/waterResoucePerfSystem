@@ -51,13 +51,14 @@ class LoginForm extends Component {
             //}).catch((error) => {
             //    console.log(error);
             //});
-            //mock
-            const mockLoginUser = {userId:1,username:'admin',mobile:15555555555,regionId:2500,regionName:'成都市',regionLevel:2};
+            //mock start
+            const mockLoginUser = {userId:1,username:name,mobile:15555555555,regionId:2500,regionName:'成都市',regionLevel:name == 'admin' ? 2 : name == 'amdin1' ? 3 : 4};
             user.setUserSession(mockLoginUser);
             ReactDOM.render(<LoginLoading />,mountNode);
             setTimeout(() => {
                 ReactDOM.render(<App />,mountNode);
             }, 1000);
+            //mock end
         }else{
             this.setState({
                 dilogStatus:true,

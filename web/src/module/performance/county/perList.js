@@ -14,6 +14,54 @@ import PerFeedBack from './perFeedback';
 import PerTargetWrite from './perTargetWrite';
 
 
+const demoData = {
+    "data":
+    [{
+        "id": 1,
+        "year": 2018,
+        "regionId": 2500,
+        "status": 1,
+        "note": "",
+        "nodeNo": 1,
+        "statusName": "等待审核",
+        "nodeName": "绩效指标申报",
+        "createTime": 1531475568000,
+        "lastUpdateTime": 1532685164000,
+        "createUserId": 2323,
+        "lastUpdateUserId": 2323,
+        "level": null
+    }, {
+        "id": null,
+        "year": null,
+        "regionId": null,
+        "status": 0,
+        "note": null,
+        "nodeNo": 3,
+        "statusName": "绩效目标填写",
+        "nodeName": "等待填写",
+        "createTime": null,
+        "lastUpdateTime": null,
+        "createUserId": null,
+        "lastUpdateUserId": null,
+        "level": null
+    }, {
+        "id": 2,
+        "year": 2018,
+        "regionId": 2500,
+        "status": 2,
+        "note": null,
+        "nodeNo": 1,
+        "statusName": "审核通过",
+        "nodeName": "绩效指标申报",
+        "createTime": 1533002963000,
+        "lastUpdateTime": 1532761823000,
+        "createUserId": 23,
+        "lastUpdateUserId": null,
+        "level": 0
+    }]
+};
+
+
 //本年表格
 @observer
 class CurrentYearTable extends Component{
@@ -39,8 +87,6 @@ class CurrentYearTable extends Component{
     componentDidMount(){
         axios.post(api.getCountyPerList,{regionId:2500,year:2018}).then((res) => {
             console.log(JSON.stringify(res));
-            const dataList = res.data;
-            console.log(JSON.stringify(dataList));
             this.setState({
                 //list:dataList
             });

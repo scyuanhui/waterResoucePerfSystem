@@ -25,13 +25,14 @@ class User{
         result.systemLvl = '县级系统';
             break;
         }
-        this.data = result;
-        //console.log(JSON.stringify(this.data));
-        this.session.setItem('USERNAME',result.username);
+        //console.log(JSON.stringify(result));
+        this.session.setItem('USERNAME',result);
+        this.data = this.session.getItem('USERNAME');
+
     }
     @action.bound logout(){
-        this.data = {};
         this.session.removeItem('USERNAME');
+        this.data = {};
     }
     @action.bound loginCheck(username,password){
         if(username == ''){
