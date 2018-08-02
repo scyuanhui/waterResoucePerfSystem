@@ -14,9 +14,8 @@ import PerFeedBack from './perFeedback';
 import PerTargetWrite from './perTargetWrite';
 
 
-const demoData = {
-    "data":
-    [{
+const demoData =[
+    {
         "id": 1,
         "year": 2018,
         "regionId": 2500,
@@ -30,21 +29,23 @@ const demoData = {
         "createUserId": 2323,
         "lastUpdateUserId": 2323,
         "level": null
-    }, {
+    },
+    {
         "id": null,
         "year": null,
         "regionId": null,
         "status": 0,
         "note": null,
-        "nodeNo": 3,
-        "statusName": "绩效目标填写",
-        "nodeName": "等待填写",
+        "nodeNo": 2,
+        "statusName": "等待填写",
+        "nodeName": "绩效目标填写",
         "createTime": null,
         "lastUpdateTime": null,
         "createUserId": null,
         "lastUpdateUserId": null,
         "level": null
-    }, {
+    },
+    {
         "id": 2,
         "year": 2018,
         "regionId": 2500,
@@ -58,8 +59,9 @@ const demoData = {
         "createUserId": 23,
         "lastUpdateUserId": null,
         "level": 0
-    }]
-};
+    }
+];
+
 
 
 //本年表格
@@ -68,30 +70,91 @@ class CurrentYearTable extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            //考评节点:[nodeNo:[1|2|3|4]分别对应['绩效指标申报'|'绩效目标填写'|'绩效自评'|'绩效复查']],
+            //考评节点:[1.绩效指标申报,2.绩效目标填写,3.绩效自评,4.绩效复查]
             heads:['考评节点','完成状态','操作'],
-            list:[
-                {name:'绩效指标申报1',status:0},//等待申报(红)
-                {name:'绩效指标申报2',status:1},//审核中(紫)
-                {name:'绩效指标申报3',status:2},//审核通过(绿)
-                {name:'绩效指标申报4',status:3},//等待填写(红)
-                {name:'绩效指标申报5',status:4},//填写完成(绿)
-                {name:'绩效指标申报6',status:5},//等待自评(红)
-                {name:'绩效指标申报7',status:6},//等待审核(紫)
-                {name:'绩效指标申报8',status:7},//审核驳回(橙)
-                {name:'绩效指标申报9',status:8},//等待复查(紫)
-                {name:'绩效指标申报10',status:9}//复查通过(绿)
-            ]
+            arr:[]
         };
     }
     componentDidMount(){
-        axios.post(api.getCountyPerList,{regionId:2500,year:2018}).then((res) => {
-            console.log(JSON.stringify(res));
-            this.setState({
-                //list:dataList
-            });
-        }).catch((error) => {
-            console.log(error);
+        //axios.post(api.getCountyPerList,{regionId:2500,year:2018}).then((res) => {
+        //    console.log(JSON.stringify(res));
+        //    this.setState({
+        //        list:res.data.data
+        //    });
+        //}).catch((error) => {
+        //    console.log(error);
+        //});
+        this.hanldList(demoData);
+    }
+    hanldList(list){
+        for(let i=0;i<list.length;i++){
+            //绩效指标申报
+            if(list[i].nodeNo == 1 && list[i].status == 0){
+                list[i].btnStatusClass = 'btn btnSmallRed';
+                list[i].btnText = '申报';
+                list[i].btnEvent = null;
+            }
+            if(list[i].nodeNo == 1 && list[i].status == 1){
+                list[i].btnStatusClass = 'btn btnSmallPurple';
+                list[i].btnText = '查看';
+                list[i].btnEvent = null;
+            }
+            if(list[i].nodeNo == 1 && list[i].status == 2){
+                list[i].btnStatusClass = 'btn btnSmallGreen';
+                list[i].btnText = '查看';
+                list[i].btnEvent = null;
+            }
+            //绩效目标填写
+            if(list[i].nodeNo == 2 && list[i].status == 0){
+                list[i].btnStatusClass = 'btn btnSmallRed';
+                list[i].btnText = '填写';
+                list[i].btnEvent = null;
+            }
+            if(list[i].nodeNo == 2 && list[i].status == 1){
+                list[i].btnStatusClass = 'btn btnSmallGreen';
+                list[i].btnText = '查看';
+                list[i].btnEvent = null;
+            }
+            //绩效自评
+            if(list[i].nodeNo == 3 && list[i].status == 0){
+                list[i].btnStatusClass = 'btn btnSmallRed';
+                list[i].btnText = '填写';
+                list[i].btnEvent = null;
+            }
+            if(list[i].nodeNo == 3 && list[i].status == 1){
+                list[i].btnStatusClass = 'btn btnSmallPurple';
+                list[i].btnText = '查看';
+                list[i].btnEvent = null;
+            }
+            if(list[i].nodeNo == 3 && list[i].status == 2){
+                list[i].btnStatusClass = 'btn btnSmallGreen';
+                list[i].btnText = '填写';
+                list[i].btnEvent = null;
+            }
+            if(list[i].nodeNo == 3 && list[i].status == 3){
+                list[i].btnStatusClass = 'btn btnSmallGreen';
+                list[i].btnText = '查看';
+                list[i].btnEvent = null;
+            }
+            if(list[i].nodeNo == 3 && list[i].status == 4){
+                list[i].btnStatusClass = 'btn btnSmallOrange';
+                list[i].btnText = '查看';
+                list[i].btnEvent = null;
+            }
+            //绩效自评复查
+            if(list[i].nodeNo == 4 && list[i].status == 0){
+                list[i].btnStatusClass = 'btn btnSmallPurple';
+                list[i].btnText = '查看';
+                list[i].btnEvent = null;
+            }
+            if(list[i].nodeNo == 4 && list[i].status == 1){
+                list[i].btnStatusClass = 'btn btnSmallGreen';
+                list[i].btnText = '查看';
+                list[i].btnEvent = null;
+            }
+        }
+        this.setState({
+            arr:list
         });
     }
     perDeclare(){
@@ -108,105 +171,37 @@ class CurrentYearTable extends Component{
     }
     render(){
         const tds = this.state.heads.map((a,b) => <td key={a}>{a}</td>);
-        return (
-            <div className="row contentRow">
-                <TableYear year="2017" />
-                <div>
-                    <table>
-                        <thead><tr>{tds}</tr></thead>
-                        <tbody>
-                        {
-                            this.state.list.map((item,index) => {
-                                switch (item.nodeNo){
-                                case 1:
-                                item.name = '绩效指标申报';
-                                item.btnStatusClass = 'btn btnSmallRed';
-                                item.btnStatusText = '等待申报';
-                                item.btnText = '申报';
-                                item.btnEvent = this.perDeclare.bind(this);
-                                    break;
-                                case 2:
-                                item.name = '绩效目标填写';
-                                item.btnStatusClass = 'btn btnSmallPurple';
-                                item.btnStatusText = '审核中...';
-                                item.btnText = '查看';
-                                item.btnEvent = null;
-                                    break;
-                                case 3:
-                                item.name = '绩效自评';
-                                item.btnStatusClass = 'btn btnSmallGreen';
-                                item.btnStatusText = '审核通过';
-                                item.btnText = '查看';
-                                item.btnEvent = this.perFeedBack.bind(this);
-                                    break;
-                                case 4:
-                                item.name = '绩效复查';
-                                item.btnStatusClass = 'btn btnSmallRed';
-                                item.btnStatusText = '等待填写';
-                                item.btnText = '填写';
-                                item.btnEvent = this.perTargetWrite.bind(this);
-                                    break;
-                                //case 4:
-                                //item.btnStatusClass = 'btn btnSmallGreen';
-                                //item.btnStatusText = '填写完成';
-                                //item.btnText = '查看';
-                                //item.btnEvent = null;
-                                //    break;
-                                //case 5:
-                                //item.btnStatusClass = 'btn btnSmallRed';
-                                //item.btnStatusText = '等待自评';
-                                //item.btnText = '自评';
-                                //item.btnEvent = null;
-                                //    break;
-                                //case 6:
-                                //item.btnStatusClass = 'btn btnSmallPurple';
-                                //item.btnStatusText = '等待审核';
-                                //item.btnText = '查看';
-                                //item.btnEvent = this.perWaitLook.bind(this);
-                                //    break;
-                                //case 7:
-                                //item.btnStatusClass = 'btn btnSmallOrange';
-                                //item.btnStatusText = '审核驳回';
-                                //item.btnText = '查看';
-                                //item.btnEvent = null;
-                                //    break;
-                                //case 8:
-                                //item.btnStatusClass = 'btn btnSmallPurple';
-                                //item.btnStatusText = '等待复查';
-                                //item.btnText = null;
-                                //item.btnHide = true;
-                                //item.btnEvent = null;
-                                //    break;
-                                //case 9:
-                                //item.btnStatusClass = 'btn btnSmallGreen';
-                                //item.btnStatusText = '复查通过';
-                                //item.btnText = '查看';
-                                //item.btnEvent = null;
-                                //    break;
-                                }
-                                return (
-                                    <tr key={index}>
-                                        <td>{item.name}</td>
-                                        <td>
-                                            <button className={item.btnStatusClass}>{item.btnStatusText}</button>
-                                        </td>
-                                        <td>
-                                            <button className="btn btn-md btn-empty"
-                                                onClick={item.btnEvent}
-                                                style={{visibility:item.btnHide ? 'hidden' : 'visible'}}
-                                            >
-                                                {item.btnText}
-                                            </button>
-                                        </td>
-                                    </tr>
-                                );
-                            })
-                        }
-                        </tbody>
-                    </table>
+        const trs = this.state.arr.map((item,index) => {
+            return (
+                <tr key={index}>
+                    <td>{item.nodeName}</td>
+                    <td>
+                        <button className={item.btnStatusClass}>{item.statusName}</button>
+                    </td>
+                    <td>
+                        <button className="btn btn-md btn-empty">
+                            {item.btnText}
+                        </button>
+                    </td>
+                </tr>
+            );
+        });
+        const table = <table><thead><tr>{tds}</tr></thead><tbody>{trs}</tbody></table>;
+        if(this.state.arr.length > 0){
+            return (
+                <div className="row contentRow">
+                    <TableYear year="2017" />
+                    <div>{table}</div>
                 </div>
-            </div>
-        );
+            );
+        }else{
+            return (
+                <div className="row contentRow">
+                    <TableYear year="2017" />
+                    <div className="text-center">LOADING...</div>
+                </div>
+            );
+        }
     }
 }
 //去年表格

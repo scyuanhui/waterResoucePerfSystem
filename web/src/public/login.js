@@ -52,7 +52,16 @@ class LoginForm extends Component {
             //    console.log(error);
             //});
             //mock start
-            const mockLoginUser = {userId:1,username:name,mobile:15555555555,regionId:2500,regionName:'成都市',regionLevel:name == 'admin' ? 2 : name == 'amdin1' ? 3 : 4};
+            const mockLoginUser = {userId:1,username:name,mobile:15555555555,regionId:2500,regionName:'成都市',regionLevel:null};
+            if(name == 'admin1'){
+                mockLoginUser.regionLevel = 2;
+            }
+            if(name == 'admin2'){
+                mockLoginUser.regionLevel = 3;
+            }
+            if(name == 'admin3'){
+                mockLoginUser.regionLevel = 4;
+            }
             user.setUserSession(mockLoginUser);
             ReactDOM.render(<LoginLoading />,mountNode);
             setTimeout(() => {
@@ -82,8 +91,8 @@ class LoginForm extends Component {
                     <p className="grey">{this.state.dilogText}</p>
                 </Dilog>
                 <span className="loginTitle">登录</span>
-                <input type="text" placeholder="账号" ref="username" defaultValue="admin" maxLength="25"/>
-                <input type="password" placeholder="密码" ref="password" maxLength="25"/>
+                <input type="text" placeholder="账号" ref="username" placeholder="[省:admin1][市:admin2][县:admin3]" maxLength="25"/>
+                <input type="password" placeholder="密码" ref="password" placeholder="密码随便输入6个" maxLength="25"/>
                 <button type="button" className="btn btn-lg btn-promise" onClick={this.loginEvent.bind(this)}>点击登录
                 </button>
                 <p><span className="grey">遇到问题，请联系管理员</span><b>028-234434</b></p>

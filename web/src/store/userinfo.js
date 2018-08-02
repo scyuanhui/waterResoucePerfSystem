@@ -1,9 +1,14 @@
 import {observable,action} from 'mobx';
 import {Session} from './../public/common';
 
+const session = new Session();
+
 class User{
     constructor(){
-        this.session = new Session();
+        const localUser = session.getItem('USERNAME');
+        if(localUser){
+            this.data = localUser;
+        }
     }
     @observable data = {};
     @action.bound setUserSession(result){
@@ -26,12 +31,12 @@ class User{
             break;
         }
         //console.log(JSON.stringify(result));
-        this.session.setItem('USERNAME',result);
-        this.data = this.session.getItem('USERNAME');
+        session.setItem('USERNAME',result);
+        this.data = result;
 
     }
     @action.bound logout(){
-        this.session.removeItem('USERNAME');
+        session.removeItem('USERNAME');
         this.data = {};
     }
     @action.bound loginCheck(username,password){
