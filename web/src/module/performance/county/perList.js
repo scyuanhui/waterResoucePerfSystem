@@ -32,7 +32,7 @@ class CurrentYearTable extends Component{
             year:this.state.currentYear
         };
         axios.post(api.getCountyPerList,sendData).then((res) => {
-            console.log(JSON.stringify(res));
+            //console.log(JSON.stringify(res));
             const list = res.data;
             if(list.length > 0){
                 const newArr = this.hanldList(list);
@@ -157,7 +157,7 @@ class LastYearTable extends Component{
             year:this.state.yesterYear
         };
         axios.post(api.getCountyPerList,sendData).then((res) => {
-            console.log(JSON.stringify(res));
+            //console.log(JSON.stringify(res));
             const list = res.data;
             if(list.length > 0){
                 for(let i=0;i<list.length;i++){
