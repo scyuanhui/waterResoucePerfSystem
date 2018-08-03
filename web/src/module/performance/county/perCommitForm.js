@@ -7,7 +7,7 @@ import {observer} from 'mobx-react';
 import cNode from './../../../store/PerCurrentMountModule';
 import {RenderTable,RenderThead} from './perCom';
 import List from './perList';
-import PerDeclar from './perDeclare';
+import PerDeclar from './perDeclarDo';
 
 //绩效指标表单头部
 @observer

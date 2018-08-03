@@ -145,7 +145,7 @@ class DeclarContent extends Component{
 
 
 
-export default class PerDeclar extends Component{
+export default class PerDeclarDo extends Component{
     constructor(props) {
         super(props);
     }

@@ -33,41 +33,27 @@ class LoginForm extends Component {
         const result = user.loginCheck(name,pwd);
         const mountNode = window.root;
         if (result.status) {
-            //axios.post(api.login,{username:name,password:pwd}).then((res) => {
-            //    //console.log(JSON.stringify(res));
-            //    if(res.data['success'] == true){
-            //        user.setUserSession(res.data.data);
-            //        ReactDOM.render(<LoginLoading />,mountNode);
-            //        setTimeout(() => {
-            //            ReactDOM.render(<App />,mountNode);
-            //        }, 1000);
-            //    }
-            //    if(res.data['success'] == false){
-            //        this.setState({
-            //            dilogStatus:true,
-            //            dilogText:res.data.resultMsg
-            //        });
-            //    }
-            //}).catch((error) => {
-            //    console.log(error);
-            //});
-            //mock start
-            const mockLoginUser = {userId:1,username:name,mobile:15555555555,regionId:2500,regionName:'成都市',regionLevel:null};
-            if(name == 'admin1'){
-                mockLoginUser.regionLevel = 2;
-            }
-            if(name == 'admin2'){
-                mockLoginUser.regionLevel = 3;
-            }
-            if(name == 'admin3'){
-                mockLoginUser.regionLevel = 4;
-            }
-            user.setUserSession(mockLoginUser);
-            ReactDOM.render(<LoginLoading />,mountNode);
-            setTimeout(() => {
-                ReactDOM.render(<App />,mountNode);
-            }, 1000);
-            //mock end
+            axios.post(api.login,{username:name,password:pwd}).then((res) => {
+                //console.log(JSON.stringify(res));
+                if(res.data['success'] == true){
+                    user.setUserSession(res.data.data);
+                    ReactDOM.render(<LoginLoading />,mountNode);
+                    setTimeout(() => {
+                        ReactDOM.render(<App />,mountNode);
+                    }, 1000);
+                }
+                if(res.data['success'] == false){
+                    this.setState({
+                        dilogStatus:true,
+                        dilogText:res.data.resultMsg
+                    });
+                }
+            }).catch((error) => {
+                console.log(error);
+            });
+            //---------------mock login start-----------------
+            //mockLogin(name,mountNode);
+            //---------------mock login end-------------------
         }else{
             this.setState({
                 dilogStatus:true,
@@ -205,4 +191,26 @@ function loginCheck(username,password){
     if(password.length < 5){
         return '密码不能少于6位数';
     }
+}
+
+//摸拟登录函数
+function mockLogin(name,mountNode){
+    const mockLoginUser = {userId:1,username:name,mobile:15555555555,regionId:2500,regionName:null,regionLevel:null};
+    if(name == 'admin1'){
+        mockLoginUser.regionLevel = 2;
+        mockLoginUser.regionName = '四川省';
+    }
+    if(name == 'admin2'){
+        mockLoginUser.regionLevel = 3;
+        mockLoginUser.regionName = '成都市';
+    }
+    if(name == 'admin3'){
+        mockLoginUser.regionLevel = 4;
+        mockLoginUser.regionName = '双流区';
+    }
+    user.setUserSession(mockLoginUser);
+    ReactDOM.render(<LoginLoading />,mountNode);
+    setTimeout(() => {
+        ReactDOM.render(<App />,mountNode);
+    }, 1000);
 }

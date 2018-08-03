@@ -3,8 +3,12 @@
  **/
 import React,{Component} from 'react';
 import {observer} from 'mobx-react';
+import axios from 'axios';
 //store
 import cNode from './../../../store/PerCurrentMountModule';
+import {formatDate} from './../../../public/common';
+import user from './../../../store/userinfo';
+import api from './../../../store/interface';
 import {RenderThead} from './perCom';
 import List from './perList';
 
@@ -75,6 +79,7 @@ class PerFormLookTable extends Component{
     constructor(props) {
         super(props);
         this.state = {
+            currentYear:formatDate(new Date()).YEAR,
             heads:['一级指标','二级指标','三级指标'],
             list:[
                 {
@@ -109,6 +114,19 @@ class PerFormLookTable extends Component{
                 }
             ]
         };
+    }
+    componentDidMount(){
+        const regionId = user.data.regionId;
+        axios.post(api.getCountyPerList,
+            {regionId:regionId,year:this.state.currentYear,nodeNo:1}
+        ).then((res) => {
+            console.log(JSON.stringify(res));
+            //this.setState({
+            //    arr:newArr
+            //});
+        }).catch((error) => {
+            console.log(error);
+        });
     }
     render() {
         return (
@@ -170,7 +188,7 @@ class PerFormLookTable extends Component{
 
 
 
-export default class PerFormLook extends Component{
+export default class PerDeclareWaitLook extends Component{
     constructor(props){
         super(props);
     }
