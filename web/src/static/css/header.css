@@ -71,3 +71,86 @@
     top:45px;
     right:13px;
 }
+/*修改密码模块*/
+.modifyPwdBox:before{
+    content:' ';
+    display:inline-block;
+    width:40px;
+    height:40px;
+    background:#fff;
+    float:right;
+    margin-right:50px;
+    margin-top:-20px;
+    transform:rotate(45deg);
+    -ms-transform:rotate(45deg); 	/* IE 9 */
+    -moz-transform:rotate(45deg); 	/* Firefox */
+    -webkit-transform:rotate(45deg); /* Safari 和 Chrome */
+    -o-transform:rotate(45deg);
+    border:solid #f8f8f8;
+    border-width:1px 0 0 1px;
+}
+.modifyPwdBox{
+    position:fixed;
+    z-index:3;
+    width:240px;
+    /*height:auto;*/
+    top:100px;
+    right:50px;
+    background:#fff;
+    opacity:1;
+    border:1px solid #f8f8f8;
+    border-radius:5px;
+    animation:fadeInBackground 0.2s !important;
+}
+/*fadeInBackground*/
+@keyframes fadeInBackground {
+    0% {background:transparent;opacity:0}
+    100% {background:#fff;opacity:1}
+}
+.modifyPwdBox ul{
+    margin-top:30px;
+}
+.modifyPwdBox ul li{
+    overflow:hidden;
+    padding:10px 20px;
+}
+.modifyPwdBox ul li:last-child:hover{
+    background:#bfbfbf;
+    cursor:pointer;
+}
+.modifyPwdBox ul li>i,.modifyPwdBox ul li>span{
+    float:left;
+}
+.modifyPwdBox ul li>span{
+    font-size:1.2em;
+    margin-left:10px;
+}
+.modifyPwdBox .inputRow{
+    padding:10px 20px;
+}
+.modifyPwdBox .inputRow>input{
+    border:1px solid #cccccc;
+    height:36px;
+    line-height:36px;
+}
+.modifyPwdBox .inputRow>input:hover{
+    border:1px solid #3B86FF;
+}
+.modifyPwdBox .inputRow>input,.modifyPwdBox .inputRow>button{
+    width:100%;
+    margin-top:10px;
+}
+.modifyPwdBox .modifyTips{
+    text-align:center;
+    padding:20px 0;
+}
+.modifyPwdBox .modifyTips .iconfont{
+    font-size:4em;
+    font-weight:bolder;
+    padding:10px 0;
+    color:#00d6b2;
+}
+.modifyPwdBox .modifyTips p{
+    font-size:1.2em;
+    color:#00d6b2;
+}

@@ -33,8 +33,12 @@ class LoginForm extends Component {
         const result = user.loginCheck(name,pwd);
         const mountNode = window.root;
         if (result.status) {
-            axios.post(api.login,{username:name,password:pwd}).then((res) => {
-                //console.log(JSON.stringify(res));
+            const sendData = {
+                username:name,
+                password:pwd
+            };
+            axios.post(api.login,sendData).then((res) => {
+                console.log(JSON.stringify(res));
                 if(res.data['success'] == true){
                     user.setUserSession(res.data.data);
                     ReactDOM.render(<LoginLoading />,mountNode);
@@ -51,9 +55,9 @@ class LoginForm extends Component {
             }).catch((error) => {
                 console.log(error);
             });
-            //---------------mock login start-----------------
+            //##############mock login start################
             //mockLogin(name,mountNode);
-            //---------------mock login end-------------------
+            //##############mock login end################
         }else{
             this.setState({
                 dilogStatus:true,
@@ -195,7 +199,7 @@ function loginCheck(username,password){
 
 //摸拟登录函数
 function mockLogin(name,mountNode){
-    const mockLoginUser = {userId:1,username:name,mobile:15555555555,regionId:2500,regionName:null,regionLevel:null};
+    const mockLoginUser = {userId:1,username:name,mobile:15555555555,regionId:2500,regionName:null,regionLevel:null,token:'2d45we142wweff45s2cv42'};
     if(name == 'admin1'){
         mockLoginUser.regionLevel = 2;
         mockLoginUser.regionName = '四川省';

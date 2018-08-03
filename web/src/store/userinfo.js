@@ -5,7 +5,7 @@ const session = new Session();
 
 class User{
     constructor(){
-        const localUser = session.getItem('USERNAME');
+        const localUser = session.getItem('USER');
         if(localUser){
             this.data = localUser;
         }
@@ -31,12 +31,11 @@ class User{
             break;
         }
         //console.log(JSON.stringify(result));
-        session.setItem('USERNAME',result);
+        session.setItem('USER',result);
         this.data = result;
-
     }
     @action.bound logout(){
-        session.removeItem('USERNAME');
+        session.removeItem('USER');
         this.data = {};
     }
     @action.bound loginCheck(username,password){

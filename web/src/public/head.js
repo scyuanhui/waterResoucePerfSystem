@@ -6,17 +6,114 @@ import ReactDOM from 'react-dom';
 import {observer} from 'mobx-react';
 //store
 import user from './../store/userinfo';
+import {axios} from './common';
+import api from './../store/interface';
 //img
 import userHead from './../static/img/userhead.png';
 import userOnLine from './../static/img/headOnLine.png';
+
+//修改密码模块
+@observer
+class ModifyPassWord extends Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            inputRowStatus:false,
+            modifyTipsStatus:false
+        };
+    }
+    openModifyWindow(){
+        const status = this.state.inputRowStatus;
+        switch (status){
+        case true:
+        this.setState({
+            inputRowStatus:false
+        });
+            break;
+        case false:
+        this.setState({
+            inputRowStatus:true
+        });
+            break;
+        }
+    }
+    savePassWord(){
+        this.setState({
+            inputRowStatus:false,
+            modifyTipsStatus:true
+        },() => {
+            setTimeout(() => {
+                this.setState({
+                    inputRowStatus:false,
+                    modifyTipsStatus:false
+                });
+                this.props.close(false);
+            },2000);
+        });
+    }
+    render(){
+        return (
+            <div className="modifyPwdBox" ref="modifyPwdBox" style={{display:this.props.status ? 'block' : 'none'}}>
+                <ul>
+                    <li><i className="iconfont icon-ren"></i><span>我的账号：</span><span>{user.data.username}</span></li>
+                    <li><i className="iconfont icon-im"></i><span>我的名字：</span><span>{user.data.username}</span></li>
+                    <li><i className="iconfont icon-unit"></i><span>所属单位：</span><span>{user.data.systemLvl}</span></li>
+                    <li onClick={this.openModifyWindow.bind(this)}><i className="iconfont icon-suo1"></i><span>修改密码</span></li>
+                </ul>
+                <div className="inputRow" style={{display:this.state.inputRowStatus ? 'block' : 'none'}}>
+                    <input type="password" placeholder="输入原密码" />
+                    <input type="password" placeholder="输入新密码" />
+                    <input type="password" placeholder="再次输入新密码" />
+                    <button className="btn btnLongBlue" onClick={this.savePassWord.bind(this)}>保存</button>
+                </div>
+                <div className="modifyTips" style={{display:this.state.modifyTipsStatus ? 'block' : 'none'}}>
+                    <i className="iconfont icon-suo2"></i>
+                    <p>修改成功</p>
+                </div>
+            </div>
+        );
+    }
+}
+
 
 @observer
 export default class Head extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            modifyBoxStatus:false
+        };
+    }
+    closeModifyBox(flag){
+        this.setState({
+            modifyBoxStatus:flag
+        });
     }
     userLogout(){
-        user.logout();
+        axios.post(api.logout,{userId:user.data.userId}).then((res) => {
+            if(res.data && res.data.code == 0){
+                user.logout();
+            }else{
+                console.log(JSON.stringify(res));
+            }
+        }).catch((error) => {
+            console.log(JSON.stringify(error));
+        });
+    }
+    openModifyBox(){
+        const status = this.state.modifyBoxStatus;
+        switch (status){
+        case true:
+        this.setState({
+            modifyBoxStatus:false
+        });
+            break;
+        case false:
+        this.setState({
+            modifyBoxStatus:true
+        });
+            break;
+        }
     }
     render() {
         return (
@@ -32,7 +129,7 @@ export default class Head extends Component {
                         <span title="退出系统" className="exit">
                             退出&nbsp;&nbsp;<b className="iconfont icon-icon" onClick={this.userLogout.bind(this)}></b>
                         </span>
-                        <span className="userhead">
+                        <span className="userhead" onClick={this.openModifyBox.bind(this)}>
                             <img className="userHeadIcon" src={userHead}/>
                             <img className="userStatusIcon" src={userOnLine}/>
                         </span>
@@ -41,6 +138,7 @@ export default class Head extends Component {
                         </span>
                     </div>
                 </div>
+                <ModifyPassWord status={this.state.modifyBoxStatus} close={this.closeModifyBox.bind(this)} />
             </div>
         );
     }

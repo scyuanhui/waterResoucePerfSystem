@@ -1,5 +1,5 @@
 /**
- *绩效指标表单查看
+ *绩效指标申报，表单查看
  **/
 import React,{Component} from 'react';
 import {observer} from 'mobx-react';

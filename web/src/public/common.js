@@ -1,6 +1,21 @@
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
-import axios from 'axios';
+import globalAxios from 'axios';
+//axios全局设置
+//globalAxios.interceptors.request.use(
+//    (config) => {
+//        const token = JSON.parse(sessionStorage.getItem('USER')).token;
+//        console.log('token:'+token);
+//        if (token) {
+//            config.headers.Authorization = token;
+//        }
+//        return config;
+//    },
+//    (error) => {
+//        return Promise.reject(error);
+//    }
+//);
+export const axios = globalAxios;
 //session
 export class Session{
     setItem(key,value){
@@ -13,62 +28,7 @@ export class Session{
         sessionStorage.removeItem(key);
     }
 }
-//ajax
-export class Axios{
-    constructor(){
-        //前提：登录时已设置好USERINFO
-        this.user = JSON.parse(sessionStorage.getItem('USERINFO'));
-    }
-    get(o){
-        if(!this.user.TOKEN){
-            console.log('USER.TOKEN is undefined');
-            return;
-        }
-        axios.get(o.url,{
-            headers:{'Authorization':'Bearer '+this.user.TOKEN},
-            params: o.data ? o.data : null//{}
-        }).then((res) => {
-            o.success(res);
-        }).catch((error) => {
-            console.log(error);
-        });
-    }
-    post(o){
-        if(!this.user.TOKEN){
-            console.log('USER.TOKEN is undefined');
-            return;
-        }
-        axios.post(o.url,o.data,{
-            headers:{'Authorization':'Bearer '+this.user.TOKEN}
-        }).then((res) => {
-            o.success(res);
-        }).catch((error) => {
-            console.log(error);
-        });
-    }
-    delete(url,callback){
-        if(!this.user.TOKEN){
-            console.log('USER.TOKEN is undefined');
-            return;
-        }
-        axios.delete(url).then((res) => {
-            callback(res);
-        });
-    }
-    put(o){
-        if(!this.user.TOKEN){
-            console.log('USER.TOKEN is undefined');
-            return;
-        }
-        axios.put(o.url,o.data,{
-            headers:{'Authorization':'Bearer '+this.user.TOKEN}
-        }).then((res) => {
-            o.success(res);
-        }).catch((error) => {
-            console.log(error);
-        });
-    }
-}
+
 function setLen(str){
     str = str.toString().length < 2 ? 0 + str.toString() : str;
     return str;

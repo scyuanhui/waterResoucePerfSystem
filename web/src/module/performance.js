@@ -21,18 +21,18 @@ export default class Performance extends Component{
     }
     render(){
         switch (user.data.grades){
-        case 'country':
-        return <div>{JSON.stringify({country:'国家级系统,正在运筹帷幄中^o^...'})}</div>;
-            break;
-        case 'province':
-        return <ProvincePerformance />;
-            break;
-        case 'city':
-        return <CityPerformance />;
-            break;
-        case 'county':
-        return <CountPerfmance />;
-            break;
+            case 'country':
+                return <div>{JSON.stringify({country:'国家级系统,正在运筹帷幄中^o^...'})}</div>;
+                break;
+            case 'province':
+                return <ProvincePerformance />;
+                break;
+            case 'city':
+                return <CityPerformance />;
+                break;
+            case 'county':
+                return <CountPerfmance />;
+                break;
         }
     }
 }

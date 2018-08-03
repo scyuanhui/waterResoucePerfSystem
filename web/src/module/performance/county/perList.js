@@ -4,16 +4,17 @@
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 import {observer} from 'mobx-react';
-import axios from 'axios';
 import api from './../../../store/interface';
 import cNode from './../../../store/PerCurrentMountModule';
-import {formatDate} from './../../../public/common';
+import {axios,formatDate} from './../../../public/common';
 import user from './../../../store/userinfo';
 import {BaseHead,TableYear} from './perCom';
 import PerDeclarDo from './perDeclarDo';
 import PerDeclareWaitLook from './perDeclareWaitLook';
 import PerFeedBack from './perFeedback';
 import PerTargetWrite from './perTargetWrite';
+
+
 //本年表格
 @observer
 class CurrentYearTable extends Component{
@@ -27,15 +28,18 @@ class CurrentYearTable extends Component{
         };
     }
     componentDidMount(){
-        const regionId = user.data.regionId;
-        axios.post(api.getCountyPerList,
-            {regionId:regionId,year:this.state.currentYear}
-        ).then((res) => {
+        const sendData = {
+            year:this.state.currentYear
+        };
+        axios.post(api.getCountyPerList,sendData).then((res) => {
             console.log(JSON.stringify(res));
-            const newArr = this.hanldList(res.data);
-            this.setState({
-                arr:newArr
-            });
+            const list = res.data;
+            if(list.length > 0){
+                const newArr = this.hanldList(list);
+                this.setState({
+                    arr:newArr
+                });
+            }
         }).catch((error) => {
             console.log(error);
         });
@@ -43,83 +47,66 @@ class CurrentYearTable extends Component{
     hanldList(list){
         for(let i=0;i<list.length;i++){
             //绩效指标申报
-            if(list[i].nodeNo == 1 && list[i].status == 0){
+            if(list[i].nodeNo == 1 && list[i].status == 0){//绩效指标申报：待申报
                 list[i].btnStatusClass = 'btn btnSmallRed';
                 list[i].btnText = '申报';
-                list[i].btnEvent = () => {cNode.currentNode = <PerDeclar />;};//绩效指标申报，去申报
+                list[i].page = <PerDeclarDo />;
             }
-            if(list[i].nodeNo == 1 && list[i].status == 1){
+            if(list[i].nodeNo == 1 && list[i].status == 1){//绩效指标申报：等待审核
                 list[i].btnStatusClass = 'btn btnSmallPurple';
                 list[i].btnText = '查看';
-                list[i].btnEvent = () => {cNode.currentNode = <PerDeclareWaitLook />;};//绩效指标申报，等待审核查看
+                list[i].page = <PerDeclareWaitLook />;
             }
-            if(list[i].nodeNo == 1 && list[i].status == 2){
+            if(list[i].nodeNo == 1 && list[i].status == 2){//绩效指标申报：审核通过
                 list[i].btnStatusClass = 'btn btnSmallGreen';
                 list[i].btnText = '查看';
-                list[i].btnEvent = () => null;//绩效指标申报，审核通过查看
             }
             //绩效目标填写
-            if(list[i].nodeNo == 2 && list[i].status == 0){
+            if(list[i].nodeNo == 2 && list[i].status == 0){//绩效目标填写：待填写
                 list[i].btnStatusClass = 'btn btnSmallRed';
                 list[i].btnText = '填写';
-                list[i].btnEvent = () => {cNode.currentNode = <PerTargetWrite />;};
+                list[i].page = <PerTargetWrite />;
             }
-            if(list[i].nodeNo == 2 && list[i].status == 1){
+            if(list[i].nodeNo == 2 && list[i].status == 1){//绩效目标填写：填写完成
                 list[i].btnStatusClass = 'btn btnSmallGreen';
                 list[i].btnText = '查看';
-                list[i].btnEvent = () => {console.log(list[i].btnText);};
             }
             //绩效自评
-            if(list[i].nodeNo == 3 && list[i].status == 0){
+            if(list[i].nodeNo == 3 && list[i].status == 0){//绩效自评：待自评填写
                 list[i].btnStatusClass = 'btn btnSmallRed';
                 list[i].btnText = '填写';
-                list[i].btnEvent = () => {cNode.currentNode = <PerTargetWrite />;};
             }
-            if(list[i].nodeNo == 3 && list[i].status == 1){
+            if(list[i].nodeNo == 3 && list[i].status == 1){//绩效自评：等待审核
                 list[i].btnStatusClass = 'btn btnSmallPurple';
                 list[i].btnText = '查看';
-                list[i].btnEvent = () => {console.log(list[i].btnText);};
             }
-            if(list[i].nodeNo == 3 && list[i].status == 2){
+            if(list[i].nodeNo == 3 && list[i].status == 2){//绩效自评：市审核通过
                 list[i].btnStatusClass = 'btn btnSmallGreen';
                 list[i].btnText = '填写';
-                list[i].btnEvent = () => () => {cNode.currentNode = <PerTargetWrite />;};
             }
-            if(list[i].nodeNo == 3 && list[i].status == 3){
+            if(list[i].nodeNo == 3 && list[i].status == 3){//绩效自评：省审核通过
                 list[i].btnStatusClass = 'btn btnSmallGreen';
                 list[i].btnText = '查看';
-                list[i].btnEvent = () => {console.log(list[i].btnText);};
             }
-            if(list[i].nodeNo == 3 && list[i].status == 4){
+            if(list[i].nodeNo == 3 && list[i].status == 4){//绩效自评：审核驳回
                 list[i].btnStatusClass = 'btn btnSmallOrange';
                 list[i].btnText = '查看';
-                list[i].btnEvent = () => {console.log(list[i].btnText);};
             }
             //绩效自评复查
-            if(list[i].nodeNo == 4 && list[i].status == 0){
+            if(list[i].nodeNo == 4 && list[i].status == 0){//绩效自评复查：等待复查
                 list[i].btnStatusClass = 'btn btnSmallPurple';
                 list[i].btnText = '查看';
-                list[i].btnEvent = () => {console.log(list[i].btnText);};
             }
-            if(list[i].nodeNo == 4 && list[i].status == 1){
+            if(list[i].nodeNo == 4 && list[i].status == 1){//绩效自评复查：已复查
                 list[i].btnStatusClass = 'btn btnSmallGreen';
                 list[i].btnText = '查看';
-                list[i].btnEvent = () => {console.log(list[i].btnText);};
             }
         }
         return list;
     }
-    perDeclare(){
-        cNode.currentNode = <PerDeclar />;
-    }
-    perWaitLook(){
-        cNode.currentNode = <PerFormLook />;
-    }
-    perFeedBack(){
-        cNode.currentNode = <PerFeedBack />;
-    }
-    perTargetWrite(){
-        cNode.currentNode = <PerTargetWrite />;
+    eventHanld(item){
+        console.log(item.page);
+        cNode.currentNode = item.page;
     }
     render(){
         const tds = this.state.heads.map((a,b) => <td key={a} width="33.3333%">{a}</td>);
@@ -139,7 +126,7 @@ class CurrentYearTable extends Component{
                                             <button className={item.btnStatusClass}>{item.statusName}</button>
                                         </td>
                                         <td>
-                                            <button className="btn btn-md btn-empty" onClick={item.btnEvent}>
+                                            <button className="btn btn-md btn-empty" onClick={this.eventHanld.bind(this,item)}>
                                                 {item.btnText}
                                             </button>
                                         </td>
@@ -160,37 +147,40 @@ class LastYearTable extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            yesteryear:formatDate(new Date()).YEAR - 1,
+            yesterYear:formatDate(new Date()).YEAR - 1,
             heads:['考评节点','完成状态','操作'],
             arr:[]
         };
     }
     componentDidMount(){
-        const regionId = user.data.regionId;
-        axios.post(api.getCountyPerList,
-            {regionId:regionId,year:this.state.yesteryear}
-        ).then((res) => {
+        const sendData = {
+            year:this.state.yesterYear
+        };
+        axios.post(api.getCountyPerList,sendData).then((res) => {
             console.log(JSON.stringify(res));
             const list = res.data;
-            for(let i=0;i<list.length;i++){
-                list[i].btnStatusClass = 'btn btnSmallGreen';
-                list[i].btnText = '查看';
+            if(list.length > 0){
+                for(let i=0;i<list.length;i++){
+                    list[i].btnStatusClass = 'btn btnSmallGreen';
+                    list[i].btnText = '查看';
+                    list[i].page = <PerDeclareWaitLook />;
+                }
+                this.setState({
+                    arr:list
+                });
             }
-            this.setState({
-                arr:list
-            });
         }).catch((error) => {
             console.log(error);
         });
     }
-    perLook(){
-        cNode.currentNode = <PerFormLook />;
+    perLook(item){
+        cNode.currentNode = item.page;
     }
     render(){
         const tds = this.state.heads.map((a,b) => <td key={a} width="33.3333%">{a}</td>);
         return (
             <div className="row contentRow">
-                <TableYear year={this.state.yesteryear} />
+                <TableYear year={this.state.yesterYear} />
                 <div>
                     <table>
                         <thead><tr>{tds}</tr></thead>
@@ -204,7 +194,7 @@ class LastYearTable extends Component{
                                             <button className={item.btnStatusClass}>{item.statusName}</button>
                                         </td>
                                         <td>
-                                            <button className="btn btn-md btn-empty" onClick={this.perLook.bind(this)}>
+                                            <button className="btn btn-md btn-empty" onClick={this.perLook.bind(this,item)}>
                                                 {item.btnText}
                                             </button>
                                         </td>
