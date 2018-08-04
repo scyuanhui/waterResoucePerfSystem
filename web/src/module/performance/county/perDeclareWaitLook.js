@@ -14,26 +14,6 @@ import {RenderThead} from './perCom';
 import List from './perList';
 
 
-function getTwoList(list,id){
-    const arr = [];
-    for(let i=0;i<list.length;i++){
-        if(list[i].oneIndexId == id){
-            arr.push(list[i]);
-        }
-    }
-    return arr;
-}
-function getThreeList(list,id){
-    const arr = [];
-    for(let i=0;i<list.length;i++){
-        if(list[i].twoIndexId == id){
-            arr.push(list[i]);
-        }
-    }
-    return arr;
-}
-
-
 //绩效指标表单查看头部
 @observer
 class PerFormLookHead extends Component{
