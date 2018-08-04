@@ -8,6 +8,7 @@ import api from './../../../store/interface';
 import cNode from './../../../store/PerCurrentMountModule';
 import {axios,formatDate} from './../../../public/common';
 import user from './../../../store/userinfo';
+import {decalWaitLook} from './../../../store/declar';
 import {BaseHead,TableYear} from './perCom';
 import PerDeclarDo from './perDeclarDo';
 import PerDeclareWaitLook from './perDeclareWaitLook';
@@ -33,9 +34,8 @@ class CurrentYearTable extends Component{
         };
         axios.post(api.getCountyPerList,sendData).then((res) => {
             //console.log(JSON.stringify(res));
-            const list = res.data;
-            if(list.length > 0){
-                const newArr = this.hanldList(list);
+            const newArr = this.hanldList(res.data);
+            if(newArr.length > 0){
                 this.setState({
                     arr:newArr
                 });
@@ -105,8 +105,11 @@ class CurrentYearTable extends Component{
         return list;
     }
     eventHanld(item){
-        console.log(item.page);
+        //console.log(item.page);
         cNode.currentNode = item.page;
+        if(item.nodeNo == 1 && item.status == 1){//绩效指标申报：等待审核
+            decalWaitLook.data = item;
+        }
     }
     render(){
         const tds = this.state.heads.map((a,b) => <td key={a} width="33.3333%">{a}</td>);
@@ -200,7 +203,7 @@ class LastYearTable extends Component{
                                         </td>
                                     </tr>
                                 );
-                            }) : <tr><td className="text-center" colSpan="3">No Data</td></tr>
+                            }) : <tr><td className="text-center" colSpan="3">{this.state.yesterYear}年度无相关数据</td></tr>
                         }
                         </tbody>
                     </table>

@@ -6,11 +6,33 @@ import {observer} from 'mobx-react';
 import axios from 'axios';
 //store
 import cNode from './../../../store/PerCurrentMountModule';
+import {decalWaitLook} from './../../../store/declar';
 import {formatDate} from './../../../public/common';
 import user from './../../../store/userinfo';
 import api from './../../../store/interface';
 import {RenderThead} from './perCom';
 import List from './perList';
+
+
+function getTwoList(list,id){
+    const arr = [];
+    for(let i=0;i<list.length;i++){
+        if(list[i].oneIndexId == id){
+            arr.push(list[i]);
+        }
+    }
+    return arr;
+}
+function getThreeList(list,id){
+    const arr = [];
+    for(let i=0;i<list.length;i++){
+        if(list[i].twoIndexId == id){
+            arr.push(list[i]);
+        }
+    }
+    return arr;
+}
+
 
 //绩效指标表单查看头部
 @observer
@@ -52,6 +74,7 @@ class PerFormLookName extends Component{
     }
 }
 //表单的一些其它详情（蓝色背景的）
+@observer
 class PerLookDesc extends Component{
     constructor(props) {
         super(props);
@@ -60,13 +83,10 @@ class PerLookDesc extends Component{
         return (
             <div className="perTableDesc">
                 <ul>
-                    <li>2018-01-02</li>
-                    <li>市级</li>
-                    <li>指标</li>
-                    <li>申报人：宋心硕</li>
+                    <li>{formatDate(decalWaitLook.data.createTime,'-').YMD}</li>
+                    <li>申报人：{decalWaitLook.data.createUserId}</li>
                     <li>等待上级审核</li>
-                    <li>最终指标</li>
-                    <li>申报考核指标</li>
+                    <li>{decalWaitLook.data.nodeName}</li>
                     <li className="active">等待审核</li>
                     <li>反馈绩效考核指标</li>
                 </ul>
@@ -75,6 +95,7 @@ class PerLookDesc extends Component{
     }
 }
 //绩效指标表单
+@observer
 class PerFormLookTable extends Component{
     constructor(props) {
         super(props);
@@ -116,11 +137,28 @@ class PerFormLookTable extends Component{
         };
     }
     componentDidMount(){
-        const regionId = user.data.regionId;
-        axios.post(api.getCountyPerList,
-            {regionId:regionId,year:this.state.currentYear,nodeNo:1}
-        ).then((res) => {
-            console.log(JSON.stringify(res));
+        //console.log(JSON.stringify(decalWaitLook.data));
+        const sendData = {
+            regionId:user.data.regionId,
+            year:this.state.currentYear
+        };
+        const url = api.perDeclareWaitLook+'?regionId='+sendData.regionId+'&year='+sendData.year;
+        axios.post(url).then((res) => {
+            //console.log(JSON.stringify(res));
+            const list = res.data;
+            const len = list.length;
+            const oneIds = [];
+
+            //取得顶层ID
+            for(let i=0;i<len;i++){
+                if(oneIds.indexOf(list[i].oneIndexId) == -1){
+                    oneIds.push(list[i].oneIndexId);
+                }
+            }
+            for(let i=0;i<oneIds.length;i++){
+                const arr = getTwoList(list,oneIds[i]);
+                console.log(JSON.stringify(arr));
+            }
             //this.setState({
             //    arr:newArr
             //});

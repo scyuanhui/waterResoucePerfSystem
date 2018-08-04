@@ -41,8 +41,7 @@ export class Step extends Component{
     constructor(props){
         super(props);
         this.state = {
-            steps:['A','B','C','D','E'],
-            docs:['项目决策','项目管理','产出指标','效益指标','满意度指标']
+            steps:['A','B','C','D','E']
         };
     }
     render(){
@@ -67,7 +66,7 @@ export class Step extends Component{
                 </div>
                 <div className="stepTextList">
                     {
-                        this.state.docs.map((item,index) => {
+                        this.props.contents.map((item,index) => {
                             const isActive = index+1 == this.props.index ? 'active' :'';
                             return (
                                 <span key={index} className={isActive}><b>{item}</b></span>
@@ -113,4 +112,14 @@ export class RenderThead extends Component{
         const tds = this.props.list.map((item,index) => <td key={index}>{item}</td>);
         return <thead><tr>{tds}</tr></thead>;
     }
+}
+export function getTableList(list,id){
+    //list:所有的list,indexId:下一级的PID
+    const arr = [];
+    for(let i=0;i<list.length;i++){
+        if(list[i].pid == id){
+            arr.push(list[i]);
+        }
+    }
+    return arr;
 }
