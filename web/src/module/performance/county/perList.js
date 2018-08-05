@@ -4,6 +4,7 @@
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 import {observer} from 'mobx-react';
+import Loading from './../../../public/loading';
 import api from './../../../store/interface';
 import cNode from './../../../store/PerCurrentMountModule';
 import {axios,formatDate} from './../../../public/common';
@@ -26,6 +27,7 @@ class CurrentYearTable extends Component{
         super(props);
         this.state = {
             //考评节点:[1.绩效指标申报,2.绩效目标填写,3.绩效自评,4.绩效复查]
+            errorInfo:null,
             currentYear:formatDate(new Date()).YEAR,
             heads:['考评节点','完成状态','操作'],
             arr:[]
@@ -34,7 +36,7 @@ class CurrentYearTable extends Component{
     componentDidMount(){
         //初始化一级指标
         firstGrade.init();
-        console.log(firstGrade.data);
+        console.log(JSON.stringify(firstGrade.data));
 
         const sendData = {
             year:this.state.currentYear
@@ -49,6 +51,9 @@ class CurrentYearTable extends Component{
             }
         }).catch((error) => {
             console.log(error);
+            this.setState({
+                errorInfo:JSON.stringify(error)
+            });
         });
     }
     hanldList(list){
@@ -143,7 +148,7 @@ class CurrentYearTable extends Component{
                                         </td>
                                     </tr>
                                 );
-                            }) : <tr><td className="text-center" colSpan="3">No Data</td></tr>
+                            }) : <tr><td className="text-center" colSpan="3">{this.state.errorInfo ? this.state.errorInfo : <Loading />}</td></tr>
                         }
                         </tbody>
                     </table>
