@@ -5,7 +5,7 @@ import React,{Component} from 'react';
 import {observer} from 'mobx-react';
 //store
 import cNode from './../../../store/PerCurrentMountModule';
-import {firstGrade} from './../../../store/declar';
+import {firstGrade} from './../../../store/Evaluation';
 import user from './../../../store/userinfo';
 import {Checkbox,axios,formatDate} from './../../../public/common';
 import api from './../../../store/interface';

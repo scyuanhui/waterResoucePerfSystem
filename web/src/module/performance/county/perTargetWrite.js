@@ -5,7 +5,7 @@ import React,{Component} from 'react';
 import {observer} from 'mobx-react';
 //store
 import cNode from './../../../store/PerCurrentMountModule';
-import {declar,targetWrite,decalWaitLook} from './../../../store/declar';
+import {declar,targetWrite,decalWaitLook} from './../../../store/Evaluation';
 import user from './../../../store/userinfo';
 import api from './../../../store/interface';
 import {ranNumber,isNumber,formatDate,axios} from './../../../public/common';

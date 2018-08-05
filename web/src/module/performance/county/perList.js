@@ -8,7 +8,7 @@ import api from './../../../store/interface';
 import cNode from './../../../store/PerCurrentMountModule';
 import {axios,formatDate} from './../../../public/common';
 import user from './../../../store/userinfo';
-import {decalWaitLook,firstGrade} from './../../../store/declar';
+import {decalWaitLook,firstGrade} from './../../../store/Evaluation';
 import {BaseHead,TableYear} from './perCom';
 import PerDeclarDo from './perDeclarDo';
 import PerDeclareWaitLook from './perDeclareWaitLook';

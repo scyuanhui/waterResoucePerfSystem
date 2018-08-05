@@ -6,7 +6,7 @@ import {observer} from 'mobx-react';
 import axios from 'axios';
 //store
 import cNode from './../../../store/PerCurrentMountModule';
-import {decalWaitLook} from './../../../store/declar';
+import {decalWaitLook} from './../../../store/Evaluation';
 import {formatDate} from './../../../public/common';
 import user from './../../../store/userinfo';
 import api from './../../../store/interface';
