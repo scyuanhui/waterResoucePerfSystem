@@ -4,11 +4,12 @@ import globalAxios from 'axios';
 //axios全局设置
 //globalAxios.interceptors.request.use(
 //    (config) => {
-//        const token = JSON.parse(sessionStorage.getItem('USER')).token;
-//        console.log('token:'+token);
-//        if (token) {
-//            config.headers.Authorization = token;
-//        }
+//        //config.headers['Content-type'] = 'application/x-www-form-urlencoded';
+//        //const token = JSON.parse(sessionStorage.getItem('USER')).token;
+//        //console.log('token:'+token);
+//        //if (token) {
+//        //    config.headers.Authorization = token;
+//        //}
 //        return config;
 //    },
 //    (error) => {

@@ -1,5 +1,5 @@
 /**
- *绩效指标申报，表单查看
+ *绩效指标申报，审核通过查看
  **/
 import React,{Component} from 'react';
 import {observer} from 'mobx-react';
@@ -75,27 +75,7 @@ class PerFormLookName extends Component{
         );
     }
 }
-//表单的一些其它详情（蓝色背景的）
-@observer
-class PerLookDesc extends Component{
-    constructor(props) {
-        super(props);
-    }
-    render(){
-        return (
-            <div className="perTableDesc">
-                <ul>
-                    <li>{formatDate(decalWaitLook.data.createTime,'-').YMD}</li>
-                    <li>申报人：{decalWaitLook.data.createUserId}</li>
-                    <li>等待上级审核</li>
-                    <li>{decalWaitLook.data.nodeName}</li>
-                    <li className="active">等待审核</li>
-                    <li>反馈绩效考核指标</li>
-                </ul>
-            </div>
-        );
-    }
-}
+
 class RenderLookThead extends Component{
     constructor(props) {
         super(props);
@@ -154,7 +134,6 @@ class PerFormLookTable extends Component{
     render() {
         return (
             <div className="row contentRow">
-                <PerLookDesc />
                 <PerFormLookName len={this.state.list.length} />
                 <div>
                     <table style={{background:'#f4f8ff',borderRadius:'5px'}}>
@@ -212,7 +191,7 @@ class PerFormLookTable extends Component{
 
 
 
-export default class PerDeclareWaitLook extends Component{
+export default class PerAuditorOk extends Component{
     constructor(props){
         super(props);
     }

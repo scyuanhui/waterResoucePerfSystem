@@ -8,12 +8,15 @@ import api from './../../../store/interface';
 import cNode from './../../../store/PerCurrentMountModule';
 import {axios,formatDate} from './../../../public/common';
 import user from './../../../store/userinfo';
-import {decalWaitLook} from './../../../store/declar';
+import {decalWaitLook,firstGrade} from './../../../store/declar';
 import {BaseHead,TableYear} from './perCom';
 import PerDeclarDo from './perDeclarDo';
 import PerDeclareWaitLook from './perDeclareWaitLook';
+import PerAuditorOk from './perAuditorOk';
 import PerFeedBack from './perFeedback';
 import PerTargetWrite from './perTargetWrite';
+import PerTargetWritedLook from './perTargetWritedLook';
+import PerSelfAssessment from './perSelfAssessment';
 
 
 //本年表格
@@ -29,6 +32,10 @@ class CurrentYearTable extends Component{
         };
     }
     componentDidMount(){
+        //初始化一级指标
+        firstGrade.init();
+        console.log(firstGrade.data);
+
         const sendData = {
             year:this.state.currentYear
         };
@@ -60,6 +67,7 @@ class CurrentYearTable extends Component{
             if(list[i].nodeNo == 1 && list[i].status == 2){//绩效指标申报：审核通过
                 list[i].btnStatusClass = 'btn btnSmallGreen';
                 list[i].btnText = '查看';
+                list[i].page = <PerAuditorOk />;
             }
             //绩效目标填写
             if(list[i].nodeNo == 2 && list[i].status == 0){//绩效目标填写：待填写
@@ -70,11 +78,13 @@ class CurrentYearTable extends Component{
             if(list[i].nodeNo == 2 && list[i].status == 1){//绩效目标填写：填写完成
                 list[i].btnStatusClass = 'btn btnSmallGreen';
                 list[i].btnText = '查看';
+                list[i].page = <PerTargetWritedLook />;
             }
             //绩效自评
             if(list[i].nodeNo == 3 && list[i].status == 0){//绩效自评：待自评填写
                 list[i].btnStatusClass = 'btn btnSmallRed';
-                list[i].btnText = '填写';
+                list[i].btnText = '自评';
+                list[i].page = <PerSelfAssessment />;
             }
             if(list[i].nodeNo == 3 && list[i].status == 1){//绩效自评：等待审核
                 list[i].btnStatusClass = 'btn btnSmallPurple';
@@ -107,9 +117,7 @@ class CurrentYearTable extends Component{
     eventHanld(item){
         //console.log(item.page);
         cNode.currentNode = item.page;
-        if(item.nodeNo == 1 && item.status == 1){//绩效指标申报：等待审核
-            decalWaitLook.data = item;
-        }
+        decalWaitLook.data = item;
     }
     render(){
         const tds = this.state.heads.map((a,b) => <td key={a} width="33.3333%">{a}</td>);

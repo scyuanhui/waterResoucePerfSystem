@@ -3,5 +3,8 @@ perList.js----绩效指标列表(绩效考评首屏)
 perDeclarDo.js----绩效指标申报，等待申报-申报
 perCommitForm.js----绩效指标表单
 perDeclareWaitLook.js----绩效指标申报，等待审核-查看
+perAuditorOk.js----绩效指标申报，审核通过-查看
 perFeedback.js----绩效指标表单反馈
 perTargetWrite.js----绩效目标填写
+perTargetWritedLook.js----绩效目标填写完成-查看
+perSelfAssessment.js----绩效自评-自评

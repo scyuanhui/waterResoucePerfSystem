@@ -35,7 +35,6 @@ function getThreeTableList(list,id){
     return arr;
 }
 
-
 //绩效指标表单查看头部
 @observer
 class PerFormLookHead extends Component{
@@ -75,46 +74,31 @@ class PerFormLookName extends Component{
         );
     }
 }
-//表单的一些其它详情（蓝色背景的）
-@observer
-class PerLookDesc extends Component{
-    constructor(props) {
-        super(props);
-    }
-    render(){
-        return (
-            <div className="perTableDesc">
-                <ul>
-                    <li>{formatDate(decalWaitLook.data.createTime,'-').YMD}</li>
-                    <li>申报人：{decalWaitLook.data.createUserId}</li>
-                    <li>等待上级审核</li>
-                    <li>{decalWaitLook.data.nodeName}</li>
-                    <li className="active">等待审核</li>
-                    <li>反馈绩效考核指标</li>
-                </ul>
-            </div>
-        );
-    }
-}
+
 class RenderLookThead extends Component{
     constructor(props) {
         super(props);
     }
-    render(){
-        const tds = this.props.list.map((item,index) => {
-            const width = index == 0 || index == 1 ? '25%' : '50%';
-            return <td key={index} width={width}>{item}</td>;
-        });
-        return <thead><tr>{tds}</tr></thead>;
+    render() {
+        return (
+            <thead>
+            <tr>
+                <td width="10%">一级指标</td>
+                <td width="10%">二级指标</td>
+                <td width="50%">三级指标</td>
+                <td width="20%">指标项</td>
+                <td width="10%">各项预期指标值</td>
+            </tr>
+            </thead>
+        );
     }
 }
 //绩效指标表单
 @observer
-class PerFormLookTable extends Component{
+class PerTargetLookTable extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            heads:['一级指标','二级指标','三级指标'],
             currentYear:formatDate(new Date()).YEAR,
             list:[],
             firstList:[]
@@ -154,11 +138,10 @@ class PerFormLookTable extends Component{
     render() {
         return (
             <div className="row contentRow">
-                <PerLookDesc />
                 <PerFormLookName len={this.state.list.length} />
                 <div>
                     <table style={{background:'#f4f8ff',borderRadius:'5px'}}>
-                        <RenderLookThead list={this.state.heads} />
+                        <RenderLookThead />
                         <tbody>
                         {
                             this.state.firstList.map((item,index) => {
@@ -166,8 +149,8 @@ class PerFormLookTable extends Component{
                                 const twoList = getTwoTableList(this.state.list,item.id,secendids);
                                 return (
                                     <tr key={index}>
-                                        <td width="25%">{item.name}</td>
-                                        <td colSpan="2" width="75%">
+                                        <td width="10%">{item.name}</td>
+                                        <td colSpan="4" width="90%">
                                             <table>
                                                 <tbody>
                                                 {
@@ -175,15 +158,18 @@ class PerFormLookTable extends Component{
                                                         const threeList = getThreeTableList(this.state.list,twoItem.twoIndexId);
                                                         return (
                                                             <tr key={twoIndex}>
-                                                                <td width="30%">{twoItem.twoIndexName}</td>
-                                                                <td width="70%" colSpan="2">
+                                                                <td width="10%">{twoItem.twoIndexName}</td>
+                                                                <td width="90%" colSpan="3">
                                                                     <table>
                                                                         <tbody>
                                                                         {
                                                                             threeList.map((threeItem,threeIndex) => {
+                                                                                console.log(JSON.stringify(threeItem));
                                                                                 return (
                                                                                     <tr key={threeIndex}>
-                                                                                        <td style={{borderBottom:'1px solid #d0dfff',textAlign:'left',textIndent:'50px'}}>{threeItem.threeIndexName}</td>
+                                                                                        <td width="65%">{threeItem.threeIndexName}</td>
+                                                                                        <td width="20%">{threeItem.preScore}</td>
+                                                                                        <td width="15%">{threeItem.preValue}</td>
                                                                                     </tr>
                                                                                 );
                                                                             })
@@ -212,7 +198,7 @@ class PerFormLookTable extends Component{
 
 
 
-export default class PerDeclareWaitLook extends Component{
+export default class PerTargetWritedLook extends Component{
     constructor(props){
         super(props);
     }
@@ -220,7 +206,7 @@ export default class PerDeclareWaitLook extends Component{
         return (
             [
                 <PerFormLookHead key="PerFormLookHead" />,
-                <PerFormLookTable key="PerFormLookTable" />
+                <PerTargetLookTable key="PerTargetLookTable" />
             ]
         );
     }
