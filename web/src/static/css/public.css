@@ -156,7 +156,6 @@ table td.checkboxTd{position:relative}
 .loading>span.loadingp1{animation:a8 1s infinite;}
 .loading>span.loadingp2{animation:a9 1s infinite;}
 .loading>span.loadingp3{animation:a0 1s infinite;}
-
 @keyframes a1 {0%{color:#fff}10%{color:#3B86FF}}
 @keyframes a2 {10%{color:#fff}20%{color:#3B86FF}}
 @keyframes a3 {20%{color:#fff}30%{color:#3B86FF}}
