@@ -11,6 +11,10 @@ import {Checkbox,axios,formatDate} from './../../../public/common';
 import api from './../../../store/interface';
 import {Step} from './perCom';
 import List from './perList';
+
+console.log(JSON.stringify(firstGrade.data));
+
+
 //获取顶级
 function getDataTableList(list,oneIndexId,oneIds){
     const arr = [];

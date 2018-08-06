@@ -8,10 +8,12 @@ import api from './interface';
 
 //获取一级指标，步骤（共5步）
 class FirstGrade{
+    constructor(){
+        this.init();
+    }
     @observable data = [];
     init(){
         axios.get(api.getOneList).then((res) => {
-            console.log(JSON.stringify(res));
             this.data = res.data;
         }).catch((error) => {
             console.log(error);

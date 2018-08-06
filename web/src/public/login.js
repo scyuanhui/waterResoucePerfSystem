@@ -6,20 +6,15 @@ import api from './../store/interface';
 import {trim} from './common';
 import user from './../store/userinfo';
 import App from './../index';
-import {Dilog} from './modal';
+import {message} from './modal';
 //img
 import lineActive from './../static/img/line1-active.png';
 import dynamicActive from './../static/img/line2-active.png';
-
 
 @observer
 class LoginForm extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            dilogStatus:false,
-            dilogText:''
-        };
     }
     closeDilog(bool){
         //console.log(bool);
@@ -47,22 +42,16 @@ class LoginForm extends Component {
                     }, 1000);
                 }
                 if(res.data['success'] == false){
-                    this.setState({
-                        dilogStatus:true,
-                        dilogText:res.data.resultMsg
-                    });
+                    message.error(res.data.resultMsg,2500);
                 }
             }).catch((error) => {
-                console.log(error);
+                message.error(JSON.stringify(error),2500);
             });
             //##############mock login start################
             //mockLogin(name,mountNode);
             //##############mock login end################
         }else{
-            this.setState({
-                dilogStatus:true,
-                dilogText:result.text
-            });
+            message.error(result.text,2500);
         }
     }
     componentDidMount(){
@@ -77,9 +66,6 @@ class LoginForm extends Component {
     render() {
         return (
             <div className="loginForm">
-                <Dilog title={'提示信息'} width={'300px'} status={this.state.dilogStatus} close={this.closeDilog.bind(this)}>
-                    <p className="grey">{this.state.dilogText}</p>
-                </Dilog>
                 <span className="loginTitle">登录</span>
                 <input type="text" placeholder="账号" ref="username" placeholder="[省:admin1][市:admin2][县:admin3]" maxLength="25"/>
                 <input type="password" placeholder="密码" ref="password" placeholder="密码随便输入6个" maxLength="25"/>
