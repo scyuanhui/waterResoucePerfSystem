@@ -18,7 +18,8 @@ import PerFeedBack from './perFeedback';
 import PerTargetWrite from './perTargetWrite';
 import PerTargetWritedLook from './perTargetWritedLook';
 import PerSelfAssessment from './perSelfAssessment';
-
+//一级指标
+console.log(JSON.stringify(firstGrade.data));
 
 //本年表格
 @observer
@@ -34,9 +35,6 @@ class CurrentYearTable extends Component{
         };
     }
     componentDidMount(){
-        //初始化一级指标
-        firstGrade.init();
-        console.log(JSON.stringify(firstGrade.data));
 
         const sendData = {
             year:this.state.currentYear

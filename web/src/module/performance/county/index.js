@@ -5,7 +5,7 @@ import React,{Component} from 'react';
 import {observer} from 'mobx-react';
 //store
 import cNode from './../../../store/PerCurrentMountModule';
-import List from './perList';
+import List from './perHome';
 
 @observer
 export default class CountPerfmance extends Component{

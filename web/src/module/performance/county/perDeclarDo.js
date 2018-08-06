@@ -10,7 +10,7 @@ import user from './../../../store/userinfo';
 import {Checkbox,axios,formatDate} from './../../../public/common';
 import api from './../../../store/interface';
 import {Step,getTableList} from './perCom';
-import List from './perList';
+import List from './perHome';
 
 
 //绩效指标申报，添加绩效指标项头部

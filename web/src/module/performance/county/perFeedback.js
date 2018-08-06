@@ -6,7 +6,7 @@ import {observer} from 'mobx-react';
 //store
 import cNode from './../../../store/PerCurrentMountModule';
 import {RenderThead} from './perCom';
-import List from './perList';
+import List from './perHome';
 
 //绩效指标表单查看头部
 @observer

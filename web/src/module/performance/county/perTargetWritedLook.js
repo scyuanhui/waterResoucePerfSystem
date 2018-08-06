@@ -11,7 +11,7 @@ import {formatDate} from './../../../public/common';
 import user from './../../../store/userinfo';
 import api from './../../../store/interface';
 import {RenderThead} from './perCom';
-import List from './perList';
+import List from './perHome';
 
 //获取二级列表
 function getTwoTableList(list,id,secendids){

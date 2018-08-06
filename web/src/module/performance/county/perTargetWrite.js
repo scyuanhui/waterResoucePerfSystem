@@ -10,7 +10,7 @@ import user from './../../../store/userinfo';
 import api from './../../../store/interface';
 import {ranNumber,isNumber,formatDate,axios} from './../../../public/common';
 import {RenderThead,Step} from './perCom';
-import List from './perList';
+import List from './perHome';
 
 function getDataTableList(list,indexId){
     const arr = [];

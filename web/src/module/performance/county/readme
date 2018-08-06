@@ -1,5 +1,5 @@
 perCom.js----绩效考评功能公共JS
-perList.js----绩效指标列表(绩效考评首屏)
+perHome.js----绩效指标列表(绩效考评首屏)
 perDeclarDo.js----绩效指标申报，等待申报-申报
 perCommitForm.js----绩效指标表单
 perDeclareWaitLook.js----绩效指标申报，等待审核-查看
