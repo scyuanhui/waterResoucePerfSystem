@@ -36,3 +36,8 @@ class TargetWrite{
     @observable commits = [];
 }
 export const targetWrite = new TargetWrite();
+//绩效自评需要提交的数据
+class SelfScore{
+    @observable commits = [];
+}
+export const selfScore = new SelfScore();

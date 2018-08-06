@@ -73,35 +73,32 @@ class Message{
         this.messageContainer = document.createElement('div');
         this.messageContainer.className = 'messageContainer';
         this.__delay = 2500;//默认2.5秒后remove
+        this.successTemplate = (successText) => {
+            return '<a class="messageBody active"><span class="successIcon">√</span><span>'+successText+'</span></a>';
+        };
+        this.warningTemplate = (warningText) => {
+            return '<a class="messageBody active"><span class="warningIcon">!</span><span>'+warningText+'</span></a>';
+        };
+        this.errorTemplate = (errorText) => {
+            return '<a class="messageBody active"><span class="errorIcon">×</span><span>'+errorText+'</span></a>';
+        };
     }
     success(text,delay){
-        const template = '<a class="messageBody active">'+
-                             '<span class="successIcon">√</span>'+
-                             '<span>'+text+'</span>'+
-                         '</a>';
-        this.messageContainer.innerHTML = template;
+        this.messageContainer.innerHTML = this.successTemplate(text);
         this.body.appendChild(this.messageContainer);
         setTimeout(() => {
             this.remove();
         },delay ? delay : this.__delay);
     }
     warning(text,delay){
-        const template = '<a class="messageBody active">'+
-                             '<span class="warningIcon">!</span>'+
-                             '<span>'+text+'</span>'+
-                         '</a>';
-        this.messageContainer.innerHTML = template;
+        this.messageContainer.innerHTML = this.warningTemplate(text);
         this.body.appendChild(this.messageContainer);
         setTimeout(() => {
             this.remove();
         },delay ? delay : this.__delay);
     }
     error(text,delay){
-        const template = '<a class="messageBody active">'+
-                             '<span class="errorIcon">×</span>'+
-                             '<span>'+text+'</span>'+
-                         '</a>';
-        this.messageContainer.innerHTML = template;
+        this.messageContainer.innerHTML = this.errorTemplate(text);
         this.body.appendChild(this.messageContainer);
         setTimeout(() => {
             this.remove();

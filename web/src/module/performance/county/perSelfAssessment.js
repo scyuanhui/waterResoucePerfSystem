@@ -5,34 +5,13 @@ import React,{Component} from 'react';
 import {observer} from 'mobx-react';
 //store
 import cNode from './../../../store/PerCurrentMountModule';
-import {firstGrade} from './../../../store/Evaluation';
+import {message} from './../../../public/modal';
+import {selfScore,decalWaitLook} from './../../../store/Evaluation';
 import user from './../../../store/userinfo';
-import {Checkbox,axios,formatDate} from './../../../public/common';
+import {Checkbox,axios,formatDate,isNumber} from './../../../public/common';
 import api from './../../../store/interface';
 import {Step} from './perCom';
 import List from './perHome';
-
-//获取顶级
-function getDataTableList(list,oneIndexId,oneIds){
-    const arr = [];
-    for(let i=0;i<list.length;i++){
-        if(list[i].oneIndexId == oneIndexId && oneIds.indexOf(list[i].oneIndexId) == -1){
-            oneIds.push(list[i].oneIndexId);
-            arr.push(list[i]);
-        }
-    }
-    return arr;
-}
-//获取二级列表
-function getTwoTableList(list,id){
-    const arr = [];
-    for(let i=0;i<list.length;i++){
-        if(list[i].twoIndexId == id){
-            arr.push(list[i]);
-        }
-    }
-    return arr;
-}
 
 //绩效指标申报，添加绩效指标项头部
 @observer
@@ -65,12 +44,12 @@ class SelfAssessTableHead extends Component{
         return (
             <thead>
                 <tr>
-                    <td>二级指标</td>
-                    <td>三级指标</td>
-                    <td>指标项</td>
-                    <td>预期指标值</td>
-                    <td>实际完成指标值</td>
-                    <td>自评得分</td>
+                    <td width="10%">二级指标</td>
+                    <td width="20%">三级指标</td>
+                    <td width="40%">指标项</td>
+                    <td width="10%">预期指标值</td>
+                    <td width="10%">实际完成指标值</td>
+                    <td width="10%">自评得分</td>
                 </tr>
             </thead>
         );
@@ -82,35 +61,89 @@ class DeclarTable extends Component{
     constructor(props) {
         super(props);
     }
+    onChange(item,event){
+        const flag = isNumber(event.currentTarget.value);
+        console.log(flag);
+        if(flag){
+            const value = event.currentTarget.value;
+            //console.log(value);
+            //console.log(JSON.stringify(item));
+            for(let i=0;i<selfScore.commits.length;i++){
+                if(selfScore.commits[i].pfmId == item.pfmId){
+                    selfScore.commits[i].preValue = value;
+                    return;
+                }
+            }
+            const __pfmId = item.pfmId;
+            const __selScore = item.selfScore;
+            const __realIndexValue = item.realIndexValue;
+            const __checkScore = item.checkScore;
+            const __preValue = value;
+            const sendExamines = {};
+            sendExamines.pfmId = __pfmId;
+            sendExamines.selScore = __selScore;
+            sendExamines.realIndexValue = __realIndexValue;
+            sendExamines.checkScore = __checkScore;
+            sendExamines.preValue = __preValue;
+            selfScore.commits.push(sendExamines);
+
+        }else{
+            event.currentTarget.value = '';
+        }
+    }
     render() {
-        const totalList = this.props.list;
-        const oneIds = [];
-        const list = getDataTableList(totalList,this.props.index,oneIds);
-        console.log(JSON.stringify(list));
+        const tableList = this.props.list;
+        const tempTrOne = <tr><td></td></tr>;
+        const tempTrTwo = <tr>
+            <td width="52%"></td>
+            <td width="16%" style={{borderLeft:'1px solid #d0dfff'}}></td>
+            <td width="16%" style={{borderLeft:'1px solid #d0dfff'}}></td>
+            <td width="16%" style={{borderLeft:'1px solid #d0dfff'}}></td>
+        </tr>;
         return (
             <div className="">
                 <table style={{background:'#f4f8ff',borderRadius:'5px'}}>
                     <SelfAssessTableHead />
                     <tbody>
                     {
-                        list.map((oneItem,oneIndex) => {
-                            const twoList = getTwoTableList(totalList,oneItem.twoIndexId);
+                        tableList.map((oneItem,oneIndex) => {
+                            const twoList = oneItem.child;
                             return (
-                                <tr key={Math.random()}>
-                                    <td>{oneItem.twoIndexName}</td>
-                                    <td>
+                                <tr key={(Math.random())+oneItem.indexId}>
+                                    <td width="10%">{oneItem.indexName}</td>
+                                    <td colSpan="5" width="90%">
                                         <table>
                                             <tbody>
                                             {
-                                                twoList.map((twoItem,twoIndex) => {
-                                                    //const threeList = getThreeTableList(totalList,twoItem.indexId);
+                                                twoList && twoList.length > 0 ? twoList.map((twoItem,twoIndex) => {
+                                                    const threeList = twoItem.child;
+                                                    console.log(JSON.stringify(threeList));
                                                     return (
-                                                        <tr key={Math.random()}>
-                                                            <td>{twoItem.threeIndexName}</td>
-                                                            <td>123</td>
+                                                        <tr key={(Math.random())+twoItem.indexId}>
+                                                            <td width="25%">{twoItem.indexName}</td>
+                                                            <td colSpan="4" width="75%">
+                                                                <table>
+                                                                    <tbody>
+                                                                    {
+                                                                        threeList && threeList.length > 0 ? threeList.map((threeItem,threeIndex) => {
+                                                                             return (
+                                                                                 <tr key={(Math.random())+threeItem.indexId}>
+                                                                                     <td width="52%">{threeItem.indexName}</td>
+                                                                                     <td width="16%" style={{borderLeft:'1px solid #d0dfff'}}>{threeItem.preValue}</td>
+                                                                                     <td width="16%" style={{borderLeft:'1px solid #d0dfff'}}>{threeItem.realIndexValue}</td>
+                                                                                     <td width="16%" style={{borderLeft:'1px solid #d0dfff'}}>
+                                                                                         <input type="text" onChange={this.onChange.bind(this,threeItem)} style={{width:'80%'}} />
+                                                                                     </td>
+                                                                                 </tr>
+                                                                             );
+                                                                        }) : tempTrTwo
+                                                                    }
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
                                                         </tr>
                                                     );
-                                                })
+                                                }) : tempTrOne
                                             }
                                             </tbody>
                                         </table>
@@ -134,83 +167,79 @@ class DeclarContent extends Component{
             max:5,
             list:[],
             length:null,
-            defaultIndex:1,
-            defaultList:[],
-            steps:[],//第一排五步的文字
-            regionName:null
+            defaultIndex:1
         };
     }
     componentDidMount(){
+        this.hanldList(this.state.defaultIndex);
+    }
+    hanldList(index){
         const sendData = {
+            pid:index,
             regionId:user.data.regionId,
             year:formatDate(new Date()).YEAR
         };
-        const url = api.perDeclareWaitLook+'?regionId='+sendData.regionId+'&year='+sendData.year;
-        axios.post(url).then((res) => {
+        const url = api.getTargetTableList+'?pid='+sendData.pid+'&regionId='+sendData.regionId+'&year='+sendData.year;
+        axios.get(url).then((res) => {
             //console.log(JSON.stringify(res));
-            const regionName = res.data.regionName;
-            const list = res.data;
-            this.setState({
-                length:list.length,
-                regionName:regionName,
-                list:list
-            },() => {
-                this.hanldList(list,this.state.defaultIndex);
-            });
+            if(res.data.length > 0){
+                this.setState({
+                    list:res.data
+                });
+            }
         }).catch((error) => {
             console.log(error);
         });
     }
-    hanldList(list,index){
-        const stepList = [];
-        for(let i=0;i<list.length;i++){
-            if(stepList.indexOf(list[i].oneIndexName) == -1){
-                stepList.push(list[i].oneIndexName);
-            }
-        }
-        //const ids = [];
-        //const firsts = [];
-        //for(let i=0;i<list.length;i++){
-        //    if(ids.indexOf(list[i].oneIndexId) == -1){
-        //        ids.push(list[i].oneIndexId);
-        //        firsts.push(list[i]);
-        //    }
-        //}
-        this.setState({
-            steps:stepList
-            //defaultList:firsts
-        });
-    }
     prev(){
-        if(this.state.defaultIndex > this.state.min){
+        const flag = this.state.defaultIndex >=1 && this.state.defaultIndex <= 5;
+        if(flag){
             const newIndexId = this.state.defaultIndex - 1;
-            this.setState({
-                defaultIndex:newIndexId
-            },() => {
-                this.hanldList(this.state.list,this.state.defaultIndex);
-            });
+            //console.log(newIndexId);
+            if(newIndexId >= this.state.min){
+                if(newIndexId < 5){
+                    this.refs.save.innerHTML = '确认&nbsp;&nbsp;填写下一项';
+                }
+                this.setState({
+                    defaultIndex:newIndexId
+                },() => {
+                    this.hanldList(newIndexId);
+                });
+            }
         }
     }
     next(){
-        if(this.state.defaultIndex < this.state.max){
+        const flag = this.state.defaultIndex >=1 && this.state.defaultIndex <= 5;
+        if(flag){
             const newIndexId = this.state.defaultIndex + 1;
-            this.setState({
-                defaultIndex:newIndexId
-            },() => {
-                this.hanldList(this.state.list,this.state.defaultIndex);
-            });
-        }
-        if(this.state.defaultIndex == this.state.max - 1){
-            this.refs.save.innerHTML = '保存';
-        }
-        //最后一步，保存
-        if(this.state.defaultIndex == this.state.max){
-            //console.log(JSON.stringify(declar.commits));
-            //axios.post(api.addPerDeclare,declar.commits).then((res) => {
-            //    console.log(JSON.stringify(res));
-            //}).catch((error) => {
-            //    console.log(error);
-            //});
+            //console.log(newIndexId);
+            if(newIndexId <= this.state.max){
+                if(newIndexId == 5){
+                    this.refs.save.innerHTML = '保存';
+                }
+                this.setState({
+                    defaultIndex:newIndexId
+                },() => {
+                    this.hanldList(newIndexId);
+                });
+            }
+            if(newIndexId == 6){
+                const sendData = {};
+                sendData.examines = selfScore.commits;
+                sendData.nodeNo = decalWaitLook.data.nodeNo;
+                sendData.status = 1;
+                const json = JSON.stringify(sendData);
+                console.log(JSON.parse(json));
+                axios.post(api.perTargetWrite,{data:json}).then((res) => {
+                    console.log(JSON.stringify(res));
+                    if(res.data['success']){
+                        message.success('保存成功');
+                        cNode.currentNode = <List />;
+                    }
+                }).catch((error) => {
+                    console.log(error);
+                });
+            }
         }
     }
     render(){
@@ -218,12 +247,12 @@ class DeclarContent extends Component{
             [
                 <PerDeclareHead key="PerDeclareHead" />,
                 <div className="row contentRow" key="DeclarContent">
-                    <div className="titleGroup"><span className="module-title">{this.state.regionName}绩效指标</span></div>
+                    <div className="titleGroup"><span className="module-title">绩效指标</span></div>
                     <div className="stepRow">
-                        <div><Step index={this.state.defaultIndex} contents={this.state.steps} /></div>
+                        <div><Step index={this.state.defaultIndex} /></div>
                         <div>
-                            <span className="module-title">{'共计'+this.state.length+'项'}</span>
-                            <span className="grey">当前添加绩效考核指标</span>
+                            <span className="module-title" style={{color:'#82e9b5'}}>92分&nbsp;优</span>
+                            <span className="grey">当前自评得分</span>
                         </div>
                     </div>
                     <DeclarTable index={this.state.defaultIndex} list={this.state.list} />

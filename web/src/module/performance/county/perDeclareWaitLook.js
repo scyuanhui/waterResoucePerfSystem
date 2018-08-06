@@ -85,10 +85,10 @@ class PerLookDesc extends Component{
         return (
             <div className="perTableDesc">
                 <ul>
-                    <li>{formatDate(decalWaitLook.data.createTime,'-').YMD}</li>
-                    <li>申报人：{decalWaitLook.data.createUserId}</li>
+                    <li>{formatDate(decalWaitLook.data.createTime ? decalWaitLook.data.createTime : new Date(),'-').YMD}</li>
+                    <li>申报人：{decalWaitLook.data.createUserId ? decalWaitLook.data.createUserId : ''}</li>
                     <li>等待上级审核</li>
-                    <li>{decalWaitLook.data.nodeName}</li>
+                    <li>{decalWaitLook.data.nodeName ? decalWaitLook.data.nodeName : ''}</li>
                     <li className="active">等待审核</li>
                     <li>反馈绩效考核指标</li>
                 </ul>

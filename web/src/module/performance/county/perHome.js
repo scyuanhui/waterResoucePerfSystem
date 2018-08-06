@@ -10,7 +10,7 @@ import api from './../../../store/interface';
 import cNode from './../../../store/PerCurrentMountModule';
 import {axios,formatDate} from './../../../public/common';
 import user from './../../../store/userinfo';
-import {decalWaitLook,firstGrade} from './../../../store/Evaluation';
+import {decalWaitLook} from './../../../store/Evaluation';
 import {BaseHead,TableYear} from './perCom';
 import PerDeclarDo from './perDeclarDo';
 import PerDeclareWaitLook from './perDeclareWaitLook';
@@ -19,8 +19,6 @@ import PerFeedBack from './perFeedback';
 import PerTargetWrite from './perTargetWrite';
 import PerTargetWritedLook from './perTargetWritedLook';
 import PerSelfAssessment from './perSelfAssessment';
-//一级指标
-console.log(JSON.stringify(firstGrade.data));
 //本年表格
 @observer
 class CurrentYearTable extends Component{
@@ -28,7 +26,6 @@ class CurrentYearTable extends Component{
         super(props);
         this.state = {
             //考评节点:[1.绩效指标申报,2.绩效目标填写,3.绩效自评,4.绩效复查]
-            errorInfo:null,
             currentYear:formatDate(new Date()).YEAR,
             heads:['考评节点','完成状态','操作'],
             arr:[]
@@ -41,21 +38,19 @@ class CurrentYearTable extends Component{
         };
         axios.post(api.getCountyPerList,sendData).then((res) => {
             //console.log(JSON.stringify(res));
-            const newArr = this.hanldList(res.data);
-            if(newArr.length > 0){
+            if(res.data.length > 0){
+                const newArr = this.hanldList(res.data);
                 this.setState({
                     arr:newArr
                 });
             }
         }).catch((error) => {
             console.log(error);
-            this.setState({
-                errorInfo:JSON.stringify(error)
-            });
         });
     }
     hanldList(list){
         for(let i=0;i<list.length;i++){
+            console.log(list[i]);
             //绩效指标申报
             if(list[i].nodeNo == 1 && list[i].status == 0){//绩效指标申报：待申报
                 list[i].btnStatusClass = 'btn btnSmallRed';
@@ -92,27 +87,32 @@ class CurrentYearTable extends Component{
             if(list[i].nodeNo == 3 && list[i].status == 1){//绩效自评：等待审核
                 list[i].btnStatusClass = 'btn btnSmallPurple';
                 list[i].btnText = '查看';
+                list[i].page = <PerTargetWritedLook />;
             }
             if(list[i].nodeNo == 3 && list[i].status == 2){//绩效自评：市审核通过
                 list[i].btnStatusClass = 'btn btnSmallGreen';
-                list[i].btnText = '填写';
+                list[i].btnText = '查看';
+                list[i].btnText = <PerDeclareWaitLook />;
             }
             if(list[i].nodeNo == 3 && list[i].status == 3){//绩效自评：省审核通过
                 list[i].btnStatusClass = 'btn btnSmallGreen';
                 list[i].btnText = '查看';
+                list[i].btnText = <PerDeclareWaitLook />;
             }
             if(list[i].nodeNo == 3 && list[i].status == 4){//绩效自评：审核驳回
                 list[i].btnStatusClass = 'btn btnSmallOrange';
-                list[i].btnText = '查看';
+                list[i].btnText = <PerDeclareWaitLook />;
             }
             //绩效自评复查
             if(list[i].nodeNo == 4 && list[i].status == 0){//绩效自评复查：等待复查
                 list[i].btnStatusClass = 'btn btnSmallPurple';
                 list[i].btnText = '查看';
+                list[i].btnText = <PerDeclareWaitLook />;
             }
             if(list[i].nodeNo == 4 && list[i].status == 1){//绩效自评复查：已复查
                 list[i].btnStatusClass = 'btn btnSmallGreen';
                 list[i].btnText = '查看';
+                list[i].btnText = <PerDeclareWaitLook />;
             }
         }
         return list;
@@ -146,7 +146,7 @@ class CurrentYearTable extends Component{
                                         </td>
                                     </tr>
                                 );
-                            }) : <tr><td className="text-center" colSpan="3">{this.state.errorInfo ? this.state.errorInfo : <Loading />}</td></tr>
+                            }) : <tr><td className="text-center" colSpan="3"><Loading /></td></tr>
                         }
                         </tbody>
                     </table>

@@ -143,7 +143,6 @@ table td.checkboxTd{position:relative}
     text-align:center;
     padding:25px 50px;
     top:50px;
-    animation:msgHide 0.5s !important;
 }
 .messageBody.active{
     animation:msgShow 0.5s !important;

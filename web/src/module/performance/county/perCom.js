@@ -3,6 +3,8 @@
  *
  **/
 import React,{Component} from 'react';
+import {observer} from 'mobx-react';
+import {firstGrade} from './../../../store/Evaluation';
 
 //绩效考评列表头部(只有左边有文字)
 export class BaseHead extends Component{
@@ -36,6 +38,7 @@ export class TableYear extends Component{
     }
 }
 //步骤条
+@observer
 export class Step extends Component{
     //props:index[1-5]
     constructor(props){
@@ -66,10 +69,10 @@ export class Step extends Component{
                 </div>
                 <div className="stepTextList">
                     {
-                        this.props.contents.map((item,index) => {
+                        firstGrade.data.map((item,index) => {
                             const isActive = index+1 == this.props.index ? 'active' :'';
                             return (
-                                <span key={index} className={isActive}><b>{item}</b></span>
+                                <span key={index} className={isActive}><b>{item.indexName}</b></span>
                             );
                         })
                     }
