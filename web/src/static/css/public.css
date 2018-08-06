@@ -121,9 +121,8 @@ table td.checkboxTd{position:relative}
 .modal-foot>span.btnMd{width:50%}
 .modal-foot>span.btnSucces{background:#3B86FF}
 .modal-foot>span.btnCancel{background:#333852}
-/*message*/
+/*message[success|warning|error]*/
 .messageContainer{
-    border:1px solid palegreen;
     position:absolute;
     z-index:9999;
     width:100%;
@@ -135,19 +134,42 @@ table td.checkboxTd{position:relative}
     text-align:center;
 }
 .messageBody{
-    background:#f8f8f8;
+    background:#fff;
     box-shadow:0 0 15px #ccc;
-    max-width:360px;
+    max-width:560px;
     position:relative;
     border-radius:5px;
     color:#2B344C;
     text-align:center;
-    padding:30px 40px;
+    padding:25px 50px;
     top:50px;
     animation:msgHide 0.5s !important;
 }
 .messageBody.active{
     animation:msgShow 0.5s !important;
+}
+.messageBody>span{
+    font-size:14px !important;
+    display:inline-block;
+    height:16px;
+    line-height:16px;
+}
+.messageBody>span:first-child{
+    margin-right:5px;
+    width:16px;
+    border-radius:50%;
+}
+.messageBody>span.successIcon{
+    background:green;
+    color:#fff;
+}
+.messageBody>span.warningIcon{
+    background:orange;
+    color:#fff;
+}
+.messageBody>span.errorIcon{
+    background:red;
+    color:#fff;
 }
 /*fadeIn fadeOut*/
 @keyframes fadeIn {

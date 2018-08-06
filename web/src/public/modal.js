@@ -76,7 +76,7 @@ class Message{
     }
     success(text,delay){
         const template = '<a class="messageBody active">'+
-                             '<span class="iconfont icon-zhengque" style="color:green">&nbsp;&nbsp;</span>'+
+                             '<span class="successIcon">√</span>'+
                              '<span>'+text+'</span>'+
                          '</a>';
         this.messageContainer.innerHTML = template;
@@ -87,7 +87,7 @@ class Message{
     }
     warning(text,delay){
         const template = '<a class="messageBody active">'+
-                             '<span class="iconfont icon-wuuiconsuotanhao" style="color:orange">&nbsp;&nbsp;</span>'+
+                             '<span class="warningIcon">!</span>'+
                              '<span>'+text+'</span>'+
                          '</a>';
         this.messageContainer.innerHTML = template;
@@ -98,7 +98,7 @@ class Message{
     }
     error(text,delay){
         const template = '<a class="messageBody active">'+
-                             '<span class="iconfont icon-cuowu" style="color:red">&nbsp;&nbsp;</span>'+
+                             '<span class="errorIcon">×</span>'+
                              '<span>'+text+'</span>'+
                          '</a>';
         this.messageContainer.innerHTML = template;

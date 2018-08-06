@@ -4,6 +4,7 @@
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 import {observer} from 'mobx-react';
+import {message} from './../../../public/modal';
 import Loading from './../../../public/loading';
 import api from './../../../store/interface';
 import cNode from './../../../store/PerCurrentMountModule';
@@ -20,7 +21,6 @@ import PerTargetWritedLook from './perTargetWritedLook';
 import PerSelfAssessment from './perSelfAssessment';
 //一级指标
 console.log(JSON.stringify(firstGrade.data));
-
 //本年表格
 @observer
 class CurrentYearTable extends Component{
