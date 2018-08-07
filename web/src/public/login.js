@@ -59,7 +59,7 @@ class LoginForm extends Component {
             <div className="loginForm">
                 <span className="loginTitle">登录</span>
                 <input type="text" placeholder="账号" ref="username" placeholder="[省:admin1][市:admin2][县:admin3]" maxLength="25" />
-                <input type="password" placeholder="密码" ref="password" placeholder="密码随便输入6个" maxLength="25" defaultValue="admin123" />
+                <input type="password" placeholder="密码" ref="password" placeholder="密码随便输入6个" maxLength="25" defaultValue="123456" />
                 <button type="button" className="btn btn-lg btn-promise" onClick={this.loginEvent.bind(this)}>点击登录
                 </button>
                 <p><span className="grey">遇到问题，请联系管理员</span><b>028-234434</b></p>
