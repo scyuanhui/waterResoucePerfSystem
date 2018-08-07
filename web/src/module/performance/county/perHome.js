@@ -92,27 +92,28 @@ class CurrentYearTable extends Component{
             if(list[i].nodeNo == 3 && list[i].status == 2){//绩效自评：市审核通过
                 list[i].btnStatusClass = 'btn btnSmallGreen';
                 list[i].btnText = '查看';
-                list[i].btnText = <PerDeclareWaitLook />;
+                list[i].page = <PerTargetWritedLook />;
             }
             if(list[i].nodeNo == 3 && list[i].status == 3){//绩效自评：省审核通过
                 list[i].btnStatusClass = 'btn btnSmallGreen';
                 list[i].btnText = '查看';
-                list[i].btnText = <PerDeclareWaitLook />;
+                list[i].page = <PerTargetWritedLook />;
             }
             if(list[i].nodeNo == 3 && list[i].status == 4){//绩效自评：审核驳回
                 list[i].btnStatusClass = 'btn btnSmallOrange';
-                list[i].btnText = <PerDeclareWaitLook />;
+                list[i].btnText = '查看';
+                list[i].page = <PerTargetWritedLook />;
             }
             //绩效自评复查
             if(list[i].nodeNo == 4 && list[i].status == 0){//绩效自评复查：等待复查
                 list[i].btnStatusClass = 'btn btnSmallPurple';
                 list[i].btnText = '查看';
-                list[i].btnText = <PerDeclareWaitLook />;
+                list[i].page = <PerTargetWritedLook />;
             }
             if(list[i].nodeNo == 4 && list[i].status == 1){//绩效自评复查：已复查
                 list[i].btnStatusClass = 'btn btnSmallGreen';
                 list[i].btnText = '查看';
-                list[i].btnText = <PerDeclareWaitLook />;
+                list[i].page = <PerTargetWritedLook />;
             }
         }
         return list;
