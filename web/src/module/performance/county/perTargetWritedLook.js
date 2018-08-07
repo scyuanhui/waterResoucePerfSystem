@@ -164,7 +164,6 @@ class PerTargetLookTable extends Component{
                                                                         <tbody>
                                                                         {
                                                                             threeList.map((threeItem,threeIndex) => {
-                                                                                console.log(JSON.stringify(threeItem));
                                                                                 return (
                                                                                     <tr key={threeIndex}>
                                                                                         <td width="65%">{threeItem.threeIndexName}</td>
