@@ -16,12 +16,6 @@ class LoginForm extends Component {
     constructor(props) {
         super(props);
     }
-    closeDilog(bool){
-        //console.log(bool);
-        this.setState({
-            dilogStatus:false
-        });
-    }
     loginEvent() {
         const name = trim(this.refs.username.value);
         const pwd = trim(this.refs.password.value);
