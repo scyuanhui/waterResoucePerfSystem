@@ -50,7 +50,6 @@ class CurrentYearTable extends Component{
     }
     hanldList(list){
         for(let i=0;i<list.length;i++){
-            console.log(list[i]);
             //绩效指标申报
             if(list[i].nodeNo == 1 && list[i].status == 0){//绩效指标申报：待申报
                 list[i].btnStatusClass = 'btn btnSmallRed';

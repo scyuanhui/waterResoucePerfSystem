@@ -27,7 +27,7 @@ class LoginForm extends Component {
                 password:pwd
             };
             axios.post(api.login,sendData).then((res) => {
-                console.log(JSON.stringify(res));
+                //console.log(JSON.stringify(res));
                 if(res.data['success'] == true){
                     user.setUserSession(res.data.data);
                     ReactDOM.render(<App />,mountNode);
