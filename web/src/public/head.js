@@ -6,8 +6,9 @@ import ReactDOM from 'react-dom';
 import {observer} from 'mobx-react';
 //store
 import user from './../store/userinfo';
-import {axios} from './common';
+import {trim,axios} from './common';
 import api from './../store/interface';
+import {message} from './modal';
 //img
 import userHead from './../static/img/userhead.png';
 import userOnLine from './../static/img/headOnLine.png';
@@ -38,18 +39,41 @@ class ModifyPassWord extends Component{
         }
     }
     savePassWord(){
-        this.setState({
-            inputRowStatus:false,
-            modifyTipsStatus:true
-        },() => {
-            setTimeout(() => {
-                this.setState({
-                    inputRowStatus:false,
-                    modifyTipsStatus:false
-                });
-                this.props.close(false);
-            },2000);
-        });
+        const __oldPwd = trim(this.refs.oldPwd.value);
+        const __firstPwd = trim(this.refs.firstPwd.value);
+        const __secendPwd = trim(this.refs.secendPwd.value);
+        if(__oldPwd.length >= 6 && __firstPwd == __secendPwd && __firstPwd.length >= 6){
+            const sendData = {
+                userId:user.data.userId,
+                oldPassword:__oldPwd,
+                newPassword:__firstPwd
+            };
+            axios.post(api.ModifyPassWord,sendData).then((res) => {
+                //console.log(JSON.stringify(res));
+                if(res.data.code == 0){
+                    this.setState({
+                        inputRowStatus:false,
+                        modifyTipsStatus:true
+                    },() => {
+                        setTimeout(() => {
+                            this.setState({
+                                inputRowStatus:false,
+                                modifyTipsStatus:false
+                            });
+                            this.props.close(false);
+                        },2000);
+                    });
+                }
+            }).catch((error) => {
+                console.log(error);
+            });
+        }else{
+            message.warning('密码长度至少6位或者两次输入的新密码不一致');
+        }
+
+
+
+
     }
     render(){
         return (
@@ -61,9 +85,9 @@ class ModifyPassWord extends Component{
                     <li onClick={this.openModifyWindow.bind(this)}><i className="iconfont icon-suo1"></i><span>修改密码</span></li>
                 </ul>
                 <div className="inputRow" style={{display:this.state.inputRowStatus ? 'block' : 'none'}}>
-                    <input type="password" placeholder="输入原密码" />
-                    <input type="password" placeholder="输入新密码" />
-                    <input type="password" placeholder="再次输入新密码" />
+                    <input type="password" placeholder="输入原密码" ref="oldPwd" />
+                    <input type="password" placeholder="输入新密码" ref="firstPwd" />
+                    <input type="password" placeholder="再次输入新密码" ref="secendPwd" />
                     <button className="btn btnLongBlue" onClick={this.savePassWord.bind(this)}>保存</button>
                 </div>
                 <div className="modifyTips" style={{display:this.state.modifyTipsStatus ? 'block' : 'none'}}>
