@@ -9,6 +9,7 @@ const api = {
     getCountyPerDeclare:root + '/shuilizijin/pfmIndex/query',//绩效指标申报-申报
     addPerDeclare:root + '/shuilizijin/examine/add',//绩效指标申报-提交
     perDeclareWaitLook:root + '/shuilizijin/examine/query',//绩效指标申报-等待审核，查看
-    perTargetWrite:root + '/shuilizijin/examine/update'//绩效目标填写，提交
+    perTargetWrite:root + '/shuilizijin/examine/update',//绩效目标填写，提交
+    perFeedBack:root + 'shuilizijin/record/levelBySelfOver' //省级绩效反馈
 };
 export default api;
