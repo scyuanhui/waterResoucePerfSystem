@@ -123,3 +123,13 @@ export class Checkbox extends Component{
         );
     }
 }
+//数组去重复
+export function arrayRepet(arr){
+    //arr:['a','b','c','a','c','b']
+    const newArr = [];
+    const __set = new Set(arr);
+    for(const val of __set){
+        newArr.push(val);
+    }
+    return newArr;
+}
